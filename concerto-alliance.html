@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>协奏曲联盟 · 暴雨纪元</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0a0c10;
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+        }
+        /* 头部 */
+        .header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-bottom: 2px solid #e06b6b;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo {
+            width: 64px;
+            height: 64px;
+            background-color: #1e2228;
+            border: 1px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img { width: 100%; height: 100%; object-fit: contain; }
+        .org-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        .org-name span {
+            color: #e06b6b;
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+        .nav {
+            margin-left: auto;
+            display: flex;
+            gap: 2rem;
+            font-size: 1.2rem;
+            align-items: center;
+        }
+        .nav a {
+            color: #b0b8c5;
+            text-decoration: none;
+            padding: 0.25rem 0;
+            border-bottom: 2px solid transparent;
+            transition: 0.2s;
+        }
+        .nav a:hover {
+            color: #ffffff;
+            border-bottom-color: #e06b6b;
+        }
+        /* 登录信息 */
+        .user-info {
+            color: #ffb8b8;
+            font-size: 0.9rem;
+            background-color: #1a1f27;
+            padding: 0.3rem 1rem;
+            border: 1px solid #e06b6b;
+            border-radius: 20px;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        .user-info .icon {
+            color: #e06b6b;
+            margin-right: 0.3rem;
+        }
+        /* 显示屏 */
+        .dashboard {
+            background-color: #0b0d10;
+            border: 2px solid #e06b6b;
+            padding: 1.5rem 2rem;
+            margin-bottom: 1.5rem;
+            font-family: 'Courier New', monospace;
+            box-shadow: inset 0 0 20px rgba(224, 107, 107, 0.2);
+        }
+        .dashboard-header {
+            color: #e06b6b;
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px dashed #e06b6b;
+            text-align: center;
+        }
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+            gap: 1rem 2rem;
+        }
+        .d-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            border-bottom: 1px dotted #2a2e35;
+            padding: 0.3rem 0;
+        }
+        .d-label {
+            color: #e06b6b;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .d-value {
+            color: #ffb8b8;
+            font-size: 1.1rem;
+            font-weight: 500;
+            font-family: 'Courier New', monospace;
+        }
+        .d-value.special {
+            color: #6ba6e0;
+        }
+        .dashboard-footer {
+            margin-top: 1rem;
+            color: #e06b6b;
+            font-size: 0.9rem;
+            text-align: right;
+            border-top: 1px dashed #e06b6b;
+            padding-top: 0.5rem;
+        }
+        /* 新增模块通用卡片 */
+        .card {
+            background-color: #0f1217;
+            border: 1px solid #2a2e35;
+            padding: 1.5rem 2rem;
+            margin-bottom: 2rem;
+        }
+        .card h3 {
+            color: #e06b6b;
+            font-size: 1.5rem;
+            font-weight: 500;
+            border-left: 6px solid #e06b6b;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .band-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-bottom: 1rem;
+        }
+        .band-item {
+            display: flex;
+            flex-direction: column;
+            gap: 0.2rem;
+        }
+        .band-label {
+            color: #e06b6b;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+        }
+        .band-value {
+            color: #ffb8b8;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+        }
+        .progress-bar {
+            background-color: #1a1f27;
+            height: 12px;
+            width: 150px;
+            border: 1px solid #2a2e35;
+            display: inline-block;
+            margin-left: 0.5rem;
+        }
+        .progress-fill {
+            height: 100%;
+            background-color: #e06b6b;
+        }
+        /* 自定义播放器样式 */
+        .custom-audio {
+            width: 100%;
+            background-color: #1a1f27;
+            border: 1px solid #e06b6b;
+            padding: 8px 12px;
+            box-sizing: border-box;
+            margin-top: 8px;
+        }
+        .audio-controls {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            color: #ffb8b8;
+        }
+        .audio-controls button {
+            background: none;
+            border: 1px solid #e06b6b;
+            color: #e06b6b;
+            font-size: 16px;
+            width: 32px;
+            height: 32px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.2s;
+        }
+        .audio-controls button:hover {
+            background-color: #e06b6b;
+            color: #0a0c10;
+        }
+        .timeline {
+            flex: 1;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .timeline .progress-bar {
+            flex: 1;
+            height: 6px;
+            background-color: #2a2e35;
+            cursor: pointer;
+            position: relative;
+            width: auto;
+            margin-left: 0;
+        }
+        .timeline .progress-fill {
+            height: 100%;
+            width: 0%;
+            background-color: #e06b6b;
+            transition: width 0.1s;
+        }
+        .chat-messages {
+            background-color: #0b0d10;
+            border: 1px solid #2a2e35;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+        }
+        .chat-line {
+            display: flex;
+            gap: 1rem;
+            border-bottom: 1px dotted #2a2e35;
+            padding: 0.5rem 0;
+        }
+        .chat-poster {
+            color: #6ba6e0;
+            min-width: 120px;
+        }
+        .chat-text {
+            color: #c0c8d5;
+            flex: 1;
+        }
+        .chat-controls {
+            display: flex;
+            gap: 1rem;
+            color: #e06b6b;
+            font-size: 0.9rem;
+            margin-top: 0.5rem;
+        }
+        .chat-controls span {
+            cursor: default;
+            border: 1px solid #2a2e35;
+            padding: 0.2rem 0.8rem;
+            background-color: #1a1f27;
+        }
+        .schedule-item {
+            display: flex;
+            gap: 2rem;
+            border-bottom: 1px dashed #2a2e35;
+            padding: 0.5rem 0;
+            color: #c0c8d5;
+        }
+        .schedule-time {
+            color: #e06b6b;
+            min-width: 80px;
+        }
+        .motto-new {
+            text-align: center;
+            font-size: 1.8rem;
+            font-weight: 300;
+            color: #e06b6b;
+            letter-spacing: 2px;
+            margin: 2rem 0 0;
+            padding: 1rem 0;
+            border-top: 1px solid #2a2e35;
+            border-bottom: 1px solid #2a2e35;
+        }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2e35;
+            font-size: 0.85rem;
+            color: #7a808b;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer a { color: #e06b6b; text-decoration: none; }
+        @media (max-width: 700px) {
+            .header { flex-direction: column; align-items: start; }
+            .nav { margin-left: 0; flex-wrap: wrap; }
+            .user-info { margin-left: 0; margin-top: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部：logo区域可点击返回首页 -->
+        <div class="header">
+            <a href="concerto-alliance.html" class="logo-area">
+                <div class="logo"><img src="ca.jpg" alt="协奏曲徽章" onerror="this.style.display='none'; this.parentElement.innerText='CA'"></div>
+                <div class="org-name">协奏曲联盟<span>CONCERTO ALLIANCE</span></div>
+            </a>
+            <div class="nav">
+                <a href="about.html">关于</a>
+                <a href="project.html">独有项目</a>
+                <a href="history.html">世界观</a>
+                <!-- 登录信息 -->
+                <div class="user-info">
+                    <span class="icon">;-)</span> 外勤特工Alex
+                </div>
+            </div>
+        </div>
+
+        <!-- 显示屏（原有） -->
+        <div class="dashboard">
+            <div class="dashboard-header">
+                2106/8/3  2:36:32 a.m.    雨      大吉   祝你在这滂沱世末之雨中好运     联盟等待着你的归来
+            </div>
+            <div class="dashboard-grid">
+                <div class="d-item"><span class="d-label">成员在线数：</span><span class="d-value">8K</span></div>
+                <div class="d-item"><span class="d-label">聊天室：</span><span class="d-value">可用</span></div>
+                <div class="d-item"><span class="d-label">广播：</span><span class="d-value">暂无</span></div>
+                <div class="d-item"><span class="d-label">未读信息：</span><span class="d-value">0</span></div>
+                <div class="d-item"><span class="d-label">附近节点：</span><span class="d-value">1</span></div>
+                <div class="d-item"><span class="d-label">附近聚生地：</span><span class="d-value">0</span></div>
+                <div class="d-item"><span class="d-label">附近连结种/卓越种：</span><span class="d-value">正在扫描</span></div>
+                <div class="d-item"><span class="d-label">当前地区暴雨综合强度：</span><span class="d-value">中</span></div>
+                <div class="d-item"><span class="d-label">光蚀预警：</span><span class="d-value">8:15:39后 Ⅲ级</span></div>
+                <div class="d-item"><span class="d-label">当前地区光蚀综合强度：</span><span class="d-value">低</span></div>
+            </div>
+            <div class="dashboard-footer">
+                —— 数据更新于 2106/8/3 02:36:32
+            </div>
+        </div>
+
+        <!-- 1. 公共波段状态 -->
+        <div class="card">
+            <h3>协奏曲公共波段 · 暴雨纪元 2106/8/3 02:36</h3>
+            <div class="band-row">
+                <div class="band-item">
+                    <span class="band-label">频率</span>
+                    <span class="band-value">███████░░ 70%</span>
+                </div>
+                <div class="band-item">
+                    <span class="band-label">功率</span>
+                    <span class="band-value">
+                        ███████░░ 70%
+                        <span class="progress-bar"><span class="progress-fill" style="width:70%"></span></span>
+                    </span>
+                </div>
+                <div class="band-item">
+                    <span class="band-label">电池</span>
+                    <span class="band-value">
+                        ████░░░░ 40%
+                        <span class="progress-bar"><span class="progress-fill" style="width:40%"></span></span>
+                    </span>
+                </div>
+                <div class="band-item">
+                    <span class="band-label">信号源</span>
+                    <span class="band-value">节点N-07 · 距离 23km · 可中继</span>
+                </div>
+            </div>
+            <div class="band-row">
+                <div class="band-item">
+                    <span class="band-label">当前播放</span>
+                    <span class="band-value">▷ 世末歌者（钢琴改编ver.)——COPY/ 乐正绫/你好我叫小飞机（重播）</span>
+                </div>
+                <div class="band-item">
+                    <span class="band-label">下一时段</span>
+                    <span class="band-value">⏻ 凌晨特别节目：那些未被暴雨抹去的歌</span>
+                </div>
+            </div>
+            <!-- 新增一行，放置自定义播放器 -->
+            <div class="band-row" style="margin-top: 8px;">
+                <div class="custom-audio">
+                    <audio id="bgm" loop src="shimogezhegq.mp3" preload="metadata"></audio>
+                    <div class="audio-controls">
+                        <button class="play-pause" onclick="togglePlay()">▶</button>
+                        <div class="timeline">
+                            <span class="current-time">0:00</span>
+                            <div class="progress-bar" onclick="seek(event)">
+                                <div class="progress-fill" id="progressFill" style="width: 0%;"></div>
+                            </div>
+                            <span class="duration" id="duration">0:00</span>
+                        </div>
+                        <button class="mute" onclick="toggleMute()">🔊</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 2. 聊天室 -->
+        <div class="card">
+            <h3>聊天室 · 164人在线 · 当前帖子：#313758166</h3>
+            <div class="chat-messages">
+                <div class="chat-line">
+                    <span class="chat-poster">【楼主_幸存者_Liam Cater_#351】</span>
+                    <span class="chat-text">“这里是Site-28，附近有个调度柱。有从东区过来的队伍吗？请回答。”</span>
+                </div>
+                <div class="chat-line">
+                    <span class="chat-poster">【幸存者_John Reicher_#217     1楼】</span>
+                    <span class="chat-text">“我们在办公区右翼Frank博士办公室找到了备用医疗包，坐标已发，需要接应。”</span>
+                </div>
+                <div class="chat-line">
+                    <span class="chat-poster">【匿名  2楼】</span>
+                    <span class="chat-text">“……我刚刚离开site28（）我想去找scp9999，有人一起吗，包食物，有车坐。”</span>
+                </div>
+                <div class="chat-line">
+                    <span class="chat-poster">【系统     2楼】</span>
+                    <span class="chat-text">检测到异常叙事波动，建议切换至加密频段。</span>
+                </div>
+            </div>
+            <div class="chat-controls">
+                <span>发帖□</span>
+                <span>回复□</span>
+                <span>查看信息□</span>
+            </div>
+        </div>
+
+        <!-- 3. 今日广播节目单 -->
+        <div class="card">
+            <h3>今日广播节目 >>>>> [点击进入直播间]</h3>
+            <div class="schedule-item">
+                <span class="schedule-time">08:00</span>
+                <span>联盟晨报 · 昨日新增幸存据点3处</span>
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-time">10:00</span>
+                <span>奇术防御公开课（重播）</span>
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-time">14:00</span>
+                <span>幸存者来信 · “最近威慑种活动越来越频繁了，还带着卓越种，大家要...“</span>
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-time">18:00</span>
+                <span>音乐点播 · 献给那些没能上船的人</span>
+            </div>
+            <div class="schedule-item">
+                <span class="schedule-time">21:00</span>
+                <span>夜间值班 · 开放公共频道自由交流</span>
+            </div>
+        </div>
+
+        <!-- 4. 新格言 -->
+        <div class="motto-new">
+            「无论你在哪片废墟，暴雨之下，我们仍在发声。」
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <div>协奏曲联盟 · 暴雨纪元 · 联合指挥端</div>
+            <div>若无特别要求则本页面遵循 <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA 3.0</a> 协议</div>
+        </div>
+    </div>
+
+    <!-- JavaScript 控制播放器 -->
+    <script>
+        const audio = document.getElementById('bgm');
+        const playBtn = document.querySelector('.play-pause');
+        const muteBtn = document.querySelector('.mute');
+        const progressFill = document.getElementById('progressFill');
+        const currentTimeSpan = document.querySelector('.current-time');
+        const durationSpan = document.getElementById('duration');
+
+        audio.addEventListener('loadedmetadata', () => {
+            durationSpan.textContent = formatTime(audio.duration);
+        });
+
+        audio.addEventListener('timeupdate', () => {
+            const percent = (audio.currentTime / audio.duration) * 100;
+            progressFill.style.width = percent + '%';
+            currentTimeSpan.textContent = formatTime(audio.currentTime);
+        });
+
+        function togglePlay() {
+            if (audio.paused) {
+                audio.play();
+                playBtn.textContent = '⏸';
+            } else {
+                audio.pause();
+                playBtn.textContent = '▶';
+            }
+        }
+
+        function toggleMute() {
+            audio.muted = !audio.muted;
+            muteBtn.textContent = audio.muted ? '🔇' : '🔊';
+        }
+
+        function seek(e) {
+            const bar = e.currentTarget;
+            const clickX = e.clientX - bar.getBoundingClientRect().left;
+            const newTime = (clickX / bar.offsetWidth) * audio.duration;
+            audio.currentTime = newTime;
+        }
+
+        function formatTime(seconds) {
+            const mins = Math.floor(seconds / 60);
+            const secs = Math.floor(seconds % 60);
+            return mins + ':' + (secs < 10 ? '0' : '') + secs;
+        }
+    </script>
+</body>
+</html>

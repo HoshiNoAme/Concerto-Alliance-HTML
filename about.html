@@ -1,0 +1,467 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于 · 协奏曲联盟</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0a0c10;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-bottom: 2px solid #e06b6b;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo {
+            width: 64px;
+            height: 64px;
+            background-color: #1e2228;
+            border: 1px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img { width: 100%; height: 100%; object-fit: contain; }
+        .org-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        .org-name span {
+            color: #e06b6b;
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+        .nav {
+            margin-left: auto;
+            display: flex;
+            gap: 2rem;
+            font-size: 1.2rem;
+            align-items: center;
+        }
+        .nav a {
+            color: #b0b8c5;
+            text-decoration: none;
+            padding: 0.25rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        .nav a:hover, .nav a.active {
+            color: #ffffff;
+            border-bottom-color: #e06b6b;
+        }
+        /* 登录信息 */
+        .user-info {
+            color: #ffb8b8;
+            font-size: 0.9rem;
+            background-color: #1a1f27;
+            padding: 0.3rem 1rem;
+            border: 1px solid #e06b6b;
+            border-radius: 20px;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        .user-info .icon {
+            color: #e06b6b;
+            margin-right: 0.3rem;
+        }
+        .sep { border-bottom: 1px solid #2a2e35; margin: 1.5rem 0; }
+        .collapsible {
+            margin-bottom: 1.5rem;
+            border: 1px solid #2a2e35;
+            background-color: #0f1217;
+        }
+        .collapsible-header {
+            background-color: #1a1f27;
+            padding: 1rem 1.5rem;
+            color: #e06b6b;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .collapsible-content {
+            padding: 1.5rem;
+            display: none;
+            border-top: 1px solid #2a2e35;
+        }
+        .collapsible.open .collapsible-content { display: block; }
+        .toggle-icon { font-size: 1.5rem; color: #e06b6b; }
+        .intro-section {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start;
+            margin-bottom: 2rem;
+        }
+        .intro-logo {
+            width: 120px;
+            height: 120px;
+            background: #1e2228;
+            border: 2px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .intro-text {
+            flex: 1;
+            color: #d0d8e5;
+            font-size: 1.1rem;
+        }
+        .member-list, .staff-list, .site-list {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+        .member-card, .staff-card, .site-card {
+            background: #1c2129;
+            border: 1px solid #333b48;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+        }
+        .site-card {
+            display: block; /* 站点卡片不需要图标，改为块级 */
+        }
+        .member-icon {
+            width: 48px;
+            height: 48px;
+            background: #2a2e35;
+            border: 1px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .member-icon img { width: 100%; height: 100%; object-fit: contain; }
+        .member-info, .staff-info, .site-info { flex: 1; }
+        .member-name, .staff-name, .site-name {
+            color: #e06b6b;
+            font-size: 1.3rem;
+            font-weight: 500;
+            margin-bottom: 0.3rem;
+        }
+        .member-desc, .staff-desc, .site-desc {
+            color: #c0c8d5;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .staff-desc ul {
+            margin-top: 0.3rem;
+            margin-left: 1.5rem;
+            color: #9aa8b9;
+        }
+        .placeholder {
+            color: #6d7a8c;
+            font-style: italic;
+        }
+        /* 三联核心样式 */
+        .creed {
+            background-color: #11161f;
+            border: 1px solid #2f3747;
+            padding: 2rem 2rem 1.5rem;
+            margin: 2rem 0;
+        }
+        .motto {
+            font-size: 2.2rem;
+            font-weight: 300;
+            text-align: center;
+            color: #e06b6b;
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+            text-transform: uppercase;
+        }
+        .pillars {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: space-around;
+            text-align: center;
+        }
+        .pillar {
+            flex: 1;
+            min-width: 180px;
+        }
+        .pillar h3 {
+            color: #e06b6b;
+            font-size: 1.8rem;
+            font-weight: 400;
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+        }
+        .pillar p {
+            color: #9aa8b9;
+            font-size: 0.95rem;
+            max-width: 250px;
+            margin: 0 auto;
+        }
+        .footer {
+            margin-top: 2rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2e35;
+            font-size: 0.85rem;
+            color: #7a808b;
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer a { color: #e06b6b; text-decoration: none; }
+        @media (max-width: 700px) {
+            .member-card, .staff-card { flex-direction: column; }
+            .site-card { padding: 1rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <div class="header">
+            <a href="concerto-alliance.html" class="logo-area">
+                <div class="logo"><img src="ca.jpg" alt="CA" onerror="this.style.display='none';this.parentElement.innerText='CA'"></div>
+                <div class="org-name">协奏曲联盟<span>CONCERTO ALLIANCE</span></div>
+            </a>
+            <div class="nav">
+                <a href="about.html" style="color:#ffffff; border-bottom-color:#e06b6b;">关于</a>
+                <a href="project.html">独有项目</a>
+                <a href="history.html">世界观</a>
+                <!-- 登录信息 -->
+                <div class="user-info">
+                    <span class="icon">;-)</span> 外勤特工Alex
+                </div>
+            </div>
+        </div>
+
+        <!-- 简介区 -->
+        <div class="intro-section">
+            <div class="intro-logo"><img src="ca2.jpg" alt="徽章" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.innerText='CA'"></div>
+            <div class="intro-text">
+                <h2 style="color:#e06b6b; margin-bottom:1rem;">协奏曲联盟</h2>
+                <p>协奏曲协议是在技术爆炸纪元被提出的提案，在108议会全票通过。协奏曲协议是全球超自然联盟的理念在超自然界得到认可的标志，也是超自然界可以存在和平的象征。最初的协议旨在防止R.W.P.S.技术流传至帷幕外，在“暴雨”发生后各组织以协议的名义建立协奏曲联盟。</p>
+                <p style="margin-top:1rem;">协奏曲联盟是暴雨下人类几乎唯一的有效战斗力，初期建立起有效抵抗，在演化阶段5后愈发松散。</p>
+            </div>
+        </div>
+
+        <!-- 联盟格言与三重核心（复制自主页） -->
+        <div class="creed">
+            <div class="motto">为了文明存续</div>
+            <div class="pillars">
+                <div class="pillar"><h3>保护</h3><p>保护人类是所有超自然组织的首要责任。帷幕永不落，但生存高于一切。</p></div>
+                <div class="pillar"><h3>生存</h3><p>任何生物的首要任务。活下去，为了文明保留火种。</p></div>
+                <div class="pillar"><h3>战斗</h3><p>为文明而战。尽全力阻止战争，或减小战争损失。</p></div>
+            </div>
+        </div>
+
+        <div class="sep"></div>
+
+        <!-- 联盟成员列表（折叠） -->
+        <div class="collapsible close" id="membersCollapse">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                联盟成员列表 <span class="toggle-icon">−</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="member-list">
+                    <!-- GOC -->
+                    <div class="member-card">
+                        <div class="member-icon"><img src="goc.jpg" alt="GOC" onerror="this.style.display='none';this.parentElement.innerText='🌐'"></div>
+                        <div class="member-info">
+                            <div class="member-name">全球超自然联盟 (GOC)</div>
+                            <div class="member-desc">全球超自然联盟坚信人类至上，常态至上。GOC创立于二战的余波中，叛变的超自然学者中的剩余人士、灵媒、祭司以及来自纳粹、苏联和同盟国的科学家，他们被聚集在一起并由同盟国组织成型。正如世界舞台在扩大，更多的国家参与进GOC，直到它具有如今的规模。GOC是一支庞大的政治力量，自视为超自然世界的警察。它们对于摧毁超自然个体感到非常自豪，并会使用从赞助者中得到的最高新的实验技术。</div>
+                        </div>
+                    </div>
+                    <!-- SCP基金会 -->
+                    <div class="member-card">
+                        <div class="member-icon"><img src="foundation.jpg" alt="Foundation" onerror="this.style.display='none';this.parentElement.innerText='🔒'"></div>
+                        <div class="member-info">
+                            <div class="member-name">SCP基金会</div>
+                            <div class="member-desc">以“控制，收容，保护”为核心。于世界各地的暗处活动，基金会的目标是收容异常物品，个体及现象，而且其本身运作不受各个主要国家政府的司法管辖权，授权和委托的干扰。这些异常透过物理或心理危害对全球安全造成显著威胁。基金会维持常态，从而使世界各地的平民得以生存并免受恐惧，不信或对个人信念的怀疑的影响，并从地外、异次元和外层空间的影响中维持人类的独立自主。</div>
+                        </div>
+                    </div>
+                    <!-- 混沌分裂者 -->
+                    <div class="member-card">
+                        <div class="member-icon"><img src="ci.jpg" alt="CI" onerror="this.style.display='none';this.parentElement.innerText='⚡'"></div>
+                        <div class="member-info">
+                            <div class="member-name">混沌分裂者 (德尔塔指挥部)</div>
+                            <div class="member-desc">混沌分裂者现由德尔塔指挥部领导。分裂者因对基金会做法的不满而从其当中分裂出来，其目标是击碎帷幕并守护人类未来的不确定性，曾经是一个与SCP基金会等组织互相敌视的恐怖组织。</div>
+                        </div>
+                    </div>
+                    <!-- 蛇之手 -->
+                    <div class="member-card">
+                        <div class="member-icon"><img src="hand.jpg" alt="Serpent's Hand" onerror="this.style.display='none';this.parentElement.innerText='🐍'"></div>
+                        <div class="member-info">
+                            <div class="member-name">蛇之手</div>
+                            <div class="member-desc">蛇之手认为人类和其它所有世界的居民不应该生活在黑暗与遮掩之中。蛇之手致力于实现人类与异常共存的愿景，尽管多次被认为是恐怖主义的组织，但蛇之手证明了自己并非如此。</div>
+                        </div>
+                    </div>
+                    <!-- 破碎之神教会 -->
+                    <div class="member-card">
+                        <div class="member-icon"><img src="church.jpg" alt="Church" onerror="this.style.display='none';this.parentElement.innerText='⚙️'"></div>
+                        <div class="member-info">
+                            <div class="member-name">破碎之神教会 (机械同盟)</div>
+                            <div class="member-desc">新教条：守护人类文明即破碎神遗愿。在内战结束后与GOC结盟，转变目标，如今是人类的忠实捍卫者。</div>
+                        </div>
+                    </div>
+                    <!-- UIU -->
+                    <div class="member-card">
+                        <div class="member-icon"><img src="uiu.jpg" alt="UIU" onerror="this.style.display='none';this.parentElement.innerText='🕵️'"></div>
+                        <div class="member-info">
+                            <div class="member-name">特异事故处 (UIU)</div>
+                            <div class="member-desc">特异事故处是美国的代表机构，然而其更多的是自主运营，他们回收并研究异常项目，在“暴雨”初期就加入了协奏曲联盟。</div>
+                        </div>
+                    </div>
+                    <!-- GRU-P 部门 -->
+                    <div class="member-card">
+                        <div class="member-icon"><img src="gru.jpg" alt="GRU" onerror="this.style.display='none';this.parentElement.innerText='🐻'"></div>
+                        <div class="member-info">
+                            <div class="member-name">格鲁乌“P”部门</div>
+                            <div class="member-desc">GRU-P部门是俄罗斯的代表机构，与UIU一样，他们更多的是自主运行。他们最早是出于政治目的被成立，后来是混沌分裂者的重要盟友，他们认可混沌分裂者的理念。在“暴雨”中，GRU-P进入SCP-3001寻找新的家园并支援基准现实。</div>
+                        </div>
+                    </div>
+                    <!-- 及其他15个签署方 -->
+                    <div class="member-card">
+                        <div class="member-icon"></div>
+                        <div class="member-info">
+                            <div class="member-name">及其他15个签署方</div>
+                            <div class="member-desc">包括鹿学院、地平线倡议、普罗米修斯实验室公司等。</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 职员档案（折叠） -->
+        <div class="collapsible close" id="staffCollapse">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                职员档案（已折叠120W条信息） <span class="toggle-icon">−</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="staff-list">
+                    <!-- DPT小队 -->
+                    <div class="staff-card">
+                        <div class="staff-name">MTF-Epsilon-11-DPT</div>
+                        <div class="staff-desc">
+                            隶属于基金会奇术部的混合攻击小组，故事最重要的主角。
+                            <ul>
+                                <li><strong>「雪狐」Yukifox Ninetails</strong>：YukifoxNinetails NINETAILS是MTF-Epsilon11-Department of Practical Thaumaturgy Group的指挥官。Ninetails的主要特点是冷静。在需要的环境下，Ninetails保持着与环境相称的冷静与理智，保证队伍的行动不偏离正轨，一名完美的MTF特工。在非任务的环境下，Ninetails则会开一些不那么离谱的玩笑，维护轻松氛围。除此之外，Ninetails还非常喜欢一个东西——地狱笑话。（虽然没怎么写到）也因此，有时她会有些黑色幽默的元素在。Ninetails表现出对队员的情感依赖，Ninetails早期担任基金会部门ETRRA的特别行动第五组特工一职，在事故■■-■■-■■■后离开该职位并在1999年参与了DPT小队的组建。Ninetails的理智可能是上述事故的影响。这个角色的名字由雪狐和九尾狐两个元素修改后组合而成。Ninetails是一个有现实原型的角色。</li>
+                                <li><strong>「参旗六」Tabitto</strong>：TABITTO是MTF-Epsilon11-Department of Practical Thaumaturgy Group的工程员。Tabitto的主要特点是乐观。Tabitto是一个乐观，开朗的形象，也因此开了大部分剧情中的玩笑。你很少能看到他认真，除非在任务中。但这份乐观不会过度，他拥有许多正面品质，但大多数都藏匿在生活的点点滴滴中。Tabitto很少有负面的情感经历，也对此没有什么理解。Tabitto的童年平淡而普通，但就是这份平淡带给了他乐天派的性格，也塑造了一个现在的Tabitto。他在儿时进入了帷幕内。他首先结识了HoshiNoAme和Mirufaku再结识了Ninetails，最后一同进入基金会任职，在Ninetails参与DPT小队组建时加入了小队。这个角色的名字由Tabit（即参旗六）这个元素修改而来。Tabitto是一个有现实原型的角色。</li>
+                                <li><strong>「天船三」Mirufaku</strong>：HIGASHINOMIRUFAKU是MTF-Epsilon11-Department of Practical Thaumaturgy Group的现实稳定专员。Mirufaku的主要特点是       。Mirufaku是一个很普通但足够优秀的角色。他总是保持着礼貌，而且很负责任，拥有着纯净的善良和正直。他有正常人该有的各种情感，也有正常人该有的各种技能，因此他是队内最“正常”的成员。但这份正常也使他会深陷现实当中，保持着不浓不淡的悲伤。Mirufaku表现出对队员的情感依赖，但其一直比较收敛。除此之外，Mirufaku梦想成为一个阳光开朗，可以让大家快乐的人。Mirufaku在儿时进入了帷幕之内，随后表现出对现实扭曲的天赋，但因为不想把其当做灾难的工具，转而学习了可控现实稳定。后来其一路保持着平稳且优秀的成绩，结识了HoshiNoAme和Tabitto，再结识了Ninetails，最后一同进入基金会任职，在Ninetails参与DPT小队组建时加入了小队。这个角色的名字由东和天船三两个元素修改后组合而来。Mirufaku是一个有现实原型的角色。</li>
+                                <li><strong>「守夜」Dr. Aris</strong>：DOCTOR.ARIS是MTF-Epsilon11-Department of Practical Thaumaturgy Group的概念性威胁应对专员。Aris的主要特点是      。Dr.Aris是一个较为中性的角色，无论是哪个方面，你可以注意到Aris没有明显的性别特征，亦没有在剧情中表现出性格倾向。在任务中的Aris是一个简洁的角色，没有过多的对话，这似乎是其在角色塑造中需要的，以突现其的力量。严格而言，Aris在SCP-3125部分力量，长剑[永夜]的加持下是全队伍最强大的战力，其的战斗定位类似于狂战士。Aris经历了一个较为普通的童年，其自出生其就处于帷幕之内，在异常学院圣克里斯汀娜书院取得了优异的成绩，获得博士学位后前往基金会模因部就职，后来的工作促进了SCP-3125的收容。值得一提的是，该书院同样是队内除079-P外所有队员的母校。Aris在SCP-8526的初次探索中与小队队员相识并加入小队，在此之前与小队队员们没有任何交集。这个角色的名字由AI创建。Dr.Aris是一个没有现实原型的角色。</li>
+                                <li><strong>「悖论」SCP-079-Paradox</strong>：SCP-079-Paradox-Σ SCP079PARADOXΣ是MTF-Epsilon11-Department of Practical Thaumaturgy Group的副指挥兼电子员。079-P的主要特点是人机（？）。在任务中，079-P保持绝对理性。在任务外，079-P大多数时候带有呆板，智能的传统AI感，并总是努力学习人类的情感。在部分情况下，079-P的情感是极度复杂的。表现出对成员的情感依赖。079-P对推理类游戏，类RPG带有好感。079-P在2005年被创造。079-P源于SCP-079的复制份，创造者，即队员对其进行了优化。079-P对世界和情感抱有学习，不完全理解的心态。这个角色的名字由SCP-079和悖论两个元素组合而成。附:目前在一条IF线中另存在SCP-079-Paradox-Θ，但与这里没有关系。079-P是一个没有现实原型的角色。</li>
+                                <li><strong>「雨渍」HoshiNoAme</strong>：YUMEHOSHINOAME是MTF-Epsilon11-Department of Practical Thaumaturgy Group的突破手。HoshiNoAme的主要特点是反差萌。常态下的HoshiNoAme保持着死感，但在部分情况下可以发现可爱的一面。无论哪个形态，HoshiNoAme都是一个悲观的形象，对队员有强烈的情感依赖。HoshiNoAme的童年并没有什么重大的事故，但部分特殊情况的长期堆积导致了她的性格如此。HoshiNoAme在儿时进入了帷幕内，首先结识了Tabitto和Mirufaku再结识了Ninetails，最后一同进入基金会任职，在Ninetails参与DPT小队组建时加入了小队。这个角色的名字由忧梦和星雨两个元素修改后组合而成。这个角色的现实原型是「我」。</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- C4特别行动组 -->
+                    <div class="staff-card">
+                        <div class="staff-name">混沌分裂者 C4特别行动组</div>
+                        <div class="staff-desc">混沌分裂者一支现已消失的队伍，由一批最初的分裂者成员组成，由分裂者领导人工程师■■■■■直接领导，现仅剩下了SCP-181，即Karl。Karl是主角之一，与工程师■■■■■一同离开基金会并在分裂者内战中存活。年少时工程师■■■■■发现他的异常属性并对其进行修改，因此如今的Karl使用能力不存在副作用。工程师■■■■■即原O5-7，混沌分裂者创始人，Karl的老友，其手下对其有高度评价，在演化阶段5的一次雨幕意志袭击下牺牲。</div>
+                    </div>
+                    <!-- Dc. Alfine -->
+                    <div class="staff-card">
+                        <div class="staff-name">Dc. Alfine</div>
+                        <div class="staff-desc">全球超自然联盟秘书长，其信息如今仍高度保密。</div>
+                    </div>
+                    <!-- 攻击小组1121 -->
+                    <div class="staff-card">
+                        <div class="staff-name">全球超自然联盟 攻击小组1121 “高贵幻影”</div>
+                        <div class="staff-desc">贵族气质的精锐部队，成员包括Prof.■■■■■、守夜人、奇术师等，是全球超自然联盟在故事中的武装势力代表。</div>
+                    </div>
+                    <!-- 剥离小组 -->
+                    <div class="staff-card">
+                        <div class="staff-name">蛇之手 剥离小组</div>
+                        <div class="staff-desc">以在“暴雨”下拯救人类为目的成立的战斗小组，通过空间折跃技术将基准现实中的人员，技术，结构等传送至SCP-3001以实现躲避暴雨的目的。</div>
+                    </div>
+                    <!-- O5-13 & Lilith -->
+                    <div class="staff-card">
+                        <div class="staff-name">O5-13 与 O5-13-A</div>
+                        <div class="staff-desc"><strong>Vestige_HoshiNoAme</strong>：当前时间线的创造者，并非至高神性，拥有类似人类的情感。<strong>Lilith/莉莉丝</strong>：Vestige_HoshiNoAme 的衍生个体，描述为“纯粹的爱”，似乎是SCP-9999的真正掌控者。</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 站点列表（折叠）- 新增 -->
+        <div class="collapsible close" id="sitesCollapse">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                站点列表（已折叠8条信息） <span class="toggle-icon">+</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="site-list">
+                    <div class="site-card">
+                        <div class="site-name">Site-754</div>
+                        <div class="site-desc"><span class="placeholder">Site-754，原属SCP基金会与罗德岛制药公司。Site-754是一艘舰船，为暴雨而生，集成了大量尖端技术，位置不定，现位于[点击查看:SITE7548月1-10日记录]，是最后被攻破的一座站点。</span></div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-name">Site-413</div>
+                        <div class="site-desc"><span class="placeholder">Site-413原属SCP基金会。Site-413为SCP基金会实用奇术部的基地，有研究，收容等功能，位于高加索地区。</span></div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-name">Site-413-C</div>
+                        <div class="site-desc"><span class="placeholder">Site-413-C是Site-413名义上的特外站点，位于SCP-8526一空岛群，作为SCP-8526的前哨站使用，由于SCP-8526的性质，该站点也被用作某些特殊异常项目的收容所。有一支MTF驻扎在此处：MTF-Epsilon11-D.P.T.。</span></div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-name">Site-19</div>
+                        <div class="site-desc"><span class="placeholder">Site-19 是最大且最重要的服役中基金会设施之一，居有上百个 Safe 及 Euclid 级异常，其中某些异常位于分离于主站点之外的额外设施之内。Site-19是一次重要事件的发生场所，即CHAPTER.Final中的Site-19攻坚战。</span></div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-name">Site-13</div>
+                        <div class="site-desc"><span class="placeholder">Site-13是较新的基金会设施，拥有大型的结构与高新的技术，是CHAPTER.V 的场景。</span></div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-name">混沌分裂者BASE01</div>
+                        <div class="site-desc"><span class="placeholder">混沌分裂者最初的基地，也是最大的基地，混沌分裂者内战的重要战场。</span></div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-name">联盟西西伯利亚基地</div>
+                        <div class="site-desc"><span class="placeholder">协奏曲联盟亚洲最大的站点，承载有收容平民，研究“暴雨”等重要责任。</span></div>
+                    </div>
+                    <div class="site-card">
+                        <div class="site-name">SCP-2000基地</div>
+                        <div class="site-desc"><span class="placeholder">协奏曲联盟美洲最大的站点，承载有收容平民，保护SCP-2000"机械降神“等重要责任。</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 页脚 -->
+        <div class="footer">
+            <div>协奏曲联盟 · 暴雨纪元</div>
+            <div>遵循 <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA 3.0</a></div>
+        </div>
+    </div>
+    <script>
+        function toggleCollapse(header) {
+            let parent = header.parentElement;
+            parent.classList.toggle('open');
+            let icon = header.querySelector('.toggle-icon');
+            icon.innerText = parent.classList.contains('open') ? '−' : '+';
+        }
+    </script>
+</body>
+</html>

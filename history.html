@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>世界观 · 协奏曲联盟</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0a0c10;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-bottom: 2px solid #e06b6b;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo {
+            width: 64px;
+            height: 64px;
+            background-color: #1e2228;
+            border: 1px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img { width: 100%; height: 100%; object-fit: contain; }
+        .org-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        .org-name span {
+            color: #e06b6b;
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+        .nav {
+            margin-left: auto;
+            display: flex;
+            gap: 2rem;
+            font-size: 1.2rem;
+            align-items: center;
+        }
+        .nav a {
+            color: #b0b8c5;
+            text-decoration: none;
+            padding: 0.25rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        .nav a:hover, .nav a.active {
+            color: #ffffff;
+            border-bottom-color: #e06b6b;
+        }
+        /* 登录信息样式 */
+        .user-info {
+            color: #ffb8b8;
+            font-size: 0.9rem;
+            background-color: #1a1f27;
+            padding: 0.3rem 1rem;
+            border: 1px solid #e06b6b;
+            border-radius: 20px;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        .user-info .icon {
+            color: #e06b6b;
+            margin-right: 0.3rem;
+        }
+        .section {
+            margin-bottom: 2.5rem;
+        }
+        .section h2 {
+            color: #e06b6b;
+            font-size: 2rem;
+            font-weight: 400;
+            border-left: 6px solid #e06b6b;
+            padding-left: 1rem;
+            margin-bottom: 1.5rem;
+        }
+        .worldview {
+            background-color: #0f1217;
+            border: 1px solid #2a2e35;
+            padding: 1.5rem;
+            color: #c0c8d5;
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 2rem;
+        }
+        .timeline {
+            list-style: none;
+            border-left: 4px solid #e06b6b;
+            padding-left: 2rem;
+        }
+        .timeline li {
+            margin-bottom: 1.8rem;
+            position: relative;
+        }
+        .timeline li::before {
+            content: "●";
+            color: #e06b6b;
+            font-size: 1.5rem;
+            position: absolute;
+            left: -2.4rem;
+            top: -0.2rem;
+        }
+        .timeline-year {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: #ffffff;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+        .timeline-desc {
+            color: #9aa8b9;
+            font-size: 1rem;
+        }
+        /* 术语列表样式 */
+        .term-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+        }
+        .term-item {
+            background-color: #1c2129;
+            border: 1px solid #333b48;
+            padding: 1rem 1.5rem;
+            display: flex;
+            align-items: baseline;
+            gap: 1rem;
+        }
+        .term-name {
+            color: #e06b6b;
+            font-size: 1.2rem;
+            font-weight: 500;
+            min-width: 150px;
+            flex-shrink: 0;
+        }
+        .term-def {
+            color: #9aa8b9;
+            font-size: 0.95rem;
+            line-height: 1.5;
+        }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2e35;
+            font-size: 0.85rem;
+            color: #7a808b;
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer a { color: #e06b6b; text-decoration: none; }
+        @media (max-width: 700px) {
+            .header { flex-direction: column; align-items: start; }
+            .nav { margin-left: 0; flex-wrap: wrap; }
+            .user-info { margin-left: 0; margin-top: 0.5rem; }
+            .term-item { flex-direction: column; gap: 0.3rem; }
+            .term-name { min-width: auto; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="concerto-alliance.html" class="logo-area">
+                <div class="logo"><img src="ca.jpg" alt="CA" onerror="this.style.display='none';this.parentElement.innerText='CA'"></div>
+                <div class="org-name">协奏曲联盟<span>CONCERTO ALLIANCE</span></div>
+            </a>
+            <div class="nav">
+                <a href="about.html">关于</a>
+                <a href="project.html">独有项目</a>
+                <a href="history.html" style="color:#ffffff; border-bottom-color:#e06b6b;">世界观</a>
+                <!-- 登录信息 -->
+                <div class="user-info">
+                    <span class="icon">;-)</span> 外勤特工Alex
+                </div>
+            </div>
+        </div>
+
+        <!-- 世界观介绍 -->
+        <div class="section">
+            <h2>世界观介绍</h2>
+            <div class="worldview">
+                <p style="margin-bottom:1rem;"><strong>时间线8526 </strong></p>
+                <p>底层框架为“噎鸣计划”--SCP-CN-1000：在无尽的时间线循环中，人类文明总在2100年遭遇未知的终极毁灭。某条时间线的十二位幸存者组成了最初的O5议会，启动“噎鸣计划”——主动向过去的时间线投送异常原型与技术，催生GOC、基金会等组织，以期武装人类，打破毁灭循环。</p>
+                <p style="margin-top:1rem;">核心灾难为SCP-10000-8526“暴雨”，一种针对叙事层的存在主义格式化程序。</p>
+                <p style="margin-top:1rem;">世界之外：见SCP-9999。</p>
+            </div>
+        </div>
+
+        <!-- 剧情时间轴 -->
+        <div class="section">
+            <h2>剧情时间轴</h2>
+            <ul class="timeline">
+                <li><span class="timeline-year">1939-1945 · 超常雏形纪元 · CHAPTER.ZERO:0/CHAPTER.I:书院与基金会</span><span class="timeline-desc">“噎鸣计划”引导下，超自然组织于二战期间系统化成立。第七次超自然大战结束，GOC成立。混沌分裂者因理念分歧脱离基金会。DPT小队进入圣克里斯汀娜书院学习，后来进入SCP基金会。</span></li>
+                <li><span class="timeline-year">1945-2010 · 余波纪元 · 混沌分裂者支线:易融解前路</span><span class="timeline-desc">冷战背景下超自然界的内部分化与发展。DPT小队于1999/2006/2009年间被提出，成立并逐渐成型，079-P被创造。</span></li>
+                <li><span class="timeline-year">2010-2015 · 技术爆炸纪元 · CHAPTER.II:手提箱</span><span class="timeline-desc">GOC的R.W.P.S.体系技术泄露，引发全球超自然科技革命。DPT小队行动，夺取RWPS原文件但技术已被公开。</span></li>
+                <li><span class="timeline-year">2015-2019 · 逆模因纪元 · CHAPTER.III:ANTIMEMETIC</span><span class="timeline-desc">DPT小队在O5-8引导下，于逆模因部总部成功无效化概念实体SCP-3125，引发超自然界逆模因无效化浪潮，Dr.Aris获得SCP-3125部分力量。</span></li>
+                <li><span class="timeline-year">2019-2100 · 乌托邦纪元 · CHAPTER.IV:乌托邦/CHAPTER.V:收容失效：恐怖狩猎</span><span class="timeline-desc">SCP-8526被发现。DPT小队探索此地，Dr.Aris加入小队，最终以篡改时间线的代价阻止IT拯救世界，并建立Site-413-C。Site13爆发收容失效，小队前往镇压，最终得知“暴雨”存在。</span></li>
+                <li><span class="timeline-year">2100-2173 · 暴雨纪元 · CHAPTER.Final:THE STORM</span><span class="timeline-desc">“暴雨”爆发，世界进入存在主义格式化的终末阶段。主角团为了让记述人开启新世界，在暴雨后的世界里寻找残存的情感、思绪和记忆。</span></li>
+ <li><span class="timeline-year">2173-永恒 · 新世界 · CHAPTER.X:永不结束的故事</span><span class="timeline-desc">Vestige_HoshiNoAme以SCP-8526为基础开启新世界，部分人员保留记忆。</span></li>
+            </ul>
+        </div>
+
+        <!-- 新增：术语解析 -->
+        <div class="section">
+            <h2>术语解析</h2>
+            <div class="term-list">
+                <div class="term-item"><span class="term-name">R.W.P.S.</span><span class="term-def">技术爆炸纪元的基石技术。基础是源石（来自《明日方舟》设定）。源石特性：秩序、存续、同化周围物质。起源：白垩纪晚期，一艘来自“塔罗斯”卫星的储藏舰坠落地表，在地下深处种下源石种子，导致生物大灭绝。新世界同样有源石矿脉和R.W.P.S.体系。</span></div>
+                <div class="term-item"><span class="term-name">世界之外</span><span class="term-def">见SCP-9999。</span></div>
+                <div class="term-item"><span class="term-name">暴雨</span><span class="term-def">见SCP-10000-8526。</span></div>
+                <div class="term-item"><span class="term-name">噎鸣计划</span><span class="term-def">十二位幸存者（初代O5）向过去的时间线投送异常原型与技术，催生GOC、基金会等组织，试图打破2100年的毁灭循环。（原文：SCP-CN-1000）</span></div>
+                <div class="term-item"><span class="term-name">光蚀</span><span class="term-def">“破晓之时”被阻止后的太阳异常现象，表现为将阳光下的生物同化为凝胶，与残骸类似且极具攻击性，在其影响时段外出相当于加入残骸。</span></div>
+                <div class="term-item"><span class="term-name">xx种</span><span class="term-def">“残骸”的类群，见SCP-10000-8526，设定来自SRP-逃逸：寄生体。</span></div>
+                <div class="term-item"><span class="term-name">EVE能量</span><span class="term-def">使用奇术的基础，也被称为“生命力”“法力值”“蓝条”，可以通过使用血液，牛奶等补充。</span></div>
+                <div class="term-item"><span class="term-name">媒介</span><span class="term-def">增强奇术效果的物品。载有强烈情感的物品都可以是媒介——RWPS施术单元、复古魔杖、笔，甚至空气。
+</span></div>
+                <div class="term-item"><span class="term-name">奇术vs魔法</span><span class="term-def">奇术：基于科学理论的EVE操控。魔法：基于个人想象的EVE操控。</span></div>
+                <div class="term-item"><span class="term-name">源石</span><span class="term-def">明日方舟。——O5-13</span></div>
+                <div class="term-item"><span class="term-name">SCP-912</span><span class="term-def">“小”改了一下形象，大体按照原文设定。——O5-13</span></div>
+                <div class="term-item"><span class="term-name">Site-1064</span><span class="term-def">“破晓之时”事件的终结者。全员驾驶载有奇术核弹的飞行器至太阳旁引爆，重塑现实，全员牺牲。</span></div>
+                <div class="term-item"><span class="term-name">新世界</span><span class="term-def">基于SCP-8526的，在2173年世界毁灭后由记述人创造的新世界，部分人员来到新世界时保留了记忆，出现过的角色均已确认各得其所。</span></div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>协奏曲联盟 · 暴雨纪元</div>
+            <div>遵循 <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA 3.0</a></div>
+        </div>
+    </div>
+</body>
+</html>

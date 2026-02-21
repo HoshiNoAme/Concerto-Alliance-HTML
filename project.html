@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>独有项目 · 协奏曲联盟</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background-color: #0a0c10;
+            font-family: 'Segoe UI', 'Roboto', sans-serif;
+            color: #e0e0e0;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background-color: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+            padding: 2rem;
+        }
+        .header {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            border-bottom: 2px solid #e06b6b;
+            padding-bottom: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            text-decoration: none;
+            color: inherit;
+        }
+        .logo {
+            width: 64px;
+            height: 64px;
+            background-color: #1e2228;
+            border: 1px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .logo img { width: 100%; height: 100%; object-fit: contain; }
+        .org-name {
+            font-size: 2.2rem;
+            font-weight: 600;
+            color: #ffffff;
+            text-transform: uppercase;
+        }
+        .org-name span {
+            color: #e06b6b;
+            font-weight: 300;
+            font-size: 1.2rem;
+            margin-left: 0.5rem;
+        }
+        .nav {
+            margin-left: auto;
+            display: flex;
+            gap: 2rem;
+            font-size: 1.2rem;
+            align-items: center;
+        }
+        .nav a {
+            color: #b0b8c5;
+            text-decoration: none;
+            padding: 0.25rem 0;
+            border-bottom: 2px solid transparent;
+        }
+        .nav a:hover, .nav a.active {
+            color: #ffffff;
+            border-bottom-color: #e06b6b;
+        }
+        /* 登录信息 */
+        .user-info {
+            color: #ffb8b8;
+            font-size: 0.9rem;
+            background-color: #1a1f27;
+            padding: 0.3rem 1rem;
+            border: 1px solid #e06b6b;
+            border-radius: 20px;
+            white-space: nowrap;
+            margin-left: 1rem;
+        }
+        .user-info .icon {
+            color: #e06b6b;
+            margin-right: 0.3rem;
+        }
+        /* 折叠区块 */
+        .collapsible {
+            margin-bottom: 1.5rem;
+            border: 1px solid #2a2e35;
+            background-color: #0f1217;
+        }
+        .collapsible-header {
+            background-color: #1a1f27;
+            padding: 1rem 1.5rem;
+            color: #e06b6b;
+            font-size: 1.3rem;
+            font-weight: 500;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .collapsible-content {
+            padding: 1.5rem;
+            display: none;
+            border-top: 1px solid #2a2e35;
+        }
+        .collapsible.open .collapsible-content {
+            display: block;
+        }
+        .toggle-icon {
+            font-size: 1.5rem;
+            color: #e06b6b;
+        }
+        /* 结构化小标题 */
+        .doc-section {
+            margin-top: 1.2rem;
+        }
+        .doc-section:first-child {
+            margin-top: 0;
+        }
+        .doc-section h4 {
+            color: #e06b6b;
+            font-size: 1.1rem;
+            font-weight: 500;
+            border-left: 3px solid #e06b6b;
+            padding-left: 0.8rem;
+            margin-bottom: 0.5rem;
+        }
+        .doc-section p {
+            color: #c0c8d5;
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 0.5rem;
+        }
+        .doc-placeholder {
+            color: #6d7a8c;
+            font-style: italic;
+            background-color: #0b0d10;
+            padding: 0.5rem 1rem;
+            border: 1px dashed #2a2e35;
+            margin-top: 0.3rem;
+        }
+        .intro-text {
+            color: #d0d8e5;
+            font-size: 1.1rem;
+            margin-bottom: 2rem;
+            border-left: 4px solid #e06b6b;
+            padding-left: 1.5rem;
+        }
+        .footer {
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid #2a2e35;
+            font-size: 0.85rem;
+            color: #7a808b;
+            display: flex;
+            justify-content: space-between;
+        }
+        .footer a { color: #e06b6b; text-decoration: none; }
+        @media (max-width: 700px) {
+            .header { flex-direction: column; align-items: start; }
+            .nav { margin-left: 0; flex-wrap: wrap; }
+            .user-info { margin-left: 0; margin-top: 0.5rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="concerto-alliance.html" class="logo-area">
+                <div class="logo"><img src="ca.jpg" alt="CA" onerror="this.style.display='none';this.parentElement.innerText='CA'"></div>
+                <div class="org-name">协奏曲联盟<span>CONCERTO ALLIANCE</span></div>
+            </a>
+            <div class="nav">
+                <a href="about.html">关于</a>
+                <a href="project.html" style="color:#ffffff; border-bottom-color:#e06b6b;">独有项目</a>
+                <a href="history.html">世界观</a>
+                <!-- 登录信息 -->
+                <div class="user-info">
+                    <span class="icon">;-)</span> 外勤特工Alex
+                </div>
+            </div>
+        </div>
+
+        <div class="intro-text">
+            独有项目是指本时间线特有的异常项目。在暴雨之下，联盟倡导在安全可行的前提下与SCP项目建立合作。
+        </div>
+
+        <!-- SCP-10000-8526 折叠区块（默认折叠） -->
+        <div class="collapsible close" id="scp10000">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                SCP-10000-8526 “THE STORM” <span class="toggle-icon">+</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="doc-section">
+                    <h4>项目等级：</h4>
+                    <p>APOLLYON</p>
+                </div>
+                <div class="doc-section">
+                    <h4>特殊收容措施：</h4>
+                    <div class="doc-placeholder">SCP-10000-8526适用逆向收容协议，当前的收容室为SCP-9999。SCP-9999为已知唯一可避免项目影响的空间，但由于SCP-9999不位于本维度，因此项目的有效收容是不可能的。</div>
+                </div>
+                <div class="doc-section">
+                    <h4>描述：</h4>
+                    <div class="doc-placeholder">SCP-10000-8526为本时间线内发生的SCP-CN-1000，但由于其特殊性，特立本档案。SCP-10000-8526于2100年1月1日起影响本维度的一切空间，物理层面表现于倒飞的雨，露天区域的地面始终保持着2cm厚的积水。项目预计将在73年内彻底抹除本时间线且进程不可逆，在2173年最终抹除前不存在抹除事件。承载足够情感的物体在项目影响范围内将拥有一定异常性质，例如现实扭曲，空间移动等。项目将通过未知手段将生物转化为”残骸“，不同类群残骸的身体结构大相径庭，但都拥有共同特征。残骸由无机物和化合物■-■■■构成，因此一切生物武器对其没有任何效果，残骸不是生物，不是有机物，仅剩的意识由化合物■-■■■承载。残骸通常会模仿其前身的形态特征并继承其行动模式，但皆具有强烈的攻击性。残骸是暴雨助力清理的工具，拥有对常态武装的抗性，因此不建议无异常科技的人员与残骸发生冲突。</div>
+                </div>
+                <div class="doc-section">
+                    <h4>关于残骸的类群：</h4>
+                    <div class="doc-placeholder">
+                        根据残骸的进化程度，分为以下几类。<br>
+                        1，先天种<br>
+                        先天种并非由生物转化而来，而是暴雨的先头部队，通常较为弱小。代表物种为虫灵与刚角天使。<br>
+                        2.粗制种<br>
+                        粗制种极为少见，通常由本身就极度稀缺感情的生物构成。人类难以触及其标准，因此此类残骸多为异常项目。代表物种为警戒兽。<br>
+                        3.连结种<br>
+                        连结种通常由高大的木本植物改造而成，其可以操控周围可操控的残骸并以更智慧的方式战斗。代表物种为召唤柱，调度柱和雏形心智。<br>
+                        4.威慑种<br>
+                        威慑种指代特殊任务的残骸，通常负责守护调度柱，游击和埋伏。原型不定。代表物种为曲击柱和棱镜天使。<br>
+                        5.同化种<br>
+                        同化种为进行常规残骸化的生物，也是最常见的，残骸中的填线部队，根据其原型有不同行动方式，但总是听从连结种。代表物种有各种同化生物，重刺天使，仿生翅天使。<br>
+                        6.劫持种<br>
+                        劫持种是被同化的任何非生物，包括人工智能，机械设备等，根据其被劫持前的特性，在连结种命令下进行多种行动。<br>
+                        7.狂化种<br>
+                        狂化种是被异常力量影响的同化种，通常拥有更强的攻击性，行动激进且癫狂，但其身体素质并无实际改变，在近距离或异常环境下为极度危险对象。代表物种为各种狂化生物与各种天使-α。<br>
+                        8.原始种<br>
+                        原始种残骸通常未完全适应环境的强化同化种，仍拥有高于同化种的战斗力，同时是所有特化类群的蓝本。代表物种为原始黄眸兽，原始协增兽与浊流天使。<br>
+                        9.适应种<br>
+                        适应种为进一步进化的原始种，已完全适应了环境，分化出的功能被进一步特化，拥有初步自愈能力。代表物种为适应黄眸兽，原始协增兽与晶锥天使。<br>
+                        10.卓越种/纯粹种<br>
+                        纯粹种，又称卓越种，是残骸完全分化完成的表现，是残骸中的精英部队，通常拥有特殊的能力，需要特别应对。代表物种为掠夺兽，重型轰炸兽，幽鬼体，监察兽与统御兽，各种终结者。<br>
+                        11.灾厄聚合体<br>
+                        灾厄聚■体指残骸中最危■，最稀少的单位，通常■■■■■■■■■。灾厄聚合体需要时间■化，这给了我们在摇篮中扼杀其的机会，然而，灾厄聚合体的摇篮通常有严密的守卫。灾厄聚合体对我们拥有压倒性的力量，仅靠人类几乎不可能击败两个及两个以上的灾厄聚合体，为此，每个基地都应至少有两个能够应对灾厄聚合体的SCP。已知现存物种有:三位一体，追猎魔，陆行魔，黯瞳魔，潜渊魔。<br>
+                        终结者:卓越种中进化过程遭到修改的部分，在狂化种还未出现时就已出现，与当时的残骸进化程度相比，有断崖式的领先，由此得名终结者。终结者一般为人形，拥有包括现实扭曲在内的特殊能力。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCP-9999 折叠区块（新增，默认折叠） -->
+        <div class="collapsible close" id="scp9999">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                SCP-9999 “世界之外” <span class="toggle-icon">+</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="doc-section">
+                    <h4>项目等级：</h4>
+                    <p>Thaumiel</p>
+                </div>
+                <div class="doc-section">
+                    <h4>特殊收容措施：</h4>
+                    <div class="doc-placeholder">
+                        SCP-9999无法被收容。任何尝试将SCP-9999纳入标准收容框架的行为均已失败，且被记录为“逻辑悖论”。<br>
+                        SCP-9999的“存在”本身即是对收容这一概念的超越。当前协议仅要求：观察、记录、不打扰。<br>
+                        MTF-Epsilon-11-DPT被授权作为SCP-9999的主要观察与联络单位。其他任何组织或个人若感知到SCP-9999的存在，应立即向DPT小队报告，并接受记忆删除（如主动申请）。
+                    </div>
+                </div>
+                <div class="doc-section">
+                    <h4>描述：</h4>
+                    <div class="doc-placeholder">
+                        SCP-9999是位于所有已知叙事层之上的一个“后台空间”，可通俗理解为“世界之外”。其物理表现为一间布局舒适、采光奇妙的普通屋子，但这一表象仅为适应来访者认知的“界面”，SCP-9999的真实形态无法被人类感官或现有仪器解析。<br>
+                        SCP-9999的核心特征如下：<br>
+                        1. 时间与空间的失效<br>
+                        在SCP-9999内部，时间流动不具有强制性。居住者可选择经历时间，亦可选择悬浮于时间之外。空间同样如此——屋子的内部尺寸可在“普通小屋”与“无限延伸”之间自由切换，取决于居住者的意志或潜意识需求。<br>
+                        2. 存在由“记述人”定义<br>
+                        SCP-9999内的物理法则、物品存在与否、甚至“门后通向何处”，均由居住者的意志决定。目前确认的常驻意志主体为两名：<br>
+                        Vestige_HoshiNoAme：SCP-9999的次要意识锚点，原时间线8526的创世主体。<br>
+                        Lilith：主要意识锚点，由记述者的记忆与渴望所“编写”出的存在，在SCP-9999内拥有与记述者等同的权限。<br>
+                        3. 与“再8526”的访问协议<br>
+                        SCP-9999内存在一扇“门”，可通过此门直接进入新世界“再8526”的任意地点。该访问权限目前仅授予DPT小队及经记述者明确许可的个体。门的形态不固定，曾记录为老旧的木质门扉、流动的光幕等。<br>
+                        4. 情感显影效应<br>
+                        SCP-9999会将其内部居住者的情感状态投射为可感知的环境变化。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SCP-8526 折叠区块（默认折叠） -->
+        <div class="collapsible close" id="scp8526">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                SCP-8526 “乌托邦” <span class="toggle-icon">+</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="doc-section">
+                    <h4>项目等级：</h4>
+                    <p>Safe</p>
+                </div>
+                <div class="doc-section">
+                    <h4>特殊收容措施：</h4>
+                    <div class="doc-placeholder">
+                        在SCP-8526的通道周围5千米处应被布置为逆模因帷幕，并始终有不小于5名安保进行巡逻和驻守。SCP-8526的裂隙现实端已被划分为Area-8526，SCP-8526研究组驻守于此。<br>
+                        在SCP-8526的异端为Site-413-C，应始终有MTF-E11-DPT或不少于5名安保驻守。
+                    </div>
+                </div>
+                <div class="doc-section">
+                    <h4>描述：</h4>
+                    <div class="doc-placeholder">
+                        *关于现实<br>
+                        SCP-8526是一处超自然空间，据估算，空间大小类似于地球，拥有和基准现实相似的物理法则，现实法则和因果律。在SCP-8526的空间被恶意现实扭曲时，会完全抑制该能力并迅速修复现实。因此，SCP-1440被收容于此。<br>
+                        *关于自然地理<br>
+                        SCP-8526疑似为一类地行星。<br>
+                        SCP-8526的自然地理和基准现实相似，由MTF-E11-DPT执行的探索地图见附录8526-2-1。SCP-8526出现了明显比基准现实比例更加夸张的地貌，例如多座高于喜马拉雅山脉最高峰的山脉，大量大江大河，过于平坦，广阔的平原。<br>
+                        SCP-8526可能拥有形态类似基准现实的外太空，存在各种天体，包括SCP-8526所属恒星（下称SCP-8526-2-OA）。观测到SCP-8526-2-OA类似于太阳的活动但似乎拥有无限的能量供燃烧，尚未明确其原理。没有观测到SCP-8526-2-OA星系中的其他行星，观测到SCP-8526的卫星，形态类似于基准现实中的月球。<br>
+                        SCP-8526拥有和基准现实类似的昼夜更替和季节变换，时间没有过多差别，季节分为类春，类夏，类秋和类冬，编号为SCP-8526-2-ZA~ZD。<br>
+                        值得注意的是，SCP-8526西部海湾中存在一座岛屿，包含一处异常地形“阿庇斯深渊”，被编号为SCP-8526-2-A。SCP-8526-2-A深度明显深入地下至少15.5千米并可能更深，详见附录SCP-8526-3-1。SCP-8526-2-A存在异于SCP-8526本体的生物，似乎是不同的生态系统。<br>
+                        *关于人文<br>
+                        SCP-8526拥有科技发展程度略微高于基准现实的文明，但有趣的是，科技集中在少量的城市中，而镇，村等次级单位的科技含量则断崖式下降，几乎和中世纪的科技发展程度一致，但次级单位的当地居民似乎了解并没有对城市以及科技显露出明显的兴趣。<br>
+                        在城市单位，SCP-8526的科技发达，已经进入信息时代一段不短的时间，值得注意的是，SCP-8526的城市科技发展明显侧重生活和技术而非重工业和军事。<br>
+                        在次级单位，SCP-8526的科技明显落后，更侧重于“魔法”，类似于基准现实的奇术体系。在SCP-8526的各单位均出现了“魔法协会”“魔法使”等概念，可以推断出SCP-8526处于奇术和科技同时发展的状态。<br>
+                        SCP-8526的原住民似乎保持着与基准现实的人类类似的态度，但更加友善，不同的实例表现出显著的差别。SCP-8526并非没有冲突，但数据表示99%的冲突都由影响积极的结局收场。SCP-8526目前没有战争出现，但遗迹的存在表示曾经有。SCP-8526并非是全自动的军事系统，而是保持着每一实例都可以学习具有攻击性的奇术或使用各种危险的冷或热武器。SCP-8526的原住民似乎对各种物理伤害具有一部分免疫。SCP-8526的治理体系比任何基准现实的国家都要极端，意识形态表现为类民主制度，除“投票管理委员会”外不存在更多的大型行政组织，任何决议都由原住民投票决定。<br>
+                        SCP-8526的语言大多使用类俄语，类英语或类日语。<br>
+                        *关于生物<br>
+                        SCP-8526拥有各种生物，组成完善的生态系统。SCP-8526内的动植物分为两部分：现实翼和异常翼。现实翼的动植物极度类似于基准现实，大部分可供食用。而异常翼的动植物则表现出不同的异常性质，研究价值极高。<br>
+                        *关于气象<br>
+                        SCP-8526拥有类似于基准现实的气象系统，包括但不限于：大气层，各种天气，宜人的因季节而变的温度，相对恒定的湿度和空气质量，风。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div>协奏曲联盟 · 暴雨纪元</div>
+            <div>遵循 <a href="https://creativecommons.org/licenses/by-sa/3.0/" target="_blank">CC-BY-SA 3.0</a></div>
+        </div>
+    </div>
+    <script>
+        function toggleCollapse(header) {
+            let parent = header.parentElement;
+            parent.classList.toggle('open');
+            let icon = header.querySelector('.toggle-icon');
+            icon.innerText = parent.classList.contains('open') ? '−' : '+';
+        }
+    </script>
+</body>
+</html>
