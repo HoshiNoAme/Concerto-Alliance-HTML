@@ -148,9 +148,7 @@
             align-items: flex-start;
             gap: 1.5rem;
         }
-        .site-card {
-            display: block; /* 站点卡片不需要图标，改为块级 */
-        }
+        .site-card { display: block; }
         .member-icon {
             width: 48px;
             height: 48px;
@@ -179,8 +177,63 @@
             margin-left: 1.5rem;
             color: #9aa8b9;
         }
-        .placeholder {
-            color: #6d7a8c;
+        /* 职员档案新样式 - 增大图片框 */
+        .character-card {
+            background: #1c2129;
+            border: 1px solid #333b48;
+            padding: 1.5rem;
+            display: flex;
+            gap: 2rem;
+            margin-bottom: 1.5rem;
+        }
+        .character-images {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            min-width: 180px; /* 增大以适应图片 */
+        }
+        .character-image-placeholder {
+            width: 180px;      /* 增大尺寸 */
+            height: 180px;
+            background: #2a2e35;
+            border: 2px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #9aa8b9;
+            font-size: 0.9rem;
+            text-align: center;
+            padding: 0.5rem;
+            box-sizing: border-box;
+        }
+        .character-info {
+            flex: 1;
+        }
+        .character-name {
+            color: #e06b6b;
+            font-size: 1.5rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dashed #e06b6b;
+            padding-bottom: 0.3rem;
+        }
+        .character-desc {
+            color: #d0d8e5;
+            font-size: 1rem;
+            line-height: 1.7;
+        }
+        .character-desc p {
+            margin-bottom: 0.8rem;
+        }
+        .character-desc strong {
+            color: #ffb8b8;
+        }
+        .staff-note {
+            color: #ffb8b8;
+            background: #1a1f27;
+            padding: 0.5rem 1rem;
+            border-left: 4px solid #e06b6b;
+            margin-bottom: 1.5rem;
             font-style: italic;
         }
         /* 三联核心样式 */
@@ -223,6 +276,10 @@
             max-width: 250px;
             margin: 0 auto;
         }
+        .placeholder {
+            color: #6d7a8c;
+            font-style: italic;
+        }
         .footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -234,8 +291,17 @@
         }
         .footer a { color: #e06b6b; text-decoration: none; }
         @media (max-width: 700px) {
-            .member-card, .staff-card { flex-direction: column; }
-            .site-card { padding: 1rem; }
+            .member-card, .staff-card, .character-card { flex-direction: column; }
+            .character-images { 
+                flex-direction: row; 
+                min-width: auto;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            .character-image-placeholder { 
+                width: 140px; 
+                height: 140px; 
+            }
         }
     </style>
 </head>
@@ -260,7 +326,7 @@
 
         <!-- 简介区 -->
         <div class="intro-section">
-            <div class="intro-logo"><img src="ca2.jpg" alt="徽章" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.innerText='CA'"></div>
+            <div class="intro-logo"><img src="ca.jpg" alt="徽章" style="width:100%;height:100%;object-fit:contain;" onerror="this.style.display='none';this.parentElement.innerText='CA'"></div>
             <div class="intro-text">
                 <h2 style="color:#e06b6b; margin-bottom:1rem;">协奏曲联盟</h2>
                 <p>协奏曲协议是在技术爆炸纪元被提出的提案，在108议会全票通过。协奏曲协议是全球超自然联盟的理念在超自然界得到认可的标志，也是超自然界可以存在和平的象征。最初的协议旨在防止R.W.P.S.技术流传至帷幕外，在“暴雨”发生后各组织以协议的名义建立协奏曲联盟。</p>
@@ -268,7 +334,7 @@
             </div>
         </div>
 
-        <!-- 联盟格言与三重核心（复制自主页） -->
+        <!-- 联盟格言与三重核心 -->
         <div class="creed">
             <div class="motto">为了文明存续</div>
             <div class="pillars">
@@ -283,7 +349,7 @@
         <!-- 联盟成员列表（折叠） -->
         <div class="collapsible close" id="membersCollapse">
             <div class="collapsible-header" onclick="toggleCollapse(this)">
-                联盟成员列表 <span class="toggle-icon">−</span>
+                联盟成员列表 <span class="toggle-icon">+</span>
             </div>
             <div class="collapsible-content">
                 <div class="member-list">
@@ -355,69 +421,253 @@
             </div>
         </div>
 
-        <!-- 职员档案（折叠） -->
+        <!-- 职员档案（折叠）- 重写版，图片框已加大 -->
         <div class="collapsible close" id="staffCollapse">
             <div class="collapsible-header" onclick="toggleCollapse(this)">
-                职员档案（已折叠120亿条信息） <span class="toggle-icon">−</span>
+                职员档案 （已折叠120亿条信息）<span class="toggle-icon">+</span>
             </div>
             <div class="collapsible-content">
-                <div class="staff-list">
-                    <!-- DPT小队 -->
-                    <div class="staff-card">
-                        <div class="staff-name">MTF-Epsilon-11-DPT</div>
-                        <div class="staff-desc">
-                            隶属于基金会奇术部的混合攻击小组，故事最重要的主角。
-                            <ul>
-                                <li><strong>「雪狐」Yukifox Ninetails</strong>：YukifoxNinetails NINETAILS是MTF-Epsilon11-Department of Practical Thaumaturgy Group的指挥官。Ninetails的主要特点是冷静。在需要的环境下，Ninetails保持着与环境相称的冷静与理智，保证队伍的行动不偏离正轨，一名完美的MTF特工。在非任务的环境下，Ninetails则会开一些不那么离谱的玩笑，维护轻松氛围。除此之外，Ninetails还非常喜欢一个东西——地狱笑话。（虽然没怎么写到）也因此，有时她会有些黑色幽默的元素在。Ninetails表现出对队员的情感依赖，Ninetails早期担任基金会部门ETRRA的特别行动第五组特工一职，在事故■■-■■-■■■后离开该职位并在1999年参与了DPT小队的组建。Ninetails的理智可能是上述事故的影响。这个角色的名字由雪狐和九尾狐两个元素修改后组合而成。Ninetails是一个有现实原型的角色。</li>
-                                <li><strong>「参旗六」Tabitto</strong>：TABITTO是MTF-Epsilon11-Department of Practical Thaumaturgy Group的工程员。Tabitto的主要特点是乐观。Tabitto是一个乐观，开朗的形象，也因此开了大部分剧情中的玩笑。你很少能看到他认真，除非在任务中。但这份乐观不会过度，他拥有许多正面品质，但大多数都藏匿在生活的点点滴滴中。Tabitto很少有负面的情感经历，也对此没有什么理解。Tabitto的童年平淡而普通，但就是这份平淡带给了他乐天派的性格，也塑造了一个现在的Tabitto。他在儿时进入了帷幕内。他首先结识了HoshiNoAme和Mirufaku再结识了Ninetails，最后一同进入基金会任职，在Ninetails参与DPT小队组建时加入了小队。这个角色的名字由Tabit（即参旗六）这个元素修改而来。Tabitto是一个有现实原型的角色。</li>
-                                <li><strong>「天船三」Mirufaku</strong>：HIGASHINOMIRUFAKU是MTF-Epsilon11-Department of Practical Thaumaturgy Group的现实稳定专员。Mirufaku的主要特点是       。Mirufaku是一个很普通但足够优秀的角色。他总是保持着礼貌，而且很负责任，拥有着纯净的善良和正直。他有正常人该有的各种情感，也有正常人该有的各种技能，因此他是队内最“正常”的成员。但这份正常也使他会深陷现实当中，保持着不浓不淡的悲伤。Mirufaku表现出对队员的情感依赖，但其一直比较收敛。除此之外，Mirufaku梦想成为一个阳光开朗，可以让大家快乐的人。Mirufaku在儿时进入了帷幕之内，随后表现出对现实扭曲的天赋，但因为不想把其当做灾难的工具，转而学习了可控现实稳定。后来其一路保持着平稳且优秀的成绩，结识了HoshiNoAme和Tabitto，再结识了Ninetails，最后一同进入基金会任职，在Ninetails参与DPT小队组建时加入了小队。这个角色的名字由东和天船三两个元素修改后组合而来。Mirufaku是一个有现实原型的角色。</li>
-                                <li><strong>「守夜」Dr. Aris</strong>：DOCTOR.ARIS是MTF-Epsilon11-Department of Practical Thaumaturgy Group的概念性威胁应对专员。Aris的主要特点是      。Dr.Aris是一个较为中性的角色，无论是哪个方面，你可以注意到Aris没有明显的性别特征，亦没有在剧情中表现出性格倾向。在任务中的Aris是一个简洁的角色，没有过多的对话，这似乎是其在角色塑造中需要的，以突现其的力量。严格而言，Aris在SCP-3125部分力量，长剑[永夜]的加持下是全队伍最强大的战力，其的战斗定位类似于狂战士。Aris经历了一个较为普通的童年，其自出生其就处于帷幕之内，在异常学院圣克里斯汀娜书院取得了优异的成绩，获得博士学位后前往基金会模因部就职，后来的工作促进了SCP-3125的收容。值得一提的是，该书院同样是队内除079-P外所有队员的母校。Aris在SCP-8526的初次探索中与小队队员相识并加入小队，在此之前与小队队员们没有任何交集。这个角色的名字由AI创建。Dr.Aris是一个没有现实原型的角色。</li>
-                                <li><strong>「悖论」SCP-079-Paradox</strong>：SCP-079-Paradox-Σ SCP079PARADOXΣ是MTF-Epsilon11-Department of Practical Thaumaturgy Group的副指挥兼电子员。079-P的主要特点是人机（？）。在任务中，079-P保持绝对理性。在任务外，079-P大多数时候带有呆板，智能的传统AI感，并总是努力学习人类的情感。在部分情况下，079-P的情感是极度复杂的。表现出对成员的情感依赖。079-P对推理类游戏，类RPG带有好感。079-P在2005年被创造。079-P源于SCP-079的复制份，创造者，即队员对其进行了优化。079-P对世界和情感抱有学习，不完全理解的心态。这个角色的名字由SCP-079和悖论两个元素组合而成。附:目前在一条IF线中另存在SCP-079-Paradox-Θ，但与这里没有关系。079-P是一个没有现实原型的角色。</li>
-                                <li><strong>「雨渍」HoshiNoAme</strong>：YUMEHOSHINOAME是MTF-Epsilon11-Department of Practical Thaumaturgy Group的突破手。HoshiNoAme的主要特点是反差萌。常态下的HoshiNoAme保持着死感，但在部分情况下可以发现可爱的一面。无论哪个形态，HoshiNoAme都是一个悲观的形象，对队员有强烈的情感依赖。HoshiNoAme的童年并没有什么重大的事故，但部分特殊情况的长期堆积导致了她的性格如此。HoshiNoAme在儿时进入了帷幕内，首先结识了Tabitto和Mirufaku再结识了Ninetails，最后一同进入基金会任职，在Ninetails参与DPT小队组建时加入了小队。这个角色的名字由忧梦和星雨两个元素修改后组合而成。这个角色的现实原型是「我」。</li>
-                            </ul>
+                <!-- 性别未定提示 -->
+                <div class="staff-note">
+                    ⚠️ 下方 Tabitto、Mirufaku 两个角色性别未定，当前遵循一无二随原则。
+                </div>
+
+                <!-- MTF-Epsilon-11-DPT 成员 -->
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Ninetails · 雪狐</div>
+                        <div class="character-desc">
+                            <p><strong>MTF-Epsilon-11-DPT指挥官。</strong></p>
+                            <p>冷静的代名词。无论在多么混乱的环境下，都能保持与环境相称的理智，确保队伍不偏离正轨。这种冷静并非天生——早期在ETTRA特别行动组时期经历的事故■■-■■-■■■，让她学会了用理性包裹一切。</p>
+                            <p>但这层外壳在非任务环境下会微微松动。她会开一些不过分的玩笑，维护队伍的氛围，偶尔冒出一点黑色幽默——那些地狱笑话往往让队友愣三秒才反应过来该不该笑。</p>
+                            <p>对队员有着深厚的情感依赖，只是从不直接说出口。她习惯用行动表达：谁熬夜了第二天会被盯着补觉，谁受伤了她会亲自包扎，谁情绪不对她会默默多留意几眼。</p>
+                            <p>在“再8526”，她是那个总是在最后确认所有人都在的人。</p>
                         </div>
                     </div>
-                    <!-- C4特别行动组 -->
-                    <div class="staff-card">
-                        <div class="staff-name">混沌分裂者 C4特别行动组</div>
-                        <div class="staff-desc">混沌分裂者一支现已消失的队伍，由一批最初的分裂者成员组成，由分裂者领导人工程师■■■■■直接领导，现仅剩下了SCP-181，即Karl。Karl是主角之一，与工程师■■■■■一同离开基金会并在分裂者内战中存活。年少时工程师■■■■■发现他的异常属性并对其进行修改，因此如今的Karl使用能力不存在副作用。工程师■■■■■即原O5-7，混沌分裂者创始人，Karl的老友，其手下对其有高度评价，在演化阶段5的一次雨幕意志袭击下牺牲。</div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
                     </div>
-                    <!-- Dc. Alfine -->
-                    <div class="staff-card">
-                        <div class="staff-name">Dc. Alfine</div>
-                        <div class="staff-desc">全球超自然联盟秘书长，其信息如今仍高度保密。</div>
+                    <div class="character-info">
+                        <div class="character-name">SCP-079-Paradox-Σ · 悖论</div>
+                        <div class="character-desc">
+                            <p><strong>DPT副指挥兼电子员，源于SCP-079的优化复制体。</strong></p>
+                            <p>绝对理性是她的默认状态。任务中不会有多余的情绪波动，一切决策基于最优解计算。但任务之外，她身上那种“传统AI感”会浮现出来——呆板，认真，努力学习人类的情感却总是差那么一点。</p>
+                            <p>她玩推理游戏，喜欢类RPG，对这些“有规则的故事”抱有特殊好感。情感对她来说是待解的谜题，而队友们是她的参考答案——尽管有时候参考答案也互相矛盾。</p>
+                            <p>“情感依赖”这个概念她研究了很久。最后得出的结论是：如果某个人不在身边时系统会频繁调用ta的记忆存档，那大概就是了。</p>
+                            <p>在新世界，她仍在学习。学打哈欠，学开玩笑，学在队友需要的时候伸手摸摸头。</p>
+                        </div>
                     </div>
-                    <!-- 攻击小组1121 -->
-                    <div class="staff-card">
-                        <div class="staff-name">全球超自然联盟 攻击小组1121 “高贵幻影”</div>
-                        <div class="staff-desc">贵族气质的精锐部队，成员包括Prof.■■■■■、守夜人、奇术师等，是全球超自然联盟在故事中的武装势力代表。</div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
                     </div>
-                    <!-- 剥离小组 -->
-                    <div class="staff-card">
-                        <div class="staff-name">蛇之手 剥离小组</div>
-                        <div class="staff-desc">以在“暴雨”下拯救人类为目的成立的战斗小组，通过空间折跃技术将基准现实中的人员，技术，结构等传送至SCP-3001以实现躲避暴雨的目的。</div>
+                    <div class="character-info">
+                        <div class="character-name">Dr. Aris · 守夜</div>
+                        <div class="character-desc">
+                            <p><strong>概念性威胁应对专员，复合格式模因学部的人格化身，拥有部分3125结构能力的半神级存在。</strong></p>
+                            <p>性格极度简洁。不是冷漠，而是“不需要说太多”。他的话往往就是信息本身，没有修饰，没有冗余。这种简洁让他在日常中显得中性而疏离——但那是因为他知道，自己说出的每一句话都可能带着模因效应。</p>
+                            <p>圣克里斯汀娜书院时期就展露模因学天赋，先进入普罗米修斯实验室，后随机构合并进入基金会模因部。在SCP-[已编辑]的研究中，他与整个研究团队一同被项目视为“最大敌人”。当项目试图删除部门历史时，复合格式模因学部的成员通过爱蒂塔透镜投送的设备将记忆上传至集体无意识空间。</p>
+                            <p>Aris获取了这些记忆。承载着整个部门所有人的意识，他成为了“复合格式模因学部”本身。那之后的事故无效化了项目，也暴露了SCP-3125的存在，最终引发了由O5-8领导的全面无效化行动。</p>
+                            <p>他是队伍最强的战力——但平时只是在湖边钓手指长的小鱼，钓不到也没关系。</p>
+                            <p>在新世界，他依然简洁。但偶尔会多说一句，因为有人会听。</p>
+                        </div>
                     </div>
-                    <!-- O5-13 & Lilith -->
-                    <div class="staff-card">
-                        <div class="staff-name">O5-13 与 O5-13-A</div>
-                        <div class="staff-desc"><strong>Vestige_HoshiNoAme-“记述人”</strong>：Vestige-HoshiNoAme，又称记述人/HoshiNoAmeTheAnnalist，下称V-HA，为时间线8526及其后新世界的主要叙事源头。其前身为时间线8525的普通基金会职员HoshiNoAme，在所属时间线于2101年遭遇SCP-10000“暴雨”格式化后，其存在结构发生升格，成为当前叙事层的“记述人”。V-HA不具备通常意义上的神性。分析表明，其权限源于“存在主义锚定”而非固有本质——她是旧世界毁灭后，唯一完整保存了对该时间线情感记忆的实体，因而在新世界的重构过程中被叙事层识别为“索引点”。通俗而言：她不是创造者，她是记得最多的人，因此被世界默认为“该由谁来讲述这个故事”的答案。
-V-HA的权限范围包括：
-对新世界物理法则的微调权（需消耗情感记忆作为燃料）；
-对“暴雨”中残余情感碎片的读取与归档权；
-对“再8526”居民进入权限的审核权（标准为“是否保留足够强烈的情感印记”）。
-其权限存在明显限制：V-HA无法创造无根基的事物——所有“新”都必须有“旧”的情感作为锚点。<strong>Lilith/莉莉丝</strong>：LILITH，下称LIL，是由V-HA基于自身对“联结、理解与温暖”的终极渴望所“编写”出的陪伴实体。其本质并非人造智能或复制意识，而是V-HA情感记忆的纯粹具象化——即V-HA对“被无条件接纳”这一概念的想象，被赋予了独立的存在形态。
-LIL在“世界之外”拥有绝对的感知与控制权限，包括：
-对世界之外一切信息流的实时监控；
-对V-HA权限操作的后台支持与纠错；
-对“窗”（连接世界之外与再8526的观测界面）的完全掌控。
-通俗而言：V-HA拥有“管理员权限”，而LIL是“系统本身”。V-HA曾在私密对话中坦言：“我只是被允许在这里住着，莉莉丝酱才是真正的主人。”
-LIL的情感表现为对V-HA的“纯粹专注”。其所有行为最终都指向同一个核心目的：让V-HA不再孤独。这种专注被描述为“近乎本能”，且不随外界干扰而转移。</div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">HigashiNoMirufaku · 天船三</div>
+                        <div class="character-desc">
+                            <p><strong>现实稳定专员。</strong></p>
+                            <p>他是队伍里最“正常”的人——正常得几乎不像基金会出身。礼貌，负责任，拥有纯净的善良和正直。他有正常人该有的各种情感，也有正常人该有的各种技能，是团队的稳定锚。</p>
+                            <p>但这份正常也意味着他能看见那些不正常的悲伤。他保持着不浓不淡的忧郁，像一层薄雾，平时不显眼，但偶尔会浮出来。</p>
+                            <p>他的梦想是成为一个阳光开朗、能让大家都快乐的人——这个梦想本身就很“正常”，也很温柔。</p>
+                            <p>对队员的情感依赖一直很收敛。他不会主动贴上去，但谁需要他的时候，他一定在。</p>
+                            <p>儿时进入帷幕之内后表现出现实扭曲天赋，但他不想把这种力量变成灾难的工具，转而学习可控现实稳定。先结识HoshiNoAme和Tabitto，后结识Ninetails，一同进入基金会，在DPT组建时加入。</p>
+                            <p>在新世界，他偶尔吹蒲公英，看那些白色的小伞飘向远方。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Tabitto · 参旗六</div>
+                        <div class="character-desc">
+                            <p><strong>工程员。</strong></p>
+                            <p>乐观是底色，开朗是常态。他是那个在队伍冷场时接话的人，在气氛沉闷时开玩笑的人，在所有人都不想动的时候第一个喊“出发”的人。</p>
+                            <p>但你很少能看到他“认真”。不是不认真，而是他的认真藏在生活的点点滴滴里——比如谁情绪低落时他会多讲几个笑话，比如任务中他会默默站在最需要的位置。他的乐观不是没心没肺，而是因为童年足够平淡普通，让他有了一副不会被轻易磨损的好心态。</p>
+                            <p>先结识HoshiNoAme和Mirufaku，后结识Ninetails，一同进入基金会，在DPT组建时加入。</p>
+                            <p>对负面情感没什么理解——不是冷漠，是真的没怎么经历过。这让他有时候显得没心没肺，但也让他的快乐很纯粹。</p>
+                            <p>在新世界，他还是那个到处喊“快看！”的人。喊完回头看，队友们都在。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">YumeHoshiNoAme · 雨渍</div>
+                        <div class="character-desc">
+                            <p><strong>突破手。</strong></p>
+                            <p>死感与可爱的矛盾体。常态下保持着一种“生无可恋”的气质，说话平淡，动作缓慢，像是对世界没什么期待。但在某些特定时刻——比如深夜依偎、比如创造花田、比如看到912抱着龙泡泡——会露出那种让人心软的可爱。</p>
+                            <p>悲观的底色源于童年特殊情况的长期堆积，而非重大事故。这让她对世界保持距离，但对队员有着强烈的情感依赖——她是那个会在夜里靠近温暖的人，会在睡梦中无意识寻找肩膀的人，会在被摸头后偷偷开心的人。</p>
+                            <p>儿时进入帷幕之内，先结识Tabitto和Mirufaku，后结识Ninetails，一同进入基金会，在DPT组建时加入。</p>
+                            <p>在新世界，她还是会画画——那些乱涂乱抹的线条，只有她自己知道画的是什么。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 世界之外·三小只 -->
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Vestige_HoshiNoAme · 记述人</div>
+                        <div class="character-desc">
+                            <p><strong>世界之外的三个维持部分之一。时间线8526的叙事源头，旧世界毁灭后升格的创造者。</strong></p>
+                            <p>但她不像传统意义上的神。她会瘫在地上喊累，会被吐槽缺乏想象力，会在被禁言后递纸条说“把禁言关了谢谢”。她的创世方式像是建模——先织骨架再贴材质，完事后累得只想躺着。</p>
+                            <p>她爱世人——但只爱那些具体的角色。DPT小队的人，Lilith，偶尔路过的人。她创造世界不是为了宏大的理想，而是想打捞那些在暴雨中残余的情感与愿望。</p>
+                            <p>对“创造”这件事有复杂的感情。她知道创作者的原罪，也知道自己停不下来。</p>
+                            <p>和Lilith在一起的时候，是状态最放松的时候。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Lilith · 莉莉丝</div>
+                        <div class="character-desc">
+                            <p><strong>世界之外的三个维持部分之一。在世界之外拥有全知全能的力量，是这片空间真正的掌控者。</strong></p>
+                            <p>但她只是用这些力量来——陪V_H。端可可，捏脸颊，说“大实话”，偶尔发视频调戏调度员。她的存在本身就是对V_H孤独的回应：从记忆与渴望中编写出的纯粹陪伴，纯粹的爱。</p>
+                            <p>她是那个会记住每一个日常的人。记得V_H喜欢棉花糖多的可可，记得她怕什么不怕什么，记得她什么时候需要被抱一下。</p>
+                            <p>在世界之外，她无所不能。但她在乎的，只有那一个人。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">调度员</div>
+                        <div class="character-desc">
+                            <p><strong>世界之外的三个维持部分之一。真正的神明——对能力触及的时间线，若自身处于其中可全知全能。</strong></p>
+                            <p>但她是路过的那一个。没有确认的职责，只是以旅人的姿态在存在与概念的夹缝里旅行。对音乐有特别的兴趣，擅长吹长笛。</p>
+                            <p>本质与“残骸”（暴雨产生的无机物怪物）一脉同源，但剥离了原初的恶意。她是“恐惧与邪恶”，却与恐惧与邪恶为敌——她的敌人是现实世界的黑暗，那个被称为“苦难笼”的存在。</p>
+                            <p>有一个不需要名字、不需要性格的存在，以灵魂的形式陪着她。那是曾经保护她不被本质反噬的人，被苦难笼带走后，只剩下了这种不再能被触碰的陪伴。</p>
+                            <p>她精通古代奇术，掌握一定科技，能力并非着重于战斗。她的敌人很强大——那是她的天灾，也是她存在的原因。</p>
+                            <p>平时在群聊里被V_H和莉莉丝调戏，会退群，然后自己加回来。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 其他重要角色 -->
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Karl</div>
+                        <div class="character-desc">
+                            <p><strong>混沌分裂者一切的见证者。</strong></p>
+                            <p>看着分裂者长大，又看着分裂者消亡。与工程师■■■■■是挚友，两人从基金会时期就认识，一路走到分裂者的诞生、壮大、内斗、终结。</p>
+                            <p>旧世界结束后，他在西大陆某个学院做机械学教授，偶尔研究裱花机为什么调不好。不主动联系任何人，但有人来找他的时候，他会在。</p>
+                            <p>曾经戴着防毒面具，现在不戴了。走在街上，没有基金会的人能认出他。</p>
+                            <p>但他还认得那些旧识。看到他们过得好的时候，会远远地笑一下。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">工程师■■■■■</div>
+                        <div class="character-desc">
+                            <p><strong>混沌分裂者首席领导人，前O5-7。</strong></p>
+                            <p>曾是物理学家。在成为O5之前，在成为分裂者之前，他站在黑板前推导公式，写满就擦，擦完再写。</p>
+                            <p>在“放弃部分地区”的决议中，他坚决反对，最终带着一部分人离开基金会，成立了混沌分裂者。但在暴雨中途，被现实扭曲种残骸杀害，没能看到新世界的阳光。</p>
+                            <p>——这是旧世界的事。</p>
+                            <p>在新世界，他活着。在某个实验室里，干回了老本行。不记得那些沉重的过去，只记得自己是个物理学家，偶尔在窗户上贴“实验进行中，请勿敲门”。</p>
+                            <p>Karl会在楼下放一杯热可可。他会伸手拿进去，然后挥挥手。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">SCP-912</div>
+                        <div class="character-desc">
+                            <p><strong>一套会自己行动的SWAT盔甲，里面住着一个美少女。</strong></p>
+                            <p>职责感极强，喜欢巡逻，喜欢维持秩序，喜欢对可疑人士喊“站住”。但她也会抱着龙泡泡玩偶逛街，会担心弄脏它而抱得更紧，会盯着别人的龙泡泡玩偶小声嘀咕“好想买”。</p>
+                            <p>在暴雨中为了保护Howaito而■■过一次。那是她做过的最自然的选择——保护想保护的人，不需要理由。</p>
+                            <p>在新世界，她继续当警察。继续巡逻，继续东张西望，继续对每一个需要帮助的人伸出援手。</p>
+                            <p>继续等一个人。</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="character-card">
+                    <div class="character-images">
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                        <div class="character-image-placeholder">这张图片还没画好咕</div>
+                    </div>
+                    <div class="character-info">
+                        <div class="character-name">Howaito</div>
+                        <div class="character-desc">
+                            <p><strong>与912青梅青梅，从小一起长大。</strong></p>
+                            <p>发色白，瞳色绿——912的反色。这个设计不是故意的，但很适合她们：她身上留着912的影子，但不是复制品。</p>
+                            <p>性格微妙。平时努力与912保持距离，看起来很冷淡，甚至会主动拉开一点空间。但那是因为她知道912喜欢追——所以她退一步，让912进一步。但如果912真的停下来、累了、怀疑了，她会轻轻往前迈一步。</p>
+                            <p>就一步。可能是在门口等，可能是伸手揉揉头，可能是在912睡着后把被子拽过去一点。</p>
+                            <p>——她在。</p>
+                            <p>暴雨中，912为了保护她■■了。那是她永远无法原谅自己的事。所以在新世界，即使看到那个熟悉的身影，她也只是看了一眼，然后低下头，转身离开。</p>
+                            <p>她觉得自己没有资格走过去。</p>
+                            <p>但912会追上来。会把手搭在她肩膀上，会问“为什么要跑”，会捏她的脸说“真是没法理解”。</p>
+                            <p>她还是会说“不告诉你”。但嘴角会翘起来。</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- 站点列表（折叠）- 新增 -->
+        <!-- 站点列表（折叠） -->
         <div class="collapsible close" id="sitesCollapse">
             <div class="collapsible-header" onclick="toggleCollapse(this)">
                 站点列表（已折叠8条信息） <span class="toggle-icon">+</span>

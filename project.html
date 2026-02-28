@@ -156,6 +156,78 @@
             border-left: 4px solid #e06b6b;
             padding-left: 1.5rem;
         }
+        /* 武器卡片样式 */
+        .weapon-archive {
+            background-color: #0f1217;
+            border: 1px solid #2a2e35;
+            padding: 1.5rem;
+            margin-top: 1rem;
+        }
+        .weapon-header {
+            color: #e06b6b;
+            font-size: 1rem;
+            font-family: 'Courier New', monospace;
+            border-bottom: 1px dashed #e06b6b;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1.5rem;
+            text-align: right;
+        }
+        .faction {
+            margin-top: 2rem;
+            border-left: 3px solid #e06b6b;
+            padding-left: 1rem;
+        }
+        .faction:first-child {
+            margin-top: 0;
+        }
+        .faction h3 {
+            color: #e06b6b;
+            font-size: 1.4rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+        }
+        .character-card {
+            background-color: #1c2129;
+            border: 1px solid #333b48;
+            padding: 1.2rem 1.5rem;
+            margin-bottom: 1rem;
+        }
+        .character-name {
+            color: #e06b6b;
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 0.8rem;
+            border-bottom: 1px dotted #2a2e35;
+            padding-bottom: 0.3rem;
+        }
+        .weapon-item {
+            margin-bottom: 0.8rem;
+        }
+        .weapon-item strong {
+            color: #ffb8b8;
+            font-weight: 500;
+            min-width: 100px;
+            display: inline-block;
+        }
+        .weapon-item em {
+            color: #6d7a8c;
+            font-style: italic;
+            display: block;
+            margin-left: 100px;
+            font-size: 0.9rem;
+        }
+        .weapon-item p {
+            color: #9aa8b9;
+            margin-left: 100px;
+            font-size: 0.95rem;
+        }
+        .weapon-note {
+            color: #6d7a8c;
+            font-style: italic;
+            margin-top: 0.5rem;
+            padding-left: 100px;
+            border-left: 2px solid #e06b6b;
+        }
         .footer {
             margin-top: 3rem;
             padding-top: 1.5rem;
@@ -170,6 +242,9 @@
             .header { flex-direction: column; align-items: start; }
             .nav { margin-left: 0; flex-wrap: wrap; }
             .user-info { margin-left: 0; margin-top: 0.5rem; }
+            .weapon-item strong { display: block; margin-bottom: 0.2rem; }
+            .weapon-item p { margin-left: 0; }
+            .weapon-note { padding-left: 0; }
         }
     </style>
 </head>
@@ -245,7 +320,7 @@
             </div>
         </div>
 
-        <!-- SCP-9999 折叠区块（新增，默认折叠） -->
+        <!-- SCP-9999 折叠区块（默认折叠） -->
         <div class="collapsible close" id="scp9999">
             <div class="collapsible-header" onclick="toggleCollapse(this)">
                 SCP-9999 “世界之外” <span class="toggle-icon">+</span>
@@ -321,6 +396,153 @@
                         SCP-8526拥有各种生物，组成完善的生态系统。SCP-8526内的动植物分为两部分：现实翼和异常翼。现实翼的动植物极度类似于基准现实，大部分可供食用。而异常翼的动植物则表现出不同的异常性质，研究价值极高。<br>
                         *关于气象<br>
                         SCP-8526拥有类似于基准现实的气象系统，包括但不限于：大气层，各种天气，宜人的因季节而变的温度，相对恒定的湿度和空气质量，风。
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 新增：战术装备档案 -->
+        <div class="collapsible close" id="weaponArchive">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                战术装备档案 · 协奏曲武装序列 <span class="toggle-icon">+</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="weapon-archive">
+                    <div class="weapon-header">
+                        档案编号：CA-ARM-8526-Ω<br>
+                        授权等级：公开<br>
+                        录入时间：新纪元·雨季边境<br>
+                        备注：R.W.P.S.技术改装后的武器系统档案。从现代到科幻，一步之遥。
+                    </div>
+
+                    <!-- MTF-Epsilon11-D.P.T. -->
+                    <div class="faction">
+                        <h3>MTF-Epsilon11-D.P.T.所属档案</h3>
+                        
+                        <!-- Ninetails -->
+                        <div class="character-card">
+                            <div class="character-name">Ninetails（指挥官）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>AK-74M R.W.P.S.改装<br><em>一款极具年代感的原型枪，但经过R.W.P.S.技术重构后，其内部结构已与外观截然不同。使用者对其有特殊情感偏好。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>L.I.D.轻型武器平台<br><em>默认承载轻型的Micro H.I.D.（电磁炮）放电功能，因此得名“Lightning In Device”。可通过更换芯片实现不同战术功能，但放电模式始终是最常用的解决方案。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>R.W.P.S.施术单元 M-1-B<br><em>标准制式施术单元，经过指挥官个人调校，稳定可靠。</em></p></div>
+                        </div>
+
+                        <!-- Tabitto -->
+                        <div class="character-card">
+                            <div class="character-name">Tabitto（工程员）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>M14 EBR R.W.P.S.改装<br><em>理论后座足以压垮常人，但R.W.P.S.改装后，后座力被奇术系统吸收并转化为武器稳定能量。使用者表示：“压得住，就是有点吵。”</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>“创世”工程套组<br><em>通过R.W.P.S.神力实现跨时代工程效率的多功能套组。核心组件包括：分子级焊接器（功率过大时可作为喷火器使用）、物质重组切割刀、快速架设工事生成器。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>一根羽毛<br><em>来源不明，重量极轻，却能够稳定引导复杂的工程奇术。使用者称其为“幸运符”——尽管没人相信工程需要运气。</em></p></div>
+                        </div>
+
+                        <!-- Mirufaku -->
+                        <div class="character-card">
+                            <div class="character-name">Mirufaku（现实稳定专员）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>M4A1 R.W.P.S.改装<br><em>标准的AR平台，经过R.W.P.S.优化后，精度和可靠性均有显著提升。非常“常规”，因此非常可靠。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>L.H.R.D.局部休谟控制器<br><em>通过操控局部休谟值实现现实编辑的精密仪器。正常模式下可用于稳定异常区域、中和现实扭曲、修复空间裂隙。超载模式需满足三项条件：合适的战场环境、V_H的授权、使用者本人的决意。三者兼备时，理论上可以改变时间线走向。——是DPT小队最强大的特殊武器，没有之一。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>R.W.P.S.施术单元 C-5-P<br><em>专为现实稳定设计的定制单元，对休谟波动的响应速度是标准型号的3倍。</em></p></div>
+                        </div>
+
+                        <!-- Dr.Aris -->
+                        <div class="character-card">
+                            <div class="character-name">Dr.Aris（概念性威胁应对专员）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>FN 57 R.W.P.S.改装<br><em>为什么只配手枪？因为真正需要开枪的时候，这把枪只是“热身”。更多时候，它用于处理那些不值得拔剑的小麻烦。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>“永夜”<br><em>用于引导3125意志的长剑。剑身呈深黑色，光线触及剑刃时会被吸收，因此得名“永夜”。这是Dr.Aris成为半神的关键配件，也是基金会神学部认证的“概念级武装”。最关键的特殊武器。没有之一。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>“永夜”<br><em>剑即是媒介，媒介即是剑。人剑合一的概念实体。</em></p></div>
+                        </div>
+
+                        <!-- SCP-079-Paradox -->
+                        <div class="character-card">
+                            <div class="character-name">SCP-079-Paradox（副指挥/电子员）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>SPR-15 HB反狙击步枪 R.W.P.S.改装<br><em>超远程精准打击平台。079-P可以通过战术网络实时修正弹道，命中率在数据支撑下接近100%。 </em></p></div>
+                            <div class="weapon-item"><strong>特殊武器1：</strong><p>D.A.P.数据探针<br><em>由背部管线连接的精密装置。物理接触电子设备即可将其连接至079-P的运算核心；接触生物组织则可读取表层思维。情报收集的终极工具。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器2：</strong><p>D.A.P.浮游炮<br><em>同样由背部管线连接，共三门。通过R.W.P.S.光束进行持续火力压制，可在079-P进行其他操作时自动索敌射击。压制力最强的特殊武器。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>D.A.P.数据探针<br><em>探针本身即为媒介。079-P可以通过它引导奇术能量，实现数据与现实的交互。</em></p></div>
+                        </div>
+
+                        <!-- HoshiNoAme -->
+                        <div class="character-card">
+                            <div class="character-name">HoshiNoAme（突破手）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>HK416-C R.W.P.S.改装<br><em>经典的C型短突，经过R.W.P.S.改装后，后座控制和故障率均有显著优化。可靠，顺手，指哪打哪。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器1：</strong><p>机动量子护盾<br><em>通过肩部R.W.P.S.投影仪生成的全息能量护盾。完全不影响使用者动作，覆盖面积与防御强度成反比——小面积可挡反器材狙击，大面积仅能抵御轻武器火力。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器2：</strong><p>3-X分子裂解者-A型<br><em>原型取自SCP:SL中的同款武器。经过机动改装后，弹容量缩减至3发，仅可使用单发模式。每发都能造成分子级别的破坏效果。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>一支复古的魔杖<br><em>外形朴素，甚至有些老旧。但这是使用者最信任的引导工具——比任何高科技设备都更贴合她的奇术回路。</em></p></div>
+                        </div>
+                    </div>
+
+                    <!-- 世界之外线 -->
+                    <div class="faction">
+                        <h3>世界之外线</h3>
+                        
+                        <!-- Vestige_HoshiNoAme -->
+                        <div class="character-card">
+                            <div class="character-name">Vestige_HoshiNoAme（记述人）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>无</p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>创世意志 - 创世者的权能<br><em>能够在“世界之外”及所创造的时间线内重构现实、编写叙事、赋予存在。在基准现实中受限，但依然具有极高的权限等级。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>一支复古的魔杖<br><em>与HoshiNoAme的魔杖形制相近，或许出自同一设计。媒介仅是引导，真正的力量来自使用者本身。</em></p></div>
+                        </div>
+
+                        <!-- Lilith -->
+                        <div class="character-card">
+                            <div class="character-name">Lilith（世界之外的守护者）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>无</p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>外世意志 - 世界之外内的绝对权能<br><em>在世界之外，她是真正的主宰。全知，全能，全在。离开世界之外后，力量大幅衰减，但依然保有对空间的基础操控能力。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>爱<br><em>档案如此记载，没有更多说明。</em></p></div>
+                        </div>
+
+                        <!-- 调度员 -->
+                        <div class="character-card">
+                            <div class="character-name">调度员</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>无</p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>至高神的神力<br><em>在其能力触及的时间线内，若自身位于其中，可全知全能。能力不侧重于战斗，但在必要时足以改写战局。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>“七幻星”<br><em>一支长笛。也是剑。形似长笛，剑藏其中。演奏时发出音符，挥剑时斩断因果。调度员很少同时使用两种功能——因为需要同时使用的敌人，至今尚未出现。某人的一丝意念藏在剑里，调度员时常对着剑说话，那并不是因为她有精神分裂症。</em></p></div>
+                        </div>
+                    </div>
+
+                    <!-- SCP-912线 -->
+                    <div class="faction">
+                        <h3>SCP-912线</h3>
+                        
+                        <!-- SCP-912 -->
+                        <div class="character-card">
+                            <div class="character-name">SCP-912</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>一把没有型号标识的手枪<br><em>似乎从成为SCP-912的那一天起，这把枪就和她一起出现了。没有型号，没有编号，没有生产商。但它就是能用，而且很准。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>一把没有型号标识的手枪<br><em>和上面那把是同一把。912的特殊之处不在于武器，而在于她如何使用——她总能在最需要的时候，打出最需要的那一发。</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>一把没有型号标识的手枪<br><em>（档案备注：此处重复三次并非笔误。这把枪就是她的一切。武器，特殊武器，媒介。三位一体。）</em></p></div>
+                        </div>
+
+                        <!-- Howaito -->
+                        <div class="character-card">
+                            <div class="character-name">Howaito</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>无</p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>无</p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>一支白色的笔<br><em>墨已经用完了。笔管里空空的，写不出任何字。但它依然是媒介。Why? Howaito knows. The pen holds what ink cannot.</em></p></div>
+                        </div>
+                    </div>
+
+                    <!-- 混沌分裂者线 -->
+                    <div class="faction">
+                        <h3>混沌分裂者线</h3>
+                        
+                        <!-- Karl -->
+                        <div class="character-card">
+                            <div class="character-name">Karl</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>UTE-■■■■ 步枪<br><em>分裂者掌握的异常技术产物。能够像发射5.56×45mm弹药一样发射.50口径弹药，后座力由内置奇术场抵消。技术来源已不可考。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>“放逐者之镰”<br><em>在工程师■■■■■牺牲后，由“暴雨”制造的异常物品。形似一柄弯曲的黑色镰刀，对代表秩序的物品及连结种残骸有特殊破坏效果。使用者称：“每次挥动，都能听见工程师的声音。”</em></p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>“放逐者之镰”<br><em>镰刀即是媒介。也是纪念。也是武器。</em></p></div>
+                        </div>
+
+                        <!-- 工程师■■■■■ -->
+                        <div class="character-card">
+                            <div class="character-name">工程师■■■■■（前O5-7）</div>
+                            <div class="weapon-item"><strong>常规武器：</strong><p>“Fate”<br><em>一把手枪。仅此而已。没有任何改装，没有任何异常特性。只是一把普通的手枪，但被使用者命名为“Fate”。它射出过很多发子弹，其中最重要的那一发，改变了无数人的命运。</em></p></div>
+                            <div class="weapon-item"><strong>特殊武器：</strong><p>无</p></div>
+                            <div class="weapon-item"><strong>媒介：</strong><p>无<br><em>（档案备注：他不需要。他本身就是。）</em></p></div>
+                        </div>
+                    </div>
+
+                    <div class="weapon-header" style="margin-top: 2rem; text-align: left; border-bottom: none;">
+                        <p>档案结语<br>R.W.P.S.技术重构了武器的定义。<br>有些人用它发射子弹。<br>有些人用它引导奇迹。<br>有些人用它记住过去。<br>有些人——本身就是武器。</p>
                     </div>
                 </div>
             </div>
