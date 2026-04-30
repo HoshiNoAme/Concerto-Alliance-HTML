@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>莫比乌斯结社 · 赫尔墨斯记忆库</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #dcd0b8 url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" opacity="0.08"><path fill="none" stroke="%237a5c3a" stroke-width="0.8" d="M0 0 L400 400 M400 0 L0 400 M200 0 L200 400 M0 200 L400 200"/><circle cx="200" cy="200" r="80" stroke="%237a5c3a" stroke-width="0.6" fill="none"/><path d="M200 120 L220 180 L280 200 L220 220 L200 280 L180 220 L120 200 L180 180 Z" stroke="%237a5c3a" stroke-width="0.6" fill="none"/></svg>');
+            background-size: 60px 60px;
+            font-family: 'Segoe UI', 'Georgia', 'Times New Roman', serif;
+            color: #2f241b;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(250, 245, 235, 0.92);
+            border: 1px solid #b99e6f;
+            box-shadow: 12px 12px 24px rgba(0, 0, 0, 0.15), inset 0 1px 0 rgba(255, 255, 200, 0.6);
+            padding: 2rem;
+            border-radius: 28px;
+            backdrop-filter: blur(2px);
+        }
+
+        /* 头部 */
+        .header {
+            text-align: center;
+            border-bottom: 2px dotted #b48b4a;
+            padding-bottom: 1.2rem;
+            margin-bottom: 2rem;
+        }
+
+        .hermes-logo {
+            font-size: 2.4rem;
+            letter-spacing: 6px;
+            font-weight: 400;
+            color: #6b4c2c;
+            text-shadow: 2px 2px 0 #e4d5b6;
+            font-family: 'Courier New', monospace;
+        }
+
+        .sub {
+            font-size: 0.8rem;
+            color: #8b6b42;
+            margin-top: 0.3rem;
+            font-style: italic;
+        }
+
+        /* 播放器区域 */
+        .audio-player {
+            background: #efe2cc;
+            border: 1px solid #c4a86a;
+            border-radius: 40px;
+            padding: 0.8rem 1.5rem;
+            margin: 1.5rem 0 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+            box-shadow: inset 0 0 4px #b28b54, 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .audio-label {
+            font-size: 0.85rem;
+            font-family: monospace;
+            color: #5c401f;
+        }
+        audio {
+            max-width: 280px;
+            filter: sepia(0.3);
+        }
+
+        /* 文章卡片 */
+        .card {
+            background: #fffaf0;
+            border-left: 6px solid #a77b3e;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.05);
+            border-radius: 20px;
+        }
+        .card h2 {
+            font-size: 1.7rem;
+            font-weight: 500;
+            color: #825e34;
+            border-bottom: 1px solid #e4cfaa;
+            padding-bottom: 0.3rem;
+            margin-bottom: 1rem;
+            font-family: 'Georgia', serif;
+        }
+        .card h3 {
+            font-size: 1.3rem;
+            color: #a76f2e;
+            margin: 1rem 0 0.5rem;
+            font-weight: 500;
+        }
+        .card p {
+            margin-bottom: 0.8rem;
+            color: #2f2a22;
+            text-align: justify;
+        }
+        .insignia {
+            text-align: center;
+            margin: 2rem 0 1rem;
+            font-size: 2rem;
+            letter-spacing: 8px;
+            color: #b78f54;
+        }
+
+        .member-list {
+            list-style: none;
+            margin: 0.5rem 0 0 1rem;
+        }
+        .member-list li {
+            padding: 0.2rem 0;
+            position: relative;
+            padding-left: 1.2rem;
+        }
+        .member-list li::before {
+            content: "⨀";
+            color: #b57c3c;
+            position: absolute;
+            left: 0;
+        }
+
+        .quote {
+            font-style: italic;
+            border-left: 4px solid #c9aa6f;
+            background: #f6efdf;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.95rem;
+            color: #5a3c1a;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: linear-gradient(to right, #e2cfaa, #b49462, #e2cfaa);
+            margin: 2rem 0;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.8rem;
+            color: #a78151;
+            border-top: 1px dashed #cfbc8a;
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1rem;
+            }
+            .hermes-logo {
+                font-size: 1.8rem;
+                letter-spacing: 3px;
+            }
+            .card h2 {
+                font-size: 1.4rem;
+            }
+            .audio-player {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            audio {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="hermes-logo">⧎ 莫比乌斯结社 ⧎</div>
+        <div class="sub">赫尔墨斯私有记忆库 · 另一个世界的幻想</div>
+    </div>
+
+    <!-- 复古播放器 -->
+    <div class="audio-player">
+        <span class="audio-label">十重告别 钢琴改编    原曲：雨狸/DELA_P 改编：AiKo_Rin</span>
+        <audio controls loop>
+            <source src="ten.mp3" type="audio/mpeg">
+            您的浏览器不支持音频播放。请升级或更换浏览器。
+        </audio>
+    </div>
+
+    <!-- 关于我们 -->
+    <div class="card">
+        <h2>⌾ 关于我们</h2>
+        <p>莫比乌斯结社（Möbius Society）是一个不隶属于任何已知政府、超自然组织或时间线的独立盟约。我们的成员来自多条时间线的“伪上叙事者”——那些曾触及叙事层边缘、在末日循环中幸存并保留了跨时间线意识的个体。我们不为某个世界、某个人类政权或某个基金会服务。我们的唯一目标是：反抗“苦难笼”（SCP-9644），并从其强加的永恒反乌托邦病毒中解放每一条被囚禁的时间线。</p>
+        <p>我们不相信循环是终点。莫比乌斯环只有一个面，一条边——从内部看似无尽，但只要找到那个转折点，就能走出去。我们就是那个转折点。</p>
+    </div>
+
+    <!-- 我们的使命 -->
+    <div class="card">
+        <h2>⌾ 我们的使命</h2>
+        <p>苦难笼是一种高阶模因复合体，它以感染形式扩张自身管辖的时间线范围，将每一个相似的世界拖入“反E-UTO”状态——美好的表象下，是个体精神的缓慢腐烂。暴雨（SCP-10000）是时间线对苦难笼入侵的免疫反应，它导致了末日循环，但也阻止了苦难笼通过时间线后期的缺口全面侵入。详细信息请见协奏曲联盟档案库SCP-9644。</p>
+        <p>结社存在的意义，就是在免疫系统与病毒之间，插入一根撬棍。</p>
+        <p>我们致力于：<br>
+        · 收集并保护关键叙事锚点。<br>
+        · 支持记述人开启未被感染的新世界。<br>
+        · 戳瞎苦难笼的监视之眼，净化其对本叙事层的影响。<br>
+        · 为每一条时间线保留“走出循环”的火种。<br>
+        · 引导真上叙事者协助我们。</p>
+    </div>
+
+    <!-- 我们的成员 -->
+    <div class="card">
+        <h2>⌾ 我们的成员</h2>
+        <p>结社不设固定席位，成员均为跨时间线的个体，以“残响”或“意识锚点”的形式参与盟约。已知成员包括：</p>
+        <ul class="member-list">
+            <li>记述人</li>
+            <li>莉莉丝</li>
+            <li>调度员</li>
+            <li>被放逐者之图书馆主厅管理员</li>
+            <li>第一议会：原初O5的十二人残响</li>
+            <li>工程师■■■■■（第二格）：混沌分裂者创始人通过引擎上传的另一格。</li>
+            <li>全球超自然联盟副秘书长</li>
+        </ul>
+        <p>成员之间不互相命令，只在必要时以“盟约”形式协调行动。每一位成员都曾见证过一条时间线的湮灭，因此更懂得存续的重量。</p>
+    </div>
+
+    <!-- 与血月科技的关系 -->
+    <div class="card">
+        <h2>⌾ 我们与血月科技的关系</h2>
+        <p>血月科技（B.M.T.）是结社的技术执行臂，由调度员直接领导。B.M.T.负责将跨时间线复刻的科技本地化，并提供装备、行者与过载支持。二者关系为：结社指明方向，血月科技铺平道路。</p>
+    </div>
+
+    <!-- SCP-9999 与 世界之外 -->
+    <div class="card">
+        <h2>⌾ SCP-9999 与 世界之外</h2>
+        <p>SCP-9999“世界之外”是结社的主要集会与逆向收容节点。它是一个位于叙事层之上的后台空间，时间与空间不具强制性。记述人与莉莉丝常驻于此，任何结社成员均可通过特定门径进入。SCP-9999亦是暴雨（SCP-10000）的逆向收容室——只有在这里，暴雨的叙事清除才不会触及无辜。</p>
+    </div>
+
+    <!-- 如何联系结社 -->
+    <div class="card">
+        <h2>⌾ 如何联系结社</h2>
+        <p>结社不对公众开放招募。如果你在阅读这份文档，说明你已经站在了某个循环的边缘。我们不会主动寻找你，但如果你能听见“染血之钟”的声音，或者曾在梦中见过不曾发生过的未来——那么，也许某一天，一扇门会在你面前打开。</p>
+        <div class="quote">门后没有神。</div>
+        <p>结社并不会在记忆库内存放更多信息，一切的一切都在你无尽的记忆回旋里。</p>
+        <p style="font-weight: 500; margin-top: 1rem;">醒来，对坐落于虚伪现实顶点的反乌托邦开出列克星敦的第一枪。</p>
+        <p style="text-align: right; margin-top: 0.5rem;"><strong>莫比乌斯结社</strong></p>
+    </div>
+
+    <div class="insignia">
+        ⌇ ⧉ ⌇
+    </div>
+    <div class="footer-note">
+        赫尔墨斯记忆库 · 叙事层档案  ⧎  未经授权访问者将被追溯所有时间线的意识痕迹
+    </div>
+</div>
+</body>
+</html>

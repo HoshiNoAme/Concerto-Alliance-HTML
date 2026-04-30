@@ -76,7 +76,6 @@
             color: #ffffff;
             border-bottom-color: #e06b6b;
         }
-        /* 登录信息 */
         .user-info {
             color: #ffb8b8;
             font-size: 0.9rem;
@@ -177,7 +176,7 @@
             margin-left: 1.5rem;
             color: #9aa8b9;
         }
-        /* 职员档案新样式 - 增大图片框 */
+        /* 职员档案新样式 - 单图片框 */
         .character-card {
             background: #1c2129;
             border: 1px solid #333b48;
@@ -190,11 +189,11 @@
             display: flex;
             flex-direction: column;
             gap: 1rem;
-            min-width: 180px; /* 增大以适应图片 */
+            min-width: 200px;
         }
         .character-image-placeholder {
-            width: 180px;      /* 增大尺寸 */
-            height: 180px;
+            width: 200px;
+            height: 200px;
             background: #2a2e35;
             border: 2px solid #e06b6b;
             display: flex;
@@ -280,6 +279,43 @@
             color: #6d7a8c;
             font-style: italic;
         }
+        /* 未加盟组织网格 */
+        .non-member-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        .org-card {
+            background: #1c2129;
+            border: 1px solid #333b48;
+            padding: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+        .org-logo {
+            width: 48px;
+            height: 48px;
+            background: #2a2e35;
+            border: 1px solid #e06b6b;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        .org-logo img { width: 100%; height: 100%; object-fit: contain; }
+        .org-name-link {
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+        .org-name-link a {
+            color: #e06b6b;
+            text-decoration: none;
+        }
+        .org-name-link a:hover {
+            text-decoration: underline;
+        }
         .footer {
             margin-top: 2rem;
             padding-top: 1.5rem;
@@ -295,13 +331,13 @@
             .character-images { 
                 flex-direction: row; 
                 min-width: auto;
-                flex-wrap: wrap;
                 justify-content: center;
             }
             .character-image-placeholder { 
-                width: 140px; 
-                height: 140px; 
+                width: 160px; 
+                height: 160px; 
             }
+            .org-card { padding: 0.8rem; }
         }
     </style>
 </head>
@@ -317,7 +353,6 @@
                 <a href="about.html" style="color:#ffffff; border-bottom-color:#e06b6b;">关于</a>
                 <a href="project.html">独有项目</a>
                 <a href="history.html">世界观</a>
-                <!-- 登录信息 -->
                 <div class="user-info">
                     <span class="icon">;-)</span> 外勤特工Alex
                 </div>
@@ -421,23 +456,19 @@
             </div>
         </div>
 
-        <!-- 职员档案（折叠）- 重写版，图片框已加大 -->
+        <!-- 职员档案（折叠） -->
         <div class="collapsible close" id="staffCollapse">
             <div class="collapsible-header" onclick="toggleCollapse(this)">
                 职员档案 （已折叠120亿条信息）<span class="toggle-icon">+</span>
             </div>
             <div class="collapsible-content">
-                <!-- 性别未定提示 -->
                 <div class="staff-note">
                     ⚠️ 下方 Tabitto、Mirufaku 两个角色性别未定，当前遵循一无二随原则。
                 </div>
 
-                <!-- MTF-Epsilon-11-DPT 成员 -->
+                <!-- Ninetails -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">Ninetails · 雪狐</div>
                         <div class="character-desc">
@@ -449,12 +480,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- SCP-079-Paradox-Σ -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">SCP-079-Paradox-Σ · 悖论</div>
                         <div class="character-desc">
@@ -466,12 +494,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Dr. Aris -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">Dr. Aris · 守夜</div>
                         <div class="character-desc">
@@ -484,12 +509,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- HigashiNoMirufaku -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">HigashiNoMirufaku · 天船三</div>
                         <div class="character-desc">
@@ -503,12 +525,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Tabitto -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">Tabitto · 参旗六</div>
                         <div class="character-desc">
@@ -521,12 +540,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- YumeHoshiNoAme -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">YumeHoshiNoAme · 雨渍</div>
                         <div class="character-desc">
@@ -538,13 +554,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 世界之外·三小只 -->
+                <!-- Vestige -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">Vestige_HoshiNoAme · 记述人</div>
                         <div class="character-desc">
@@ -556,12 +568,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Lilith -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">Lilith · 莉莉丝</div>
                         <div class="character-desc">
@@ -572,12 +581,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- 调度员 -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">调度员</div>
                         <div class="character-desc">
@@ -590,13 +596,9 @@
                         </div>
                     </div>
                 </div>
-
-                <!-- 其他重要角色 -->
+                <!-- Karl -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">Karl</div>
                         <div class="character-desc">
@@ -608,12 +610,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- 工程师 -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">工程师■■■■■</div>
                         <div class="character-desc">
@@ -626,12 +625,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- SCP-912 -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">SCP-912</div>
                         <div class="character-desc">
@@ -643,12 +639,9 @@
                         </div>
                     </div>
                 </div>
-
+                <!-- Howaito -->
                 <div class="character-card">
-                    <div class="character-images">
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                        <div class="character-image-placeholder">这张图片还没画好咕</div>
-                    </div>
+                    <div class="character-images"><div class="character-image-placeholder">这张图片还没画好咕</div></div>
                     <div class="character-info">
                         <div class="character-name">Howaito</div>
                         <div class="character-desc">
@@ -664,47 +657,98 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- === 新增次要角色 === -->
+                <!-- 天启六象 -->
+                <div class="character-card">
+                    <div class="character-images"></div>
+                    <div class="character-info">
+                        <div class="character-name">天启六象</div>
+                        <div class="character-desc">
+                            <p>“起源地的世界碎片。”</p>
+                            <p><span class="placeholder">血月科技的二十四行者之六，在至高神以下的层级的战斗中，只要对方存在弱点即100%获胜，但代价不保证。</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- 漫游者 -->
+                <div class="character-card">
+                    <div class="character-images"></div>
+                    <div class="character-info">
+                        <div class="character-name">漫游者</div>
+                        <div class="character-desc">
+                            <p>“残骸的漫游者，世界的漫游者，故事的漫游者。”</p>
+                            <p><span class="placeholder">与调度员和血月科技同根同源的特殊残骸，在骸群意志的默许下与结社保持中立关系。</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- GOC攻击小组1121 -->
+                <div class="character-card">
+                    <div class="character-images"></div>
+                    <div class="character-info">
+                        <div class="character-name">GOC攻击小组1121</div>
+                        <div class="character-desc">
+                            <p><span class="placeholder">队员：奇术师/Prof._____/守夜人</span></p>
+                        </div>
+                    </div>
+                </div>
+                <!-- UIU特工组 -->
+                <div class="character-card">
+                    <div class="character-images"></div>
+                    <div class="character-info">
+                        <div class="character-name">UIU特工组</div>
+                        <div class="character-desc">
+                            <p><span class="placeholder">队员：队长/暗面/中尉/战斗专家</span></p>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <!-- 站点列表（折叠） -->
+        <!-- 站点列表（折叠）：删除Site-19，新增Site-1048 -->
         <div class="collapsible close" id="sitesCollapse">
             <div class="collapsible-header" onclick="toggleCollapse(this)">
                 站点列表（已折叠8条信息） <span class="toggle-icon">+</span>
             </div>
             <div class="collapsible-content">
                 <div class="site-list">
-                    <div class="site-card">
-                        <div class="site-name">Site-754</div>
-                        <div class="site-desc"><span class="placeholder">Site-754，原属SCP基金会与罗德岛制药公司。Site-754是一艘舰船，为暴雨而生，集成了大量尖端技术，位置不定，现位于[点击查看:SITE7548月1-10日记录]，是最后被攻破的一座站点。</span></div>
+                    <div class="site-card"><div class="site-name">Site-754</div><div class="site-desc"><span class="placeholder">Site-754，原属SCP基金会与罗德岛制药公司。Site-754是一艘舰船，为暴雨而生，集成了大量尖端技术，位置不定，现位于[点击查看:SITE7548月1-10日记录]，是最后被攻破的一座站点。</span></div></div>
+                    <div class="site-card"><div class="site-name">Site-413</div><div class="site-desc"><span class="placeholder">Site-413原属SCP基金会。Site-413为SCP基金会实用奇术部的基地，有研究，收容等功能，位于高加索地区。</span></div></div>
+                    <div class="site-card"><div class="site-name">Site-413-C</div><div class="site-desc"><span class="placeholder">Site-413-C是Site-413名义上的特外站点，位于SCP-8526一空岛群，作为SCP-8526的前哨站使用，由于SCP-8526的性质，该站点也被用作某些特殊异常项目的收容所。有一支MTF驻扎在此处：MTF-Epsilon11-D.P.T.。</span></div></div>
+                    <div class="site-card"><div class="site-name">Site-1048</div><div class="site-desc"><span class="placeholder">太空站点。位于近地轨道，主要负责深空监测与“光蚀”辐射研究，是联盟在宇宙中的前哨堡垒。</span></div></div>
+                    <div class="site-card"><div class="site-name">Site-13</div><div class="site-desc"><span class="placeholder">Site-13是较新的基金会设施，拥有大型的结构与高新的技术，是CHAPTER.V 的场景。</span></div></div>
+                    <div class="site-card"><div class="site-name">混沌分裂者BASE01</div><div class="site-desc"><span class="placeholder">混沌分裂者最初的基地，也是最大的基地，混沌分裂者内战的重要战场。</span></div></div>
+                    <div class="site-card"><div class="site-name">联盟西西伯利亚基地</div><div class="site-desc"><span class="placeholder">协奏曲联盟亚洲最大的站点，承载有收容平民，研究“暴雨”等重要责任。</span></div></div>
+                    <div class="site-card"><div class="site-name">SCP-2000基地</div><div class="site-desc"><span class="placeholder">协奏曲联盟美洲最大的站点，承载有收容平民，保护SCP-2000"机械降神“等重要责任。</span></div></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- 未加盟的同行组织 -->
+        <div class="collapsible close" id="nonMembersCollapse">
+            <div class="collapsible-header" onclick="toggleCollapse(this)">
+                未加盟的同行组织 <span class="toggle-icon">+</span>
+            </div>
+            <div class="collapsible-content">
+                <div class="non-member-grid">
+                    <div class="org-card">
+                        <div class="org-logo"><img src="logo-bmt64.jpg" alt="BMT" onerror="this.style.display='none';this.parentElement.innerText=''"></div>
+                        <div class="org-name-link"><a href="bmt.html">B.M.T.血月科技</a></div>
                     </div>
-                    <div class="site-card">
-                        <div class="site-name">Site-413</div>
-                        <div class="site-desc"><span class="placeholder">Site-413原属SCP基金会。Site-413为SCP基金会实用奇术部的基地，有研究，收容等功能，位于高加索地区。</span></div>
+                    <div class="org-card">
+                        <div class="org-logo"><img src="logo-js64.jpg" alt="JS" onerror="this.style.display='none';this.parentElement.innerText=''"></div>
+                        <div class="org-name-link"><a href="js.html">莫比乌斯结社</a></div>
                     </div>
-                    <div class="site-card">
-                        <div class="site-name">Site-413-C</div>
-                        <div class="site-desc"><span class="placeholder">Site-413-C是Site-413名义上的特外站点，位于SCP-8526一空岛群，作为SCP-8526的前哨站使用，由于SCP-8526的性质，该站点也被用作某些特殊异常项目的收容所。有一支MTF驻扎在此处：MTF-Epsilon11-D.P.T.。</span></div>
+                    <div class="org-card">
+                        <div class="org-logo"><img src="logo-mh64.jpg" alt="MH" onerror="this.style.display='none';this.parentElement.innerText=''"></div>
+                        <div class="org-name-link"><a href="mh.html">记忆猎团</a></div>
                     </div>
-                    <div class="site-card">
-                        <div class="site-name">Site-19</div>
-                        <div class="site-desc"><span class="placeholder">Site-19 是最大且最重要的服役中基金会设施之一，居有上百个 Safe 及 Euclid 级异常，其中某些异常位于分离于主站点之外的额外设施之内。Site-19是一次重要事件的发生场所，即CHAPTER.Final中的Site-19攻坚战。</span></div>
+                    <div class="org-card">
+                        <div class="org-logo"><img src="logo-sgj64.jpg" alt="SGJ" onerror="this.style.display='none';this.parentElement.innerText=''"></div>
+                        <div class="org-name-link"><a href="sgj.html">圣光教</a></div>
                     </div>
-                    <div class="site-card">
-                        <div class="site-name">Site-13</div>
-                        <div class="site-desc"><span class="placeholder">Site-13是较新的基金会设施，拥有大型的结构与高新的技术，是CHAPTER.V 的场景。</span></div>
-                    </div>
-                    <div class="site-card">
-                        <div class="site-name">混沌分裂者BASE01</div>
-                        <div class="site-desc"><span class="placeholder">混沌分裂者最初的基地，也是最大的基地，混沌分裂者内战的重要战场。</span></div>
-                    </div>
-                    <div class="site-card">
-                        <div class="site-name">联盟西西伯利亚基地</div>
-                        <div class="site-desc"><span class="placeholder">协奏曲联盟亚洲最大的站点，承载有收容平民，研究“暴雨”等重要责任。</span></div>
-                    </div>
-                    <div class="site-card">
-                        <div class="site-name">SCP-2000基地</div>
-                        <div class="site-desc"><span class="placeholder">协奏曲联盟美洲最大的站点，承载有收容平民，保护SCP-2000"机械降神“等重要责任。</span></div>
+                    <div class="org-card">
+                        <div class="org-logo"><img src="logo-dpx64.jpg" alt="DPX" onerror="this.style.display='none';this.parentElement.innerText=''"></div>
+                        <div class="org-name-link"><a href="dpx.html">地平线计划</a></div>
                     </div>
                 </div>
             </div>

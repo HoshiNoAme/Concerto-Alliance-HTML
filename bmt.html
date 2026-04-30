@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>血月科技 · 官方站点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Roboto', 'Helvetica Neue', sans-serif;
+            background: #f5f7fc;
+            color: #1e2a3a;
+            line-height: 1.5;
+            transition: background 0.5s ease, color 0.3s ease;
+            padding: 2rem 1rem;
+        }
+
+        /* 明亮模式（公开界面） */
+        body.light-mode {
+            background: linear-gradient(145deg, #f8faff 0%, #f0f4fa 100%);
+            color: #1a2c3e;
+        }
+
+        /* 暗红模式（登录后 - 更深沉） */
+        body.dark-mode {
+            background:#050000 ;
+            color: #ddcfcf;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.96);
+            border-radius: 32px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: background 0.5s ease, box-shadow 0.3s;
+        }
+
+        body.dark-mode .container {
+            background: #0d0505;
+            box-shadow: 0 0 0 1px #9e2a2a, 0 20px 35px -12px rgba(0, 0, 0, 0.9);
+        }
+
+        /* 头部区域 */
+        .header {
+            padding: 2rem 2rem 1rem;
+            border-bottom: 2px solid #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        body.dark-mode .header {
+            border-bottom-color: #4a1515;
+        }
+
+        .logo-area {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .logo {
+            width: 64px;
+            height: 64px;
+            background: #eef2f9;
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.8rem;
+            color: #c44536;
+            border: 1px solid #dce3ec;
+        }
+
+        body.dark-mode .logo {
+            background: #2a0f0f;
+            border-color: #8a2525;
+            color: #e07a66;
+        }
+
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .title h1 {
+            font-size: 2.2rem;
+            letter-spacing: 2px;
+            font-weight: 600;
+            color: #a33b2c;
+        }
+
+        body.dark-mode .title h1 {
+            color: #cd6a58;
+        }
+
+        .title p {
+            font-size: 0.85rem;
+            color: #5e6f8d;
+        }
+
+        body.dark-mode .title p {
+            color: #b28282;
+        }
+
+        /* 登录面板 - 公开部分 */
+        .public-panel {
+            background: #ffffff;
+            padding: 1.5rem;
+            border-radius: 24px;
+            margin: 1.5rem 2rem;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02);
+            border: 1px solid #eef2f9;
+        }
+
+        body.dark-mode .public-panel {
+            background: #0f0b0b;
+            border-color: #3a1a1a;
+        }
+
+        .welcome-block {
+            margin-bottom: 1.5rem;
+        }
+
+        .welcome-block h3 {
+            color: #c44536;
+            font-size: 1.4rem;
+            margin-bottom: 0.8rem;
+        }
+
+        body.dark-mode .welcome-block h3 {
+            color: #e07a66;
+        }
+
+        .welcome-block p {
+            color: #2c3e50;
+        }
+
+        body.dark-mode .welcome-block p {
+            color: #c0a0a0;
+        }
+
+        .role-options {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin: 1.5rem 0;
+        }
+
+        .role-btn {
+            background: #f0f4fa;
+            border: 1px solid #dce3ec;
+            padding: 0.6rem 1.2rem;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            color: #1e2a3a;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        body.dark-mode .role-btn {
+            background: #1e1111;
+            border-color: #5a2222;
+            color: #e0c0c0;
+        }
+
+        .role-btn:hover {
+            background: #c44536;
+            color: white;
+            border-color: #c44536;
+        }
+
+        .login-form {
+            margin-top: 1rem;
+            border-top: 1px solid #e2e8f0;
+            padding-top: 1rem;
+        }
+
+        body.dark-mode .login-form {
+            border-top-color: #4a1515;
+        }
+
+        .input-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            align-items: flex-end;
+            margin-bottom: 0.8rem;
+        }
+
+        .input-field {
+            flex: 1;
+            min-width: 180px;
+        }
+
+        .input-field label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            color: #6c7a91;
+            margin-bottom: 0.2rem;
+        }
+
+        body.dark-mode .input-field label {
+            color: #b27a7a;
+        }
+
+        .input-field input {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            background: #f8fafd;
+            border: 1px solid #dce3ec;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            transition: 0.2s;
+        }
+
+        body.dark-mode .input-field input {
+            background: #1e1010;
+            border-color: #4a2020;
+            color: #f0e0e0;
+        }
+
+        .input-field input:focus {
+            outline: none;
+            border-color: #c44536;
+            box-shadow: 0 0 0 3px rgba(196, 69, 54, 0.2);
+        }
+
+        .btn-login {
+            background: #c44536;
+            border: none;
+            color: white;
+            padding: 0.8rem 2rem;
+            border-radius: 40px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+
+        .btn-login:hover {
+            background: #a23426;
+            transform: scale(0.98);
+        }
+
+        .reg-note {
+            font-size: 0.75rem;
+            color: #8e9aaf;
+            margin-top: 0.5rem;
+        }
+
+        body.dark-mode .reg-note {
+            color: #a07070;
+        }
+
+        /* 核心机密内容（登录后）- 更暗沉 */
+        .core-content {
+            display: none;
+            padding: 0 2rem 2rem;
+        }
+
+        .blood-header {
+            background: #0a0305;
+            border-radius: 28px;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-left: 6px solid #6a1515 ;
+            box-shadow: 0 0 15px rgba(158, 42, 42, 0.2);
+        }
+
+        .blood-header h2 {
+            font-family: monospace;
+            font-size: 2rem;
+            letter-spacing: 3px;
+            color: #6a1515 ;
+        }
+
+        .status-row {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            margin-top: 1rem;
+            justify-content: space-between;
+        }
+
+        .timer-card {
+            background: #1a0a0a;
+            padding: 1rem 1.5rem;
+            border-radius: 20px;
+            min-width: 160px;
+        }
+
+        .timer-label {
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            color: #b27a7a;
+        }
+
+        .timer-value {
+            font-size: 1.9rem;
+            font-weight: 700;
+            font-family: monospace;
+            letter-spacing: 2px;
+            color: #c04a3a;
+        }
+
+        .alert-badge {
+            background: #2a1010;
+            padding: 0.5rem 1rem;
+            border-radius: 60px;
+            font-size: 0.85rem;
+            color: #e0a090;
+        }
+
+        .section-card {
+            background: #1a0808 ;
+            border-radius: 28px;
+            padding: 1.8rem;
+            margin-bottom: 2rem;
+            border: 1px solid #2e1515;
+        }
+
+        .section-card h3 {
+            color: #b54a3a ;
+            font-size: 1.6rem;
+            margin-bottom: 1rem;
+            border-left: 4px solid #9e2a2a;
+            padding-left: 1rem;
+        }
+
+        .section-card p, .section-card li {
+            color: #cfb5b5;
+            line-height: 1.7;
+        }
+
+        .inset-code {
+            background: #050202;
+            padding: 0.8rem 1.2rem;
+            font-family: monospace;
+            border-radius: 20px;
+            color: #e0a090;
+            margin-top: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .footer-note {
+            text-align: center;
+            font-size: 0.75rem;
+            padding: 1.5rem 0 0.5rem;
+            border-top: 1px solid #2e1515;
+            margin-top: 1rem;
+            color: #7a5a5a;
+        }
+
+        .terminal {
+            background: #050202;
+            border-radius: 24px;
+            padding: 1.2rem;
+            margin-top: 1rem;
+        }
+
+        .terminal-line {
+            font-family: monospace;
+            color: #b58a8a;
+            margin: 0.3rem 0;
+        }
+
+        .terminal-input {
+            display: flex;
+            gap: 0.5rem;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .terminal-prompt {
+            color: #e07a66;
+        }
+
+        .cmd-input {
+            background: transparent;
+            border: none;
+            color: #e6d5d5;
+            font-family: monospace;
+            font-size: 0.9rem;
+            flex: 1;
+            outline: none;
+        }
+
+        .cmd-output {
+            margin-top: 0.8rem;
+            font-family: monospace;
+            font-size: 0.85rem;
+            color: #d99;
+        }
+
+        hr {
+            border-color: #2e1515;
+            margin: 1rem 0;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                border-radius: 24px;
+            }
+            .header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .status-row {
+                flex-direction: column;
+            }
+            .section-card h3 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body class="light-mode">
+<div class="container">
+    <div class="header">
+        <div class="logo-area">
+            <div class="logo">
+                <img src="bmt.jpg" alt="BMT" onerror="this.style.display='none'; this.parentElement.innerText='🌙'">
+            </div>
+            <div class="title">
+                <h1>血月科技</h1>
+                <p>——走在世界的最前沿，踏足地球最诡秘的角落。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 公开内容（未登录） -->
+    <div id="publicContent">
+        <div class="public-panel">
+            <div class="welcome-block">
+                <h3>血月科技 官方网站</h3>
+                <p>欢迎访问血月科技。我们是全球领先的异常技术本地化与跨维度能源应用解决方案提供商。自技术爆炸纪元以来，血月科技始终致力于将最前沿的科研成果转化为安全、可靠、高性价比的产品，服务于各大超自然组织及商业合作伙伴。我们的证书与资质文件已通过协奏曲联盟认证，详情请查阅公开数据库。</p>
+            </div>
+            
+            <div class="role-options">
+                <div class="role-btn" data-role="employee">我是公司员工，登录</div>
+                <div class="role-btn" data-role="customer">我是个人顾客，购买</div>
+                <div class="role-btn" data-role="bulk">我是团体顾客，大规模购入</div>
+            </div>
+
+            <div id="employeeLoginForm" class="login-form" style="display: none;">
+                <h4 style="margin-bottom: 0.8rem;">我是公司员工，登录</h4>
+                <div class="input-group">
+                    <div class="input-field">
+                        <label>账号</label>
+                        <input type="text" id="username" placeholder="工号 / 代号">
+                    </div>
+                    <div class="input-field">
+                        <label>密码</label>
+                        <input type="password" id="password" placeholder="••••••••">
+                    </div>
+                    <button class="btn-login" id="loginBtn">登录</button>
+                </div>
+                <div class="reg-note">注册请咨询您的上级。内部系统，严禁外泄。</div>
+            </div>
+
+            <!-- 顾客提示（暂为占位） -->
+            <div id="customerMessage" style="display: none; margin-top: 1rem; padding: 1rem; background: #f0f4fa; border-radius: 20px; color: #2c3e50;">
+                <p>个人顾客请前往我们的公开商城。本门户暂未开放，请联系销售部门。</p>
+            </div>
+            <div id="bulkMessage" style="display: none; margin-top: 1rem; padding: 1rem; background: #f0f4fa; border-radius: 20px; color: #2c3e50;">
+                <p>大宗采购请发送邮件至 bulk@bloodmoontech.com，我们将安排客户经理对接。</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- 核心机密内容（登录后显示） -->
+    <div id="coreContent" class="core-content">
+        <div class="blood-header">
+            <h2>BLOOD MOON TECH.</h2>
+            <div class="status-row">
+                <div class="timer-card">
+                    <div class="timer-label">染血之钟状态：</div>
+                    <div class="timer-value">激活</div>
+                </div>
+                <div class="timer-card">
+                    <div class="timer-label">结束计时器</div>
+                    <div class="timer-value" id="countdownTimer">73:50:47</div>
+                </div>
+                <div class="timer-card">
+                    <div class="timer-label">重载时间戳</div>
+                    <div class="timer-value" id="reloadTimestamp">05:64:43</div>
+                </div>
+                <div class="alert-badge">病毒察觉性：存在（中等 · 传染性高）</div>
+            </div>
+        </div>
+
+        <div class="section-card">
+            <h3>血月科技</h3>
+            <p>内部档案 · 赫尔墨斯公有记忆库</p>
+            <p>血月科技（Blood Moon Tech，简称B.M.T.）是一家注册于协奏曲联盟框架下的尖端科研机构，同时是莫比乌斯结社的技术执行臂。本组织由调度员直接领导，在全球设有多处隐形研发中心。</p>
+            <p><strong>我们的目标：</strong>从根源上净化苦难笼（SCP-9644）对本叙事层的影响，戳瞎其监视之眼，为莫比乌斯结社的最终胜利提供技术保障。每一位员工都应知晓：你首先是消耗品，其次才是战士。若有人感到晕血，请立即自我终结——这是伟大的牺牲。</p>
+        </div>
+
+        <div class="section-card">
+            <h3>组织结构</h3>
+            <p><strong>领导层：</strong>莫比乌斯结社 / 调度员（TheDispatcher）。负责最高战略指挥，直接与结社对接。</p>
+            <p><strong>行者层：</strong>二十四行者。负责高烈度战斗、热寂时间线探测与评估。每位行者与特定残骸类群保持“友好”关系。行者能力均为规则系，拥有明确的触发条件和边界。已知行者包括但不限于：</p>
+            <ul style="margin-left: 1.5rem; color: #cfb5b5;">
+                <li><strong>IPO-03-EX 憎恶本质：</strong>无视只对自己造成影响的狭义模因污染/认知危害（免疫SCP-3125、苦难笼直接侵蚀等）。</li>
+                <li><strong>检察官 冷酷寒冬：</strong>当同时有两名敌人时，以绝对零度概念性冻结其中一名。被冻结者无法思考、无法行动、无法被外界影响，需外力碎冰解除。可冻结概念、模因复合体乃至至高神。</li>
+                <li><strong>政客 万众归一：</strong>当敌人数量大于2时，强制将在场所有意志体的意识分裂，使意识总数增加至500，分裂出的子意志完全听从政客。效果为敌人意识冲突，失去身体控制权。</li>
+                <li><strong>黑天使 漆黑暗影：</strong>无法被任何方式感知，除非黑天使主动允许某人感知。至高神与“被允许的个体”可正常看见。</li>
+                <li><strong>圣殿骑士 荣誉之名：</strong>当自身确认将在100年内死亡时（即使会复活），对每个对手的第一击抹除其生命力上限的75%，第二击抹除当前生命力的75%，之后恢复正常。若对方没有生命力上限或生命力为0，则抹除对方并杀死自己。</li>
+                <li><strong>梦魇Nightmare：</strong>调度员的主世界侧半灵。</li>
+                <li><strong>天启六象（气象组）：</strong>遇强则强，遇弱则弱。</li>
+            </ul>
+            <p><strong>管代层：</strong>公司主管。负责管理下层日常事务，监督科研项目进度，执行调度员及结社的指令。</p>
+            <p><strong>底工层：</strong>基层员工。涵盖科研、战斗、政治、保密四大职能。所有底层员工均为残骸叛逃者或经特殊培训的人类志愿者，需定期接受记忆净化与叙事杀毒。</p>
+        </div>
+
+        <div class="section-card">
+            <h3>装备与技术</h3>
+            <p>血月科技的每一件装备均由残骸支离破碎的躯体构建骨架，以奇术刻印金属合成皮肤，驱动能源来自热寂或被苦难笼完全同化的时间线里的现实。每一发子弹都混合着已逝队友的血肉。</p>
+            <p><strong>我们现在可以利用光谱篡改与Scent来手动引诱血月夜和过载的产生，详见协奏曲联盟数据库SCP-9123。</strong></p>
+        </div>
+
+        <div class="section-card">
+            <h3>行为准则与免责声明</h3>
+            <p>每一位行者与员工在入职时均已签署《消耗品知情同意书》。公司不提供工伤保险，不承诺生还。任何擅自行动、泄密行为将被视为对结社的背叛，立即执行远程抹杀。</p>
+            <div class="inset-code">血月科技 —— 为背叛而生，为终结而死。</div>
+        </div>
+
+        <!-- 终端模拟 -->
+        <div class="terminal">
+            <div class="terminal-line">需要支援？请在终端输入 /request_assistance</div>
+            <div class="terminal-line">想家了？请输入 /origin</div>
+            <div class="terminal-line">想死？请输入 /execute</div>
+            <hr>
+            <div class="terminal-input">
+                <span class="terminal-prompt">$&gt;</span>
+                <input type="text" class="cmd-input" id="cmdInput" placeholder="输入命令...">
+                <button id="cmdSend" style="background:#2a1010; border:none; color:#e0a090; padding:4px 12px; border-radius:20px; cursor:pointer;">发送</button>
+            </div>
+            <div id="cmdOutput" class="cmd-output"></div>
+        </div>
+
+        <div class="footer-note">
+            本网站受莫比乌斯结社保护。未经授权访问者将被纳入赫尔墨斯记忆库，其人生经历将作为训练用数据。
+        </div>
+    </div>
+</div>
+
+<script>
+    // 角色切换逻辑
+    const roleBtns = document.querySelectorAll('.role-btn');
+    const employeeForm = document.getElementById('employeeLoginForm');
+    const customerMsg = document.getElementById('customerMessage');
+    const bulkMsg = document.getElementById('bulkMessage');
+    const publicDiv = document.getElementById('publicContent');
+    const coreDiv = document.getElementById('coreContent');
+    const bodyEl = document.body;
+
+    roleBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const role = btn.dataset.role;
+            employeeForm.style.display = 'none';
+            customerMsg.style.display = 'none';
+            bulkMsg.style.display = 'none';
+            if (role === 'employee') employeeForm.style.display = 'block';
+            else if (role === 'customer') customerMsg.style.display = 'block';
+            else if (role === 'bulk') bulkMsg.style.display = 'block';
+        });
+    });
+
+    // 登录验证
+    const loginBtn = document.getElementById('loginBtn');
+    const usernameInput = document.getElementById('username');
+    const passwordInput = document.getElementById('password');
+
+    // 正确的凭证
+    const validUser = "none";
+    const validPass = "bloodfuture";
+
+    // 计时器
+    let countdownSeconds = 73 * 3600 + 50 * 60 + 47;
+    const countdownElem = document.getElementById('countdownTimer');
+    const reloadElem = document.getElementById('reloadTimestamp');
+    if (reloadElem) reloadElem.innerText = "05:64:43";
+
+    function updateCountdown() {
+        if (countdownSeconds <= 0) {
+            countdownElem.innerText = "00:00:00";
+            return;
+        }
+        const hours = Math.floor(countdownSeconds / 3600);
+        const minutes = Math.floor((countdownSeconds % 3600) / 60);
+        const seconds = countdownSeconds % 60;
+        countdownElem.innerText = `${hours.toString().padStart(2,'0')}:${minutes.toString().padStart(2,'0')}:${seconds.toString().padStart(2,'0')}`;
+        countdownSeconds--;
+        if (countdownSeconds < 0) countdownSeconds = 0;
+    }
+    let timerInterval = null;
+    function startTimer() {
+        if (timerInterval) clearInterval(timerInterval);
+        timerInterval = setInterval(updateCountdown, 1000);
+    }
+
+    function performLogin() {
+        // 切换为暗沉深红/黑色背景
+        bodyEl.classList.remove('light-mode');
+        bodyEl.classList.add('dark-mode');
+        publicDiv.style.display = 'none';
+        coreDiv.style.display = 'block';
+        startTimer();
+        // 输出欢迎信息到终端
+        const termOutput = document.getElementById('cmdOutput');
+        if (termOutput) {
+            termOutput.innerHTML = '<span style="color:#e07a66;">[系统] 欢迎，ANYONE。染血之钟已激活。</span><br>';
+        }
+        // 在终端显示欢迎横幅
+        console.log("Welcome, ANYONE.");
+    }
+
+    loginBtn.addEventListener('click', () => {
+        const user = usernameInput.value.trim();
+        const pwd = passwordInput.value;
+        if (user === validUser && pwd === validPass) {
+            performLogin();
+        } else {
+            alert("账号或密码错误。\n提示：账号 none  / 密码 bloodfuture");
+        }
+    });
+
+    // 回车登录
+    const handleEnter = (e) => {
+        if (e.key === 'Enter') {
+            loginBtn.click();
+        }
+    };
+    if (usernameInput) usernameInput.addEventListener('keypress', handleEnter);
+    if (passwordInput) passwordInput.addEventListener('keypress', handleEnter);
+
+    // 终端命令响应
+    const cmdInput = document.getElementById('cmdInput');
+    const cmdSendBtn = document.getElementById('cmdSend');
+    const outputDiv = document.getElementById('cmdOutput');
+
+    function respondToCommand(cmd) {
+        const lower = cmd.trim().toLowerCase();
+        if (lower === '/request_assistance') {
+            return "> 一名行者或一支特勤小组将在1时内赶到，您亦可使用终端直接联系联络员。";
+        } else if (lower === '/origin') {
+            return "> ......我们早已离开，无论是精神还是肉体。如今，已经是无法回头的地方。";
+        } else if (lower === '/execute') {
+            return "> 晚安，员工，一束高能混沌能量钻地光束将在5秒后于您的坐标被部署。";
+        } else if (lower === 'help') {
+            return "可用命令: /request_assistance, /origin, /execute";
+        } else {
+            return `未知命令: ${cmd}。输入 help 查看帮助。`;
+        }
+    }
+
+    function addCommandOutput(cmd, response) {
+        const newLine = document.createElement('div');
+        newLine.innerHTML = `<span style="color:#e07a66;">$&gt; ${cmd}</span><br><span style="color:#b58a8a;">${response}</span><br>`;
+        outputDiv.appendChild(newLine);
+        outputDiv.scrollTop = outputDiv.scrollHeight;
+    }
+
+    if (cmdSendBtn) {
+        cmdSendBtn.addEventListener('click', () => {
+            const cmd = cmdInput.value.trim();
+            if (cmd === "") return;
+            const resp = respondToCommand(cmd);
+            addCommandOutput(cmd, resp);
+            cmdInput.value = "";
+        });
+        cmdInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter') cmdSendBtn.click();
+        });
+    }
+
+    // 初始状态：仅公开内容可见，未登录
+    coreDiv.style.display = 'none';
+    employeeForm.style.display = 'none';   // 默认不显示员工表单，需点击按钮
+    customerMsg.style.display = 'none';
+    bulkMsg.style.display = 'none';
+    bodyEl.classList.add('light-mode');
+    bodyEl.classList.remove('dark-mode');
+    publicDiv.style.display = 'block';
+</script>
+</body>
+</html>

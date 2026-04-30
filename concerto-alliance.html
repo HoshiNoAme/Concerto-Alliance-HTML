@@ -110,6 +110,7 @@
             padding-bottom: 0.5rem;
             border-bottom: 1px dashed #e06b6b;
             text-align: center;
+            white-space: pre-line;
         }
         .dashboard-grid {
             display: grid;
@@ -265,7 +266,7 @@
         }
         .chat-poster {
             color: #6ba6e0;
-            min-width: 120px;
+            min-width: 140px;
         }
         .chat-text {
             color: #c0c8d5;
@@ -306,6 +307,40 @@
             border-top: 1px solid #2a2e35;
             border-bottom: 1px solid #2a2e35;
         }
+        /* 借物表样式 */
+        .credit-section {
+            margin: 2rem 0 1rem;
+            background-color: #0f1217;
+            border: 1px solid #2a2e35;
+            padding: 1.5rem;
+        }
+        .credit-section h3 {
+            color: #e06b6b;
+            font-size: 1.5rem;
+            font-weight: 500;
+            border-left: 6px solid #e06b6b;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+        }
+        .credit-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 0.8rem 1.5rem;
+        }
+        .credit-item {
+            color: #c0c8d5;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            border-bottom: 1px dotted #2a2e35;
+            padding: 0.3rem 0;
+        }
+        .credit-item a {
+            color: #6ba6e0;
+            text-decoration: none;
+        }
+        .credit-item a:hover {
+            text-decoration: underline;
+        }
         .footer {
             margin-top: 3rem;
             padding-top: 1.5rem;
@@ -326,7 +361,7 @@
 </head>
 <body>
     <div class="container">
-        <!-- 头部：logo区域可点击返回首页 -->
+        <!-- 头部 -->
         <div class="header">
             <a href="concerto-alliance.html" class="logo-area">
                 <div class="logo"><img src="ca.jpg" alt="协奏曲徽章" onerror="this.style.display='none'; this.parentElement.innerText='CA'"></div>
@@ -336,24 +371,26 @@
                 <a href="about.html">关于</a>
                 <a href="project.html">独有项目</a>
                 <a href="history.html">世界观</a>
-                <!-- 登录信息 -->
                 <div class="user-info">
                     <span class="icon">;-)</span> 外勤特工Alex
                 </div>
             </div>
         </div>
 
-        <!-- 显示屏（原有） -->
+        <!-- 显示屏（已更新） -->
         <div class="dashboard">
             <div class="dashboard-header">
-                2106/8/3  2:36:32 a.m.    雨      大吉   祝你在这滂沱世末之雨中好运     联盟等待着你的归来
+                2132/8/3 2:36:32 a.m. 雨 <br>
+                大吉<br>
+                祝你在这滂沱世末之雨中好运 <br>
+                联盟等待着你的归来
             </div>
             <div class="dashboard-grid">
                 <div class="d-item"><span class="d-label">成员在线数：</span><span class="d-value">8K</span></div>
                 <div class="d-item"><span class="d-label">聊天室：</span><span class="d-value">可用</span></div>
-                <div class="d-item"><span class="d-label">广播：</span><span class="d-value">暂无</span></div>
-                <div class="d-item"><span class="d-label">未读信息：</span><span class="d-value">0</span></div>
-                <div class="d-item"><span class="d-label">附近节点：</span><span class="d-value">1</span></div>
+                <div class="d-item"><span class="d-label">广播：</span><span class="d-value">[点击进入直播间]</span></div>
+                <div class="d-item"><span class="d-label">未读信息：</span><span class="d-value">1</span></div>
+                <div class="d-item"><span class="d-label">附近节点：</span><span class="d-value">0</span></div>
                 <div class="d-item"><span class="d-label">附近聚生地：</span><span class="d-value">0</span></div>
                 <div class="d-item"><span class="d-label">附近连结种/卓越种：</span><span class="d-value">正在扫描</span></div>
                 <div class="d-item"><span class="d-label">当前地区暴雨综合强度：</span><span class="d-value">中</span></div>
@@ -361,13 +398,13 @@
                 <div class="d-item"><span class="d-label">当前地区光蚀综合强度：</span><span class="d-value">低</span></div>
             </div>
             <div class="dashboard-footer">
-                —— 数据更新于 2106/8/3 02:36:32
+                —— 数据更新于 2132/8/3 02:36:32
             </div>
         </div>
 
-        <!-- 1. 公共波段状态 -->
+        <!-- 1. 公共波段状态（不变） -->
         <div class="card">
-            <h3>协奏曲公共波段 · 暴雨纪元 2106/8/3 02:36</h3>
+            <h3>协奏曲公共波段 · 暴雨纪元 2132/8/3 02:36</h3>
             <div class="band-row">
                 <div class="band-item">
                     <span class="band-label">频率</span>
@@ -402,7 +439,6 @@
                     <span class="band-value">⏻ 凌晨特别节目：那些未被暴雨抹去的歌</span>
                 </div>
             </div>
-            <!-- 新增一行，放置自定义播放器 -->
             <div class="band-row" style="margin-top: 8px;">
                 <div class="custom-audio">
                     <audio id="bgm" loop src="shimogezhegq.mp3" preload="metadata"></audio>
@@ -421,24 +457,24 @@
             </div>
         </div>
 
-        <!-- 2. 聊天室 -->
+        <!-- 2. 聊天室（已更新） -->
         <div class="card">
             <h3>聊天室 · 164人在线 · 当前帖子：#313758166</h3>
             <div class="chat-messages">
                 <div class="chat-line">
                     <span class="chat-poster">【楼主_幸存者_Liam Cater_#351】</span>
-                    <span class="chat-text">“这里是Site-28，附近有个调度柱。有从东区过来的队伍吗？请回答。”</span>
+                    <span class="chat-text">“这里是Site-28，附近有个召唤柱。有从东区过来的队伍吗？请回答。”</span>
                 </div>
                 <div class="chat-line">
-                    <span class="chat-poster">【幸存者_John Reicher_#217     1楼】</span>
+                    <span class="chat-poster">【幸存者_John Reicher_#217 1楼】</span>
                     <span class="chat-text">“我们在办公区右翼Frank博士办公室找到了备用医疗包，坐标已发，需要接应。”</span>
                 </div>
                 <div class="chat-line">
-                    <span class="chat-poster">【匿名  2楼】</span>
-                    <span class="chat-text">“……我刚刚离开site28（）我想去找scp9999，有人一起吗，包食物，有车坐。”</span>
+                    <span class="chat-poster">【幸存者_不吃香菜＃3487 2楼】</span>
+                    <span class="chat-text">“我这找到了基金会的军火库，有买的吗，最好用电池或者食物换，香菜也行。”</span>
                 </div>
                 <div class="chat-line">
-                    <span class="chat-poster">【系统     2楼】</span>
+                    <span class="chat-poster">【系统】</span>
                     <span class="chat-text">检测到异常叙事波动，建议切换至加密频段。</span>
                 </div>
             </div>
@@ -446,15 +482,16 @@
                 <span>发帖□</span>
                 <span>回复□</span>
                 <span>查看信息□</span>
+                <span><a href="#" style="color:#e06b6b; text-decoration:none;">[点击进入买卖帖]</a></span>
             </div>
         </div>
 
-        <!-- 3. 今日广播节目单 -->
+        <!-- 3. 今日广播节目单（已更新） -->
         <div class="card">
             <h3>今日广播节目 >>>>> [点击进入直播间]</h3>
             <div class="schedule-item">
                 <span class="schedule-time">08:00</span>
-                <span>联盟晨报 · 昨日新增幸存据点3处</span>
+                <span>联盟晨报 · 剿灭1棵III阶召唤柱</span>
             </div>
             <div class="schedule-item">
                 <span class="schedule-time">10:00</span>
@@ -462,7 +499,7 @@
             </div>
             <div class="schedule-item">
                 <span class="schedule-time">14:00</span>
-                <span>幸存者来信 · “最近威慑种活动越来越频繁了，还带着卓越种，大家要...“</span>
+                <span>幸存者来信 · “有人卖火锅底料吗？想吃家……”</span>
             </div>
             <div class="schedule-item">
                 <span class="schedule-time">18:00</span>
@@ -474,9 +511,32 @@
             </div>
         </div>
 
-        <!-- 4. 新格言 -->
+        <!-- 4. 格言 -->
         <div class="motto-new">
             「无论你在哪片废墟，暴雨之下，我们仍在发声。」
+        </div>
+
+        <!-- 新增：借物表 -->
+        <div class="credit-section">
+            <h3>借 物 表</h3>
+            <div class="credit-grid">
+                <div class="credit-item">底层世界观+各站点+所有非原创SCP ———— <a href="https://scp-wiki-cn.wikidot.com/" target="_blank">SCP基金会（经修改）</a></div>
+                <div class="credit-item">残骸 ———— MinecraftMod-<a href="https://www.mcmod.cn/class/3625.html" target="_blank">[SRP]逃逸：寄生体（经修改）</a></div>
+                <div class="credit-item">灾厄聚合体 ———— MinecraftMod-<a href="https://www.mcmod.cn/class/11210.html" target="_blank">[FIS]真菌感染：孢子（经修改）</a></div>
+                <div class="credit-item">暴雨 ———— <a href="https://re.bluepoch.com/home/" target="_blank">重返未来：1999（经修改）</a></div>
+                <div class="credit-item">源石 ———— <a href="https://ak.hypergryph.com/" target="_blank">明日方舟/明日方舟：终末地</a></div>
+                <div class="credit-item">GOC攻击小组1121 ———— <a href="https://goc-wiki-cn.wikidot.com/" target="_blank">全球超自然联盟官方网站</a> / RXsend</div>
+                <div class="credit-item">UIU特工组 ———— RXsend</div>
+                <div class="credit-item">Lilith/世界之外 ———— <a href="https://mzh.moegirl.org.cn/%E4%B8%8D/%E5%AD%98%E5%9C%A8%E7%9A%84%E4%BD%A0%EF%BC%8C%E5%92%8C%E6%88%91" target="_blank">不/存在的你，和我</a></div>
+                <div class="credit-item">协奏曲协议 ———— 拨奏曲程序（灵感来源）</div>
+                <div class="credit-item">SCP-079-Paradox ———— <a href="https://scp-wiki-cn.wikidot.com/scp-079" target="_blank">SCP-079（灵感来源）</a></div>
+                <div class="credit-item">调度员 ———— <a href="https://www.mcmod.cn/item/649607.html" target="_blank">调度柱（灵感来源）</a></div>
+                <div class="credit-item">SCP-912 ———— <a href="https://scp-wiki-cn.wikidot.com/scp-912" target="_blank">SCP-912（经修改）</a></div>
+                <div class="credit-item">新世界/SCP-8526 ———— 广大异世界厕纸番 / <a href="https://baike.baidu.com/item/%E5%8D%A1%E6%8B%89%E6%AF%94-%E4%B8%98%E6%B5%81%E5%BD%A2/6405078" target="_blank">卡拉比-丘流形</a></div>
+                <div class="credit-item">噎鸣计划 ———— <a href="https://scp-wiki-cn.wikidot.com/scp-cn-1000" target="_blank">SCP-CN-1000</a></div>
+                <div class="credit-item">收容失效：恐怖狩猎 ———— SCP:收容失效Mod-<a href="https://www.moddb.com/mods/scp-terror-hunt-mod/downloads" target="_blank">SCP:收容失效：恐怖狩猎（scp:cb:th）</a></div>
+                <div class="credit-item">破晓之时/光蚀 ———— <a href="https://scp-wiki-cn.wikidot.com/shaggydredlocks-proposal" target="_blank">SCP-001-S.D.Locke的提案-破晓之时</a></div>
+            </div>
         </div>
 
         <!-- 页脚 -->

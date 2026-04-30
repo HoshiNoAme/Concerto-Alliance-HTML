@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>记忆猎团 · 暗网服务终端</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c0e url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" opacity="0.1"><path fill="none" stroke="%23333" stroke-width="0.5" d="M0 0 L200 200 M200 0 L0 200 M100 0 L100 200 M0 100 L200 100"/><circle cx="100" cy="100" r="40" stroke="%23333" stroke-width="0.6" fill="none"/><path d="M100 60 L110 90 L140 100 L110 110 L100 140 L90 110 L60 100 L90 90 Z" stroke="%23333" stroke-width="0.6" fill="none"/></svg>');
+            background-size: 60px 60px;
+            font-family: 'Courier New', 'Fira Code', 'Roboto Mono', monospace;
+            color: #d4d4d4;
+            line-height: 1.5;
+            padding: 1.5rem;
+        }
+
+        /* 暗网容器 */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #0f1115;
+            border: 1px solid #2a2b2f;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8), inset 0 0 10px rgba(0, 0, 0, 0.3);
+            padding: 2rem;
+            border-radius: 8px;
+            position: relative;
+        }
+
+        /* 闪烁光标 / 暗网标题 */
+        .glitch {
+            color: #b0ffb0;
+            text-shadow: 0.05em 0 0 #00ff00, -0.05em -0.025em 0 #ff00aa;
+            animation: glitch 0.3s infinite alternate;
+        }
+
+        @keyframes glitch {
+            0% { text-shadow: 0.03em 0 0 #00ff00, -0.03em -0.02em 0 #ff00aa; }
+            100% { text-shadow: -0.03em 0.02em 0 #00ff00, 0.03em -0.01em 0 #ff00aa; }
+        }
+
+        .header {
+            text-align: center;
+            border-bottom: 2px solid #2c4f2c;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .hunt-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            letter-spacing: -1px;
+            background: linear-gradient(135deg, #c0ffc0, #7bc77b);
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+            text-shadow: 0 0 8px #1f4f1f;
+        }
+
+        .tagline {
+            color: #8a8a8a;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        /* 卡片区块：黑市风格 */
+        .card {
+            background: #121418;
+            border: 1px solid #2c2e34;
+            padding: 1.5rem;
+            margin-bottom: 2rem;
+            border-radius: 12px;
+            transition: 0.1s linear;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+        }
+
+        .card:hover {
+            border-color: #5cb85c;
+            box-shadow: 0 0 12px rgba(92, 184, 92, 0.2);
+        }
+
+        .card h2 {
+            color: #b0ffb0;
+            font-size: 1.8rem;
+            font-weight: 500;
+            border-left: 4px solid #5cb85c;
+            padding-left: 1rem;
+            margin-bottom: 1.2rem;
+            letter-spacing: -0.5px;
+        }
+
+        .card h3 {
+            color: #e0e0a0;
+            font-size: 1.3rem;
+            margin: 1rem 0 0.5rem;
+            font-weight: 500;
+        }
+
+        .card p, .card li {
+            color: #bcbcbc;
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .service-list {
+            list-style: none;
+            margin-top: 0.5rem;
+        }
+        .service-list li {
+            padding: 0.4rem 0;
+            border-bottom: 1px dotted #2a2f2a;
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+        }
+        .price {
+            color: #c8ff88;
+            font-weight: bold;
+            background: #1f2a1f;
+            padding: 0.1rem 0.5rem;
+            border-radius: 12px;
+            margin-left: 1rem;
+            font-size: 0.9rem;
+        }
+
+        .warning {
+            border-left: 3px solid #ff6666;
+            background: #1e1818;
+            padding: 1rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+        }
+
+        .button-mock {
+            display: inline-block;
+            background: #1d3a1d;
+            color: #ccffcc;
+            padding: 0.6rem 1.4rem;
+            text-decoration: none;
+            border-radius: 40px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            border: 1px solid #5cb85c;
+            transition: 0.1s;
+            cursor: pointer;
+            margin-top: 0.5rem;
+            text-align: center;
+        }
+        .button-mock:hover {
+            background: #2b5e2b;
+            box-shadow: 0 0 6px #6f6;
+        }
+
+        .flex-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1.5rem;
+        }
+
+        hr {
+            border-color: #2a3a2a;
+            margin: 1rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.7rem;
+            color: #6f6f6f;
+            border-top: 1px solid #2a2f2a;
+            padding-top: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .blink {
+            animation: blink 1s step-end infinite;
+        }
+        @keyframes blink {
+            50% { opacity: 0; }
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1rem;
+            }
+            .hunt-title {
+                font-size: 1.8rem;
+            }
+            .card h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <div class="hunt-title">记忆猎团 <span style="font-size: 1rem;">| 您的记忆，我们的使命</span></div>
+        <div class="tagline">准入 · 客户入口</div>
+        <div class="tagline blink" style="color:#6f6;">[ 加密频道已建立 ]</div>
+    </div>
+
+    <!-- 欢迎 -->
+    <div class="card">
+        <h2>▌ 欢迎来到记忆猎团</h2>
+        <p>我们是一家专注于记忆领域的高端服务机构。无论您是想删除一段痛苦的过去，提取某个被遗忘的角落，还是希望植入一段从未发生过的美好——我们都能为您实现。</p>
+        <div class="warning">
+            <strong>⚠️ 您是否曾经……</strong><br>
+            · 想要忘记那个让您夜不能寐的名字？<br>
+            · 希望自己能凭空多出一段旅行经历，好在朋友面前炫耀？<br>
+            · 怀疑自己的记忆被人动过手脚，想找回原始的真相？<br>
+            · 作为公司高管，想安全地查看竞争对手的服务器内容？<br>
+            <span style="color:#b0ffb0;">如果答案是“是”，那么您找对人了。</span>
+        </div>
+    </div>
+
+    <!-- 我们是谁 -->
+    <div class="card">
+        <h2>▌ 我们是谁？</h2>
+        <p>记忆猎团（Mneme Hunters）成立于逆模因技术刚刚萌芽的年代。我们的创始团队来自全球顶尖的神经科学、奇术学和逆模因学领域，经过多年秘密研发，掌握了世界上最先进的记忆提取、存储、修改与植入技术。</p>
+        <p>我们不是医生，不是心理咨询师，也不是黑客。我们是记忆的猎人——专门为您狩猎那些您想要拥有、或者想要抛弃的记忆。</p>
+    </div>
+
+    <!-- 服务列表 -->
+    <div class="card">
+        <h2>▌ 我们的服务</h2>
+        <ul class="service-list">
+            <li><strong>记忆删除</strong> – 从脑海中彻底抹除特定记忆，不留痕迹。创伤、秘密、尴尬经历或某个人。删除后您不会记得那段记忆曾经存在过。<span class="price">$5,000起</span></li>
+            <li><strong>记忆提取</strong> – 将记忆复制为独立副本（白镜晶体/加密硬盘等）。保留原始记忆，副本可用于收藏、分析或出售。<span class="price">$12,000起</span></li>
+            <li><strong>记忆植入</strong> – 植入完整设计的虚拟记忆，增强自信、创造灵感或改变看法。<span class="price">$25,000起</span></li>
+            <li><strong>记忆修复与验证</strong> – 恢复被篡改的记忆痕迹，出具超自然法律效力鉴定报告。兼“记忆清洁”服务。<span class="price">$8,000起</span></li>
+            <li><strong>记忆交易</strong> – 出售您的一段记忆，按情感浓度、稀缺性估价，最高七位数美元。或以记忆换取服务。<span class="price">议价</span></li>
+        </ul>
+    </div>
+
+    <!-- 安全性说明 -->
+    <div class="card">
+        <h2>▌ 安全性说明</h2>
+        <p>您可能会担心：把我的记忆交给陌生人，安全吗？<br><strong>我们的回答是：非常安全。</strong></p>
+        <p><strong>物理安全：</strong>实体公司位于██████，前瓦尔拉文精英安保24小时值守。远程服务派遣逆模因猎手上门，杜绝第三方窃听。<br>
+        <strong>信息安全：</strong>量子加密 + 奇术封条双重保护。仅您本人通过生物特征+记忆密钥解锁。<br>
+        <strong>法律安全：</strong>国际认证编号 MH-7721-RA。如有纠纷，全额退款+法律援助。</p>
+    </div>
+
+    <!-- 价格与支付方式 -->
+    <div class="card">
+        <h2>▌ 价格与支付方式</h2>
+        <p>单项服务：$5,000 – $500,000 美元（根据复杂度浮动）。</p>
+        <p><strong>灵活支付选项：</strong><br>
+        💰 以记忆抵价：提供我们感兴趣的记忆，评估价值抵扣服务费，甚至免费。<br>
+        🧠 成为记忆捐献者：无偿捐献一段记忆 → 荣誉会员 + 未来8折优惠 + 《记忆月刊》。</p>
+        <div class="warning">
+            <strong>关于记忆捐献的特别说明</strong><br>
+            所有记忆入库前彻底匿名化（剥离身份、时间戳、地理位置），仅保留情感与叙事结构。捐献珍贵记忆可能被选入《记忆月刊》“本月最佳”，但身份绝对隐藏。若仍不安，可选择不捐献。
+        </div>
+    </div>
+
+    <!-- 记忆猎手招募 -->
+    <div class="card">
+        <h2>▌ 记忆猎团与“记忆猎手”计划</h2>
+        <p>您是否对记忆技术感兴趣，并希望成为我们的一员？<br>
+        记忆猎团常年招募“记忆猎手”（Memory Hunter）——外勤技术人员。</p>
+        <ul style="margin-left: 1.5rem;">
+            <li>具备逆模因学或奇术学基础（≥2年从业）</li>
+            <li>心理素质过硬，能面对他人创伤记忆</li>
+            <li>通过“记忆纯洁度测试”（无后门记忆植入）</li>
+            <li>签署《猎团员工知情同意书》</li>
+        </ul>
+        <p>成功加入将获得全套装备 + 高额提成。警告：这份工作可能让您对自己的记忆也产生怀疑——我们不为此负责。</p>
+        <div class="flex-buttons">
+            <span class="button-mock" onclick="alert('申请通道已开启。请发送您的逆模因履历至 darkmemo@mh.anon。')">申请猎手合约</span>
+        </div>
+    </div>
+
+    <!-- 最后的提醒 + 条款 -->
+    <div class="card">
+        <h2>▌ 最后的提醒</h2>
+        <p>记忆猎团从不强迫任何人使用我们的服务。您可以带着记忆离开，也可以选择遗忘。<strong>但请记住：</strong></p>
+        <ul style="margin-left: 1.5rem;">
+            <li>一旦删除，我们不会为您恢复（除非重新购买 — 价格翻倍）。</li>
+            <li>一旦出售，该记忆将永久属于猎团记忆库，您无权索回（但可付费参观“与自己的记忆见面”）。</li>
+            <li>我们可能在不通知您的情况下，对您的记忆副本进行“合理使用”（培训、改进技术、内部研讨，身份隐去）。</li>
+        </ul>
+        <div class="warning" style="margin-top: 1rem;">
+            ⚡ 如果您同意以上条款，请点击下方“开始服务”。<br>
+            ⚡ 如果您不同意……您已经看到这里了，说明您其实有点好奇，不是吗？
+        </div>
+        <div class="flex-buttons">
+            <span class="button-mock" onclick="alert('服务启动中… 请等待猎手与您单线联系。暗号：记忆从不撒谎。')">开始服务</span>
+            <span class="button-mock" style="background:#2f2f2f; border-color:#888;" onclick="alert('您选择了退出。已记录您的访问。')">拒绝并离开</span>
+        </div>
+        <p style="margin-top: 1rem; text-align: right; color:#afafaf;">记忆猎团 —— 为记忆而生，也为您而生。</p>
+    </div>
+
+    <div class="footer">
+        [ 染血之钟中继节点 ] 警告。本服务不受莫比乌斯结社保护 · 所有交易记录将被哈希归档。    </div>
+</div>
+<script>
+    // 简单控制台警告
+    console.log("%c记忆猎团暗网入口 | 您的意识已被记录", "color: #5f5; font-size: 16px;");
+</script>
+</body>
+</html>

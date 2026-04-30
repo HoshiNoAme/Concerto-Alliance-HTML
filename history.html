@@ -76,7 +76,6 @@
             color: #ffffff;
             border-bottom-color: #e06b6b;
         }
-        /* 登录信息样式 */
         .user-info {
             color: #ffb8b8;
             font-size: 0.9rem;
@@ -139,7 +138,7 @@
             color: #9aa8b9;
             font-size: 1rem;
         }
-        /* 术语列表样式 */
+        /* 术语列表 */
         .term-list {
             display: flex;
             flex-direction: column;
@@ -161,9 +160,47 @@
             flex-shrink: 0;
         }
         .term-def {
-            color: #9aa8b9;
+            color: #c0c8d5;
             font-size: 0.95rem;
             line-height: 1.5;
+        }
+        /* 白皮书样式 */
+        .whitepaper {
+            background-color: #0f1217;
+            border: 1px solid #2a2e35;
+            padding: 1.5rem;
+            color: #c0c8d5;
+            line-height: 1.7;
+        }
+        .whitepaper h3 {
+            color: #e06b6b;
+            font-size: 1.4rem;
+            margin: 1.5rem 0 1rem;
+            border-left: 3px solid #e06b6b;
+            padding-left: 0.8rem;
+        }
+        .whitepaper h3:first-of-type {
+            margin-top: 0;
+        }
+        .whitepaper h4 {
+            color: #ffb8b8;
+            font-size: 1.1rem;
+            margin: 1rem 0 0.5rem;
+        }
+        .whitepaper p {
+            margin-bottom: 0.8rem;
+        }
+        .whitepaper ul, .whitepaper ol {
+            margin-left: 2rem;
+            margin-bottom: 0.8rem;
+        }
+        .special-chapter {
+            background-color: #1a1f27;
+            border-left: 6px solid #e06b6b;
+            padding: 1rem 1.5rem;
+            margin: 1rem 0;
+            font-style: italic;
+            color: #c0c8d5;
         }
         .footer {
             margin-top: 3rem;
@@ -195,56 +232,92 @@
                 <a href="about.html">关于</a>
                 <a href="project.html">独有项目</a>
                 <a href="history.html" style="color:#ffffff; border-bottom-color:#e06b6b;">世界观</a>
-                <!-- 登录信息 -->
                 <div class="user-info">
                     <span class="icon">;-)</span> 外勤特工Alex
                 </div>
             </div>
         </div>
 
-        <!-- 世界观介绍 -->
+        <!-- 世界观介绍（更新） -->
         <div class="section">
             <h2>世界观介绍</h2>
             <div class="worldview">
-                <p style="margin-bottom:1rem;"><strong>时间线8526 </strong></p>
-                <p>底层框架为“噎鸣计划”--SCP-CN-1000：在无尽的时间线循环中，人类文明总在2100年遭遇未知的终极毁灭。某条时间线的十二位幸存者组成了最初的O5议会，启动“噎鸣计划”——主动向过去的时间线投送异常原型与技术，催生GOC、基金会等组织，以期武装人类，打破毁灭循环。</p>
-                <p style="margin-top:1rem;">核心灾难为SCP-10000-8526“暴雨”，一种针对叙事层的存在主义格式化程序。</p>
-                <p style="margin-top:1rem;">世界之外：见SCP-9999。</p>
+                <p>协奏曲联盟的世界并非遥远的神话或异界，它与你所处的现实几乎重叠——相同的历史、相同的地理、相同的城市与街道。唯一的区别在于，在这个世界的阴影中，存在着超自然之物。这些异常从未大举入侵日常生活，不是因为它们不存在，而是因为有一群人用帷幕将它们与常态隔开。</p>
+                <p style="margin-top:1rem;">这个世界不完全是黑暗的，也绝非光明。它更像阴天：灰蒙蒙的，偶尔透出几缕阳光，但随时可能转成暴雨。人类文明在技术和超自然力量的拉扯中前行，时而有惊世突破，时而陷于停滞。整体而言，它比现实更动荡、更危险，但也因此孕育出了更坚韧的希望。</p>
             </div>
         </div>
 
-        <!-- 剧情时间轴 -->
+        <!-- 剧情时间轴（更新） -->
         <div class="section">
             <h2>剧情时间轴</h2>
             <ul class="timeline">
-                <li><span class="timeline-year">1939-1945 · 超常雏形纪元 · CHAPTER.ZERO:0/CHAPTER.I:书院与基金会</span><span class="timeline-desc">“噎鸣计划”引导下，超自然组织于二战期间系统化成立。第七次超自然大战结束，GOC成立。混沌分裂者因理念分歧脱离基金会。DPT小队进入圣克里斯汀娜书院学习，后来进入SCP基金会。</span></li>
-                <li><span class="timeline-year">1945-2010 · 余波纪元 · 混沌分裂者支线:易融解前路</span><span class="timeline-desc">冷战背景下超自然界的内部分化与发展。DPT小队于1999/2006/2009年间被提出，成立并逐渐成型，079-P被创造。</span></li>
-                <li><span class="timeline-year">2010-2015 · 技术爆炸纪元 · CHAPTER.II:手提箱</span><span class="timeline-desc">GOC的R.W.P.S.体系技术泄露，引发全球超自然科技革命。DPT小队行动，夺取RWPS原文件但技术已被公开。</span></li>
-                <li><span class="timeline-year">2015-2019 · 逆模因纪元 · CHAPTER.III:ANTIMEMETIC</span><span class="timeline-desc">DPT小队在O5-8引导下，于逆模因部总部成功无效化概念实体SCP-3125，引发超自然界逆模因无效化浪潮，Dr.Aris获得SCP-3125部分力量。</span></li>
-                <li><span class="timeline-year">2019-2100 · 乌托邦纪元 · CHAPTER.IV:乌托邦/CHAPTER.V:收容失效：恐怖狩猎</span><span class="timeline-desc">SCP-8526被发现。DPT小队探索此地，Dr.Aris加入小队，最终以篡改时间线的代价阻止IT拯救世界，并建立Site-413-C。Site13爆发收容失效，小队前往镇压，最终得知“暴雨”存在。</span></li>
-                <li><span class="timeline-year">2100-2173 · 暴雨纪元 · CHAPTER.Final:THE STORM</span><span class="timeline-desc">“暴雨”爆发，世界进入存在主义格式化的终末阶段。主角团为了让记述人开启新世界，在暴雨后的世界里寻找残存的情感、思绪和记忆。</span></li>
- <li><span class="timeline-year">2173-永恒 · 新世界 · CHAPTER.X:永不结束的故事</span><span class="timeline-desc">Vestige_HoshiNoAme以SCP-8526为基础开启新世界，部分人员保留记忆。</span></li>
+                <li><span class="timeline-year">1939-1945 · 常态苗 —— CHAPTER.I</span><span class="timeline-desc">大量的GOI如雨后春笋般浮现……其中不乏后来的佼佼者，但有人似乎早就存在了。</span></li>
+                <li><span class="timeline-year">1945-2020 · 余波 —— CHAPTER.VI（混沌分裂者支线）</span><span class="timeline-desc">战争余波荡漾，世界似乎逐渐遗忘，但超自然界仍然燃烧着战火，硝烟和死亡从未离去。</span></li>
+                <li><span class="timeline-year">2020-2035 · 技术爆炸 —— CHAPTER.II：手提箱</span><span class="timeline-desc">血月的光辉催生了点点星光，那是技术的革命，曾经畅想的未来此刻只是一步之遥。</span></li>
+                <li><span class="timeline-year">2035-2045 · ██████ —— CHAPTER.III：ANTIMEMETIC</span><span class="timeline-desc">在被遗忘者的呕心沥血下，记忆终于被重新提起，一次对不可被知晓者的围剿轰轰烈烈的开始了，但是祂的病毒亦然散播开来……</span></li>
+                <li><span class="timeline-year">2045-2050 · 伪乌托邦 —— CHAPTER.IV：乌托邦</span><span class="timeline-desc">人类怀抱着最崇高的理想偷渡进入此处，本以为是盗火的普罗米修斯，实则在同类的骗局中带来了最痛苦的苦难之爪，乌托邦不再……</span></li>
+                <li><span class="timeline-year">2050-2099 · N/A —— CHAPTER.V：恐怖狩猎</span><span class="timeline-desc">20和21世纪被称为人类最疯狂的年代，事实上也确实如此。但人们都不会料到，这半个世纪是如此平淡无光，没有飞行汽车，没有外星人，没有Frutiger Aero，只有毫无进步的时代，越发黯淡的世界……祂已经侵占了这里，毫不知情的人们并未等待着一场至洁至净之雨。</span></li>
+                <li><span class="timeline-year">2100-2173 · 雨葬/暴雨纪元 —— CHAPTER.Final：THE STORM</span><span class="timeline-desc">人们终于意识到这将是陈腐世界的终末，从还未接受末日的梦游到宛若淘金热的癫狂，再到麻木。</span></li>
             </ul>
         </div>
 
-        <!-- 新增：术语解析 -->
+        <!-- 新增：SPECIAL CHAPTER -->
+        <div class="section">
+            <h2>SPECIAL CHAPTER</h2>
+            <div class="special-chapter">
+                <p><strong>CHAPTER.IX</strong><br>九重的琐记，从记述者的过去，背叛者的变革到与无法逃出之笼的较量...这里有一些或许可以被称为DLC的东西。</p>
+            </div>
+        </div>
+
+        <!-- 新增：R.W.P.S. 技术白皮书（三次修订版） -->
+        <div class="section">
+            <h2>R.W.P.S. 技术白皮书</h2>
+            <div class="whitepaper">
+                <p style="font-size:0.9rem; color:#9aa8b9; margin-bottom:1rem;">三次修订版 · 协奏曲联盟技术档案</p>
+                <h3>一、定义与核心概念</h3>
+                <p>R.W.P.S.（Resonant Wave-Phasic System，共振波相系统）是一种利用“序元”（Orderium）——一种人工合成的亚稳态凝聚态物质——来实现能量调控、物质强化及现实扭曲效应的基础技术体系。</p>
+                <p>序元的本质是一种高密度认知态晶格。它并非天然矿物，而是通过特定物理场（强磁场 + 超声驻波）作用于普通过渡金属化合物（如氧化铁、氧化钴）诱导产生的有序-无序混合相材料。在晶格内部，电子自旋与原子振动被锁定在一种“宏观量子有序态”中，从而赋予序元独特的异常性质。</p>
+                
+                <h3>二、序元的三大特性</h3>
+                <p><strong>1. 秩序增强：</strong>序元对外界物质具有“晶格模板效应”。当序元与普通材料接触并通入微弱电流时，它会迫使邻近材料的原子排列趋向于序元自身的超有序结构。这一过程不改变材料的化学成分，但可使其强度、韧性、导电性、导热性等物理参数提升200%~500%，且不受常规热力学第二定律的约束（能量消耗极低）。</p>
+                <p><strong>2. 信息存续：</strong>序元内部的量子态可以编码大量信息，且信息衰减率极低（室温下理论上可保存10^5年以上）。这使得序元既能作为超高密度存储介质（单克可存储数PB数据），也能作为“记忆锚点”用于奇术施法——施术者将EVE能量注入序元时，序元会“记住”能量的波形并重复输出，从而放大术式效果。</p>
+                <p><strong>3. 同化转化：</strong>在持续电流激励下，序元会缓慢将周围的无序物质（液体、气体、非晶固体）转化为新的序元结晶。这一同化速度取决于物质的化学复杂度：对简单分子（如水、氧气）的同化速率为0.1mm/天，对有机物的同化速率为0.01mm/天，对复杂合金几乎不可同化。该特性使得序元在开放环境中具有自我扩增能力，但速度极慢，不足以引发失控。</p>
+                
+                <h3>三、制备与普及</h3>
+                <p><strong>· 原料：</strong>基础材料为铁、钴、镍等廉价过渡金属的氧化物粉末（工业级即可）；溶剂为高纯度去离子水，或任一奇术溶液（或拥有奇术场附魔条件的环境）。</p>
+                <p><strong>· 制备设备：</strong>强磁场发生器（1.5T ~ 3T，可用永久磁铁阵列替代）与超声驻波发生器（20kHz ~ 40kHz，市售工业超声波清洗机改装即可）。</p>
+                <p><strong>· 制备流程：</strong><br>
+                1. 将金属氧化物粉末与去离子水按1:10比例混合，形成悬浮液。<br>
+                2. 将悬浮液置于强磁场中，同时施加超声驻波，处理24小时。<br>
+                3. 停止超声，维持磁场，让悬浮液静置12小时。此时序元结晶会自发沉降在容器底部。<br>
+                4. 过滤、干燥，得到灰色至黑色的微晶粉末（纯度85%~95%）。<br>
+                5. 对微晶粉末进行奇术场附魔或浸泡在任一奇术溶液内30分钟，进行分离或完成附魔。完成附魔后的粉末会根据奇术溶液或附魔种类的不同，呈现不同的颜色并自发光。</p>
+                <p><strong>· 产量与成本：</strong>一台家用微波炉大小的设备，单次可产50克序元粉末，耗电约10度；原料成本低于人民币20元/公斤（工业氧化铁价格）。因此，序元在全球范围内均可实现廉价、便捷、低门槛生产。技术爆炸纪元中，R.W.P.S.技术的快速普及正是得益于这种“冰箱级”制备难度。需要注意的是，强磁场与超声处理需要极精确的频率组合和磁场梯度，奇术附魔步骤亦需要可控的工业化量产奇术溶液或稳定的奇术场附魔工艺。</p>
+                
+                <h3>四、应用技术</h3>
+                <p><strong>1. R.W.P.S.武器改装：</strong>将序元晶体作为武器的供能核心。当武器开火时，晶体在EVE能量或电磁的刺激下释放出特殊流，直接对击发的原理进行修改。随后，该流物质伴随子弹出膛，对子弹进行奇术附魔，并形成蓝色或紫色的烟雾。此方式通常比直接进行奇术附魔释放出高2-3倍的奇术效能。</p>
+                <p><strong>2. 施术单元：</strong>将序元粉末压制成特定形状（如圆柱体、圆片），并封装在金属壳体中，两端引出电极。施术者将EVE能量输入序元，序元会以极低损耗（<5%）放大并稳定术式波形，使得原本需要高度专业训练的奇术变得像“按按钮”一样简单。不同形状的施术单元对应不同的奇术类型（如攻击型、防御型、现实稳定型）。</p>
+                <p><strong>3. 局部休谟控制：</strong>利用序元的“同化转化”特性，配合精密电流控制，可以实现对局部现实休谟值的编辑。具体原理：序元晶体在超载状态下会短暂“融化”成一种介于物质与信息之间的相态，该相态能够与时空结构发生共振。通过改变注入电流的波形，可以人为升高或降低指定区域的现实稳定性。</p>
+                <p><strong>4. 记忆存储与逆模因对抗：</strong>序元的“信息存续”特性使其成为理想的逆模因存储介质。记忆猎团等组织所使用的特殊晶体，本质上就是经过特殊掺杂的序元单晶。</p>
+                
+                <h3>五、技术限制与风险</h3>
+                <p><strong>· 过载爆炸：</strong>当通过序元的电流超过其临界值时，序元会发生“相崩溃”，瞬间释放出数倍于输入能量的冲击波和高温等离子体。对SCP-9123（血月夜）过载现象的一种推测正是：血月夜环境将装备推向性能极限，使其面临极高的爆炸风险。</p>
+                
+                <h3>六、结语</h3>
+                <p>R.W.P.S.技术的本质并非依赖神秘矿物，而是人类对凝聚态物理极限的突破。序元——这种由铁粉和清水在磁场与声场中孕育出的“活晶体”——既廉价又强大，既稳定又危险。它是技术爆炸纪元的基石，也是暴雨纪元中人类最后的武器涂层与奇迹引导者。只要还有一台旧式超声波清洗机、一块强力磁铁和一瓶氧化铁粉末，任何人都能重新点燃R.W.P.S.的火种。</p>
+            </div>
+        </div>
+
+        <!-- 术语解析（更新） -->
         <div class="section">
             <h2>术语解析</h2>
             <div class="term-list">
-                <div class="term-item"><span class="term-name">R.W.P.S.</span><span class="term-def">技术爆炸纪元的基石技术。基础是源石（来自《明日方舟》设定）。源石特性：秩序、存续、同化周围物质。起源：白垩纪晚期，一艘来自“塔罗斯”卫星的储藏舰坠落地表，在地下深处种下源石种子，导致生物大灭绝。新世界同样有源石矿脉和R.W.P.S.体系。</span></div>
-                <div class="term-item"><span class="term-name">世界之外</span><span class="term-def">见SCP-9999。</span></div>
-                <div class="term-item"><span class="term-name">暴雨</span><span class="term-def">见SCP-10000-8526。</span></div>
-                <div class="term-item"><span class="term-name">噎鸣计划</span><span class="term-def">十二位幸存者（初代O5）向过去的时间线投送异常原型与技术，催生GOC、基金会等组织，试图打破2100年的毁灭循环。（原文：SCP-CN-1000）</span></div>
-                <div class="term-item"><span class="term-name">光蚀</span><span class="term-def">“破晓之时”被阻止后的太阳异常现象，表现为将阳光下的生物同化为凝胶，与残骸类似且极具攻击性，在其影响时段外出相当于加入残骸。</span></div>
-                <div class="term-item"><span class="term-name">xx种</span><span class="term-def">“残骸”的类群，见SCP-10000-8526，设定来自SRP-逃逸：寄生体。</span></div>
-                <div class="term-item"><span class="term-name">EVE能量</span><span class="term-def">使用奇术的基础，也被称为“生命力”“法力值”“蓝条”，可以通过使用血液，牛奶等补充。</span></div>
-                <div class="term-item"><span class="term-name">媒介</span><span class="term-def">增强奇术效果的物品。载有强烈情感的物品都可以是媒介——RWPS施术单元、复古魔杖、笔，甚至空气。
-</span></div>
-                <div class="term-item"><span class="term-name">奇术vs魔法</span><span class="term-def">奇术：基于科学理论的EVE操控。魔法：基于个人想象的EVE操控。</span></div>
-                <div class="term-item"><span class="term-name">源石</span><span class="term-def">明日方舟。——O5-13</span></div>
-                <div class="term-item"><span class="term-name">SCP-912</span><span class="term-def">“小”改了一下形象，大体按照原文设定。——O5-13</span></div>
-                <div class="term-item"><span class="term-name">Site-1064</span><span class="term-def">“破晓之时”事件的终结者。全员驾驶载有奇术核弹的飞行器至太阳旁引爆，重塑现实，全员牺牲。</span></div>
-                <div class="term-item"><span class="term-name">新世界</span><span class="term-def">基于SCP-8526的，在2173年世界毁灭后由记述人创造的新世界，部分人员来到新世界时保留了记忆，出现过的角色均已确认各得其所。</span></div>
+                <div class="term-item"><span class="term-name">演化阶段</span><span class="term-def">暴雨进程中残骸群体进化的刻度。从阶段1到阶段10，每阶段都允许新的单位或现象出现（如连结种、穹顶、Node、全局适应性等）。阶段越高，残骸对世界的改造越彻底，人类的生存空间越小。</span></div>
+                <div class="term-item"><span class="term-name">光蚀</span><span class="term-def">请参考<a href="https://scp-wiki-cn.wikidot.com/shaggydredlocks-proposal" target="_blank" style="color:#e06b6b;">S.D.Locke的提案</a>。阳光会瞬间将暴露的生物转化为无意识、具攻击性的凝胶状物质。与S.D.Locke的提案不同的是，光蚀现象是间歇性的。</span></div>
+                <div class="term-item"><span class="term-name">EVE能量</span><span class="term-def">使用奇术的基本“燃料”，也被称为生命力或法力值。可通过血液、牛奶等物质补充。</span></div>
+                <div class="term-item"><span class="term-name">媒介</span><span class="term-def">增强奇术效果的物品。任何承载强烈情感的物品都可能成为媒介——R.W.P.S.施术单元、复古魔杖、甚至一支空白的笔。媒介本身不提供力量，它只是引导与放大人与EVE能量之间的连接。</span></div>
+                <div class="term-item"><span class="term-name">奇术 vs 魔法</span><span class="term-def">奇术是基于科学理论（EVE能量操控）的技术，有可复现的规律；魔法则是基于个人想象力的EVE操控，更依赖天赋与直觉。两者本质上同源，只是方法论不同。</span></div>
+                <div class="term-item"><span class="term-name">幻境</span><span class="term-def">世界之外（SCP-9999）的非核心区域。广大的虚空，记忆的墓园，每一刻的自己，过去和未来的每一种可能性，意象的海洋......尽皆于此。</span></div>
             </div>
         </div>
 

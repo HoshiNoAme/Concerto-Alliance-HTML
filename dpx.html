@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>地平线计划 · 内部档案 | 协奏曲联盟</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c10;
+            font-family: 'Segoe UI', 'Roboto', 'Courier New', monospace;
+            color: #cccccc;
+            line-height: 1.5;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+            padding: 2rem;
+            position: relative;
+        }
+
+        /* 档案标记 */
+        .archive-stamp {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            background: #8b0000;
+            color: #ffcc99;
+            padding: 0.2rem 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+            transform: rotate(5deg);
+            border-radius: 2px;
+            font-family: monospace;
+            letter-spacing: 2px;
+        }
+
+        .header {
+            border-bottom: 2px solid #e06b6b;
+            padding-bottom: 1rem;
+            margin-bottom: 2rem;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .archive-id {
+            font-size: 0.85rem;
+            color: #e06b6b;
+            font-family: monospace;
+        }
+
+        .archive-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #e06b6b;
+            letter-spacing: 1px;
+        }
+
+        .level {
+            background: #1a1f27;
+            border: 1px solid #e06b6b;
+            padding: 0.3rem 1rem;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+
+        .section {
+            margin-bottom: 2.2rem;
+        }
+
+        .section h2 {
+            color: #e06b6b;
+            font-size: 1.6rem;
+            border-left: 5px solid #e06b6b;
+            padding-left: 1rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .section h3 {
+            color: #ffb8b8;
+            font-size: 1.3rem;
+            margin: 1rem 0 0.6rem;
+            font-weight: 500;
+        }
+
+        .section p, .section li {
+            color: #c0c8d5;
+            margin-bottom: 0.6rem;
+            line-height: 1.6;
+        }
+
+        .subnote {
+            background: #1a1e24;
+            border-left: 3px solid #e06b6b;
+            padding: 0.8rem 1.2rem;
+            margin: 1rem 0;
+            font-size: 0.9rem;
+            color: #b0b8c5;
+        }
+
+        .warning-box {
+            border: 1px solid #b33a2a;
+            background: #1e1515;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        hr {
+            border: none;
+            height: 1px;
+            background: #2a2e35;
+            margin: 1.5rem 0;
+        }
+
+        .footer {
+            text-align: center;
+            font-size: 0.75rem;
+            color: #7a808b;
+            border-top: 1px solid #2a2e35;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .attachments {
+            background: #0f1217;
+            border: 1px dashed #e06b6b;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            font-family: monospace;
+            font-size: 0.9rem;
+        }
+
+        .redacted {
+            background: #0a0c10;
+            color: #555;
+            padding: 0 0.2rem;
+            font-style: italic;
+        }
+
+        @media (max-width: 700px) {
+            .container {
+                padding: 1rem;
+            }
+            .archive-title {
+                font-size: 1.4rem;
+            }
+            .section h2 {
+                font-size: 1.3rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="archive-stamp">机密 · Ω级</div>
+    <div class="header">
+        <div>
+            <div class="archive-id">档案编号：CA-8526-AR-001</div>
+            <div class="archive-title">地平线计划（Project Horizon）</div>
+            <div class="archive-id" style="margin-top: 4px;">档案名称：未授权访问将触发逆模因抹杀</div>
+        </div>
+        <div class="level">等级：机密 · RAISA 3级权限</div>
+    </div>
+
+    <!-- 概要 -->
+    <div class="section">
+        <h2>概要</h2>
+        <p>地平线计划是协奏曲联盟在调查SCP-8526（乌托邦）异常事件过程中发现的一项秘密殖民与资源开发项目。该计划由跨国投资集团“环弧集团”主导，通过招募平民“拓荒者”进入SCP-8526建立定居点，并由“曙光国际安保公司”提供武装封锁与镇压。计划直接导致SCP-8526内部防御机制被激活，导致SCP-9644感染SCP-8526并间接制造“IT”，造成重大人员伤亡与叙事层污染。联盟已对该项目予以取缔，并对相关责任人进行追责。</p>
+    </div>
+
+    <!-- 第一部分：环弧集团 -->
+    <div class="section">
+        <h2>第一部分：环弧集团</h2>
+        <p><strong>名称：</strong>环弧集团（Arc Ring Group）<br>
+        <strong>注册地：</strong>多国离岸金融中心，具体实体信息已封存<br>
+        <strong>性质：</strong>以生物科技、地产开发、私募基金为主要业务的跨国投资集团，实际控制人为二名未公开身份的富豪与贵族</p>
+        
+        <h3>与SCP-8526的关系</h3>
+        <p>环弧集团于2044年通过非法渠道获知SCP-8526的存在，随后秘密投资研发裂隙稳定技术，2045年首次将人员送入乌托邦。集团的核心目标是对SCP-8526进行商业开发——包括土地占有、资源开采、生物样本采集，以及长期定居点建设。集团高层将乌托邦视为“不受任何超自然组织管辖的私人王国”，试图在此建立永久性盈利模式。</p>
+        
+        <h3>集团采取的手段</h3>
+        <ul>
+            <li>通过壳公司层层外包，隐瞒与SCP-8526的直接关联</li>
+            <li>向拓荒者提供虚假的“海外移民”合同，隐瞒环境风险</li>
+            <li>雇佣曙光国际安保公司封锁裂隙入口，禁止外部人员进入</li>
+            <li>对SCP-8526进行大规模环境改造（砍伐、采矿、建筑），严重破坏乌托邦的原始生态，带入SCP-9644病毒，污染一条时间线。</li>
+        </ul>
+        
+        <h3>联盟调查结果</h3>
+        <p>环弧集团的行为直接触发了SCP-8526的“防御事件”——一种由乌托邦自身奇术规则触发的防御机制。具体表现为：定居点内的人员逐渐被同化为植物、矿物或能量态实体；地表建筑物被乌托邦“排斥”，出现位移或消失。更严重的是，集团的贪婪活动导致高阶模因复合体“IT”活化，开始具象化并对所有人类展开系统性抹除。对IT实质的判断为SCP-9644的病毒被拓荒者带入后产生的个体。</p>
+        
+        <h3>处理结果</h3>
+        <ul>
+            <li>环弧集团所有资产被联盟冻结，二名实际控制人中的一人已在IT苏醒初期死亡，剩余一人被送至国际超自然界刑事法庭处置。</li>
+            <li>集团下属的所有裂隙设备被销毁，相关技术档案由基金会模因部收容</li>
+            <li>联盟发布第1082号制裁令，永久禁止环弧集团及其任何关联实体在超自然界从事商业活动</li>
+        </ul>
+    </div>
+
+    <!-- 第二部分：拓荒者 -->
+    <div class="section">
+        <h2>第二部分：拓荒者</h2>
+        <p><strong>名称：</strong>拓荒者（Pioneers）<br>
+        <strong>身份：</strong>被环弧集团以“高薪移民”名义招募的平民，总数约1200人，来自全球37个国家</p>
+        
+        <h3>招募背景</h3>
+        <p>拓荒者多为经济困难、负债累累或渴望逃离原有生活的普通人。他们被告知将前往一个“海外新兴开发区”从事建设、农业、服务等工作，享受免税、分房、子女教育等福利。环弧集团通过层层外包的中介公司进行招聘，所有合同均注明“工作地点涉及保密条款”。拓荒者未被告知SCP-8526的真实性质，也未被告知任何超自然风险。</p>
+        
+        <h3>在SCP-8526中的经历</h3>
+        <p>拓荒者分批次进入SCP-8526，建立了四个主要定居点。他们在环弧集团的指示下进行土地开垦、道路修建、房屋建造等基础工程，并逐步形成小规模社群。然而，他们不知道的是：</p>
+        <ul>
+            <li>所有拓荒者体内均被植入了生物追踪器，用于测试SCP-8526环境对人体的影响</li>
+            <li>部分定居点被设为“实验组”，拓荒者在不知情的情况下被要求长期居住、生育后代，以测试环境对人类繁殖的影响</li>
+            <li>当有人出现异常症状时，环弧集团将该人员隔离并谎称“地方病”，继续派遣新的拓荒者补充。</li>
+        </ul>
+        
+        <h3>联盟的救援与安置</h3>
+        <p>一支MTF在对SCP-8526的探索行动中首次发现拓荒者定居点。基金会随后介入，强制撤离了幸存拓荒者（共计341人）。撤离过程中，有126人因IT攻击或防御事件死亡。幸存拓荒者被送往联盟各成员国的庇护所接受心理治疗与记忆审查。其中不希望保留SCP-8526经历的人员已接受记忆删除，恢复正常生活；希望保留经历的人员被安置在特定社区。</p>
+        
+        <div class="subnote">
+            <strong>道德反思：</strong>拓荒者是地平线计划中最无辜的受害者。他们不是超自然组织成员，不是异常实体，只是渴望更好生活的普通人。环弧集团利用他们的信任，将他们作为“趟雷”的消耗品。联盟在后续决议中明确规定：任何组织或个人不得以“移民”“工作”等名义招募平民进入未探明异常空间，违者将被视为反人类罪。
+        </div>
+    </div>
+
+    <!-- 第三部分：曙光国际安保公司 -->
+    <div class="section">
+        <h2>第三部分：曙光国际安保公司</h2>
+        <p><strong>名称：</strong>曙光国际安保公司（Dawnlight International Security）<br>
+        <strong>注册地：</strong>巴拿马，实际运营总部位于瑞士<br>
+        <strong>性质：</strong>合法注册的私人军事安保公司，持有协奏曲联盟观察员资质（已被吊销）</p>
+        
+        <h3>与地平线计划的关系</h3>
+        <p>曙光公司于2021年与环弧集团签订长期安保合同，负责：</p>
+        <ul>
+            <li>保护SCP-8526的裂隙入口，防止外部人员进入</li>
+            <li>巡逻拓荒者定居点，镇压任何“违法行为”（包括罢工、逃跑、传播恐慌）</li>
+            <li>在“必要时”清除SCP-8526中的危险生物——这包括乌托邦原住民，以及任何被防御事件改变形态的拓荒者</li>
+        </ul>
+        
+        <h3>信息隔离状况</h3>
+        <p>曙光公司中层及以下人员对超自然世界一无所知。他们被告知任务是保护一个“私人海外开发项目”，面对的“危险生物”是未被记录的野生动物。公司高层（董事会）中至少有三名成员知晓SCP-8526的异常性质，但他们选择隐瞒下属，以维持合同运作。曙光公司使用的武器装备包括常规枪械、轻型装甲车，以及少量从黑市购买的R.W.P.S.改装设备（如施术单元、局部休谟抑制器）。这些设备的使用者并不知道其真实原理，只将其视为“高科技装备”。</p>
+        
+        <h3>在事件中的行为</h3>
+        <ul>
+            <li>2022-2027年间，曙光公司成功阻截了至少11起外部人员（包括一名基金会外勤特工）对SCP-8526的接近，造成3人重伤。</li>
+            <li>2025年，曙光公司下属一个五人小队在巡逻中遭遇防御事件受害者，他们未按环弧集团“隔离”的要求处理，而是直接将受害者击毙。此事件被环弧集团掩盖，未上报任何组织。</li>
+            <li>IT苏醒后，曙光公司损失最为惨重：约60%的人员在IT的第一波攻击中被抹除，剩余40%在撤退过程中遭遇袭击，最终仅有34人安全撤离SCP-8526。</li>
+        </ul>
+        
+        <h3>处理结果</h3>
+        <ul>
+            <li>曙光国际安保公司的协奏曲联盟观察员资质被永久吊销。</li>
+            <li>公司董事会中知晓SCP-8526真相的三名成员被逮捕，以“反人类罪”“非法入侵异常空间”等罪名判处记忆删除，终身监禁。</li>
+            <li>公司中层及以下人员经审查后，大部分被认定为“受欺骗执行任务”，予以记忆删除后释放；少数知情不报者被降级为D级人员或送至国际超自然刑事法庭处置。</li>
+            <li>曙光公司的剩余资产被联盟没收，用于赔偿拓荒者及其家属。</li>
+        </ul>
+    </div>
+
+    <!-- IT苏醒与地平线计划的因果结论 -->
+    <div class="section">
+        <h2>IT苏醒与地平线计划的因果结论</h2>
+        <div class="warning-box">
+            <p>协奏曲联盟调查组一致认定：</p>
+            <p><strong>SCP-8526中的IT苏醒，直接原因是环弧集团对SCP-8526的大规模环境改造与永久定居行为。</strong> 其本身拥有基于防止SCP-9644病毒感染的防御机制。环弧集团的贪婪触发了乌托邦的防御机制，而直接导致了SCP-8526被SCP-9644感染。</p>
+            <p>地平线计划是一个典型的“资本无节制扩张导致灾难”的案例。联盟呼吁所有成员国加强对异常空间的监管，防止类似事件再次发生。</p>
+        </div>
+    </div>
+
+    <!-- 档案附件 -->
+    <div class="attachments">
+        <strong>档案附件</strong><br>
+        您没有权限查看。需要RAISA 3级权限。<br>
+        附件A：拓荒者幸存者证词摘录<br>
+        附件B：环弧集团内部邮件记录<br>
+        附件C：曙光国际安保公司武器装备清单<br>
+        附件D：联盟第1082号制裁令全文<br>
+        附件E：SCP-8526修正事件影像资料
+    </div>
+
+    <!-- 结语 -->
+    <div class="section">
+        <h2>结语</h2>
+        <p>地平线计划已经终结。环弧集团不复存在，曙光国际安保公司成为历史，拓荒者中的幸存者开始了新的生活。但IT，或SCP-9644并未被消灭——它仍在这里。</p>
+        <p>我们记录这份档案，不是为了谴责，而是为了警醒：在人类对未知世界的探索中，贪婪与盲目永远是最大的敌人。</p>
+        <p style="text-align: right; margin-top: 1rem;">协奏曲联盟 · 信息安全与数据部</p>
+    </div>
+
+    <div class="footer">
+        本档案为协奏曲联盟最高理事会授权公开版本 · 任何未经授权的转载或讨论将被视为对联盟安全条例的违反
+    </div>
+</div>
+</body>
+</html>
