@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>协奏曲联盟 · 封存</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c10;
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        /* 封存标记 */
+        .archive-stamp {
+            display: inline-block;
+            border: 2px solid #e06b6b;
+            color: #e06b6b;
+            padding: 0.3rem 1.5rem;
+            font-size: 1.2rem;
+            letter-spacing: 6px;
+            font-weight: 300;
+            margin-bottom: 2rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        /* 说明区域 */
+        .placeholder-box {
+            background: #0b0d10;
+            border: 1px dashed #2a2e35;
+            padding: 2rem 1.5rem;
+            margin: 1.5rem 0;
+            border-radius: 4px;
+            text-align: left;
+        }
+
+        .placeholder-box p {
+            color: #c0c8d5;
+            font-size: 0.95rem;
+            line-height: 1.8;
+            margin-bottom: 0.8rem;
+            font-family: 'Segoe UI', 'Georgia', serif;
+        }
+
+        .placeholder-box p:last-child {
+            margin-bottom: 0;
+        }
+
+        .placeholder-box .intro-line {
+            color: #8a929f;
+            font-size: 0.9rem;
+            font-family: 'Courier New', monospace;
+            border-bottom: 1px solid #1e2228;
+            padding-bottom: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        .placeholder-box .gentle {
+            color: #b0b8c5;
+            font-style: italic;
+        }
+
+        .placeholder-box .highlight {
+            color: #e06b6b;
+            font-weight: 400;
+        }
+
+        /* 结语 */
+        .final-line {
+            font-size: 1.2rem;
+            color: #8a929f;
+            margin: 1.5rem 0 2rem;
+            letter-spacing: 2px;
+            font-weight: 300;
+        }
+
+        /* 按钮组 */
+        .button-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .btn {
+            background: transparent;
+            border: 1px solid #2a2e35;
+            color: #b0b8c5;
+            padding: 0.7rem 2.5rem;
+            font-size: 1rem;
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            cursor: pointer;
+            transition: 0.2s ease;
+            border-radius: 4px;
+            letter-spacing: 1px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn:hover {
+            border-color: #e06b6b;
+            color: #ffffff;
+            background: rgba(224, 107, 107, 0.08);
+        }
+
+        .btn-primary {
+            border-color: #e06b6b;
+            color: #e06b6b;
+        }
+
+        .btn-primary:hover {
+            background: #e06b6b;
+            color: #0a0c10;
+        }
+
+        .btn-secondary:hover {
+            border-color: #5a606b;
+        }
+
+        .footer {
+            margin-top: 2.5rem;
+            font-size: 0.6rem;
+            color: #3a404a;
+            border-top: 1px solid #1e2228;
+            padding-top: 1rem;
+        }
+
+        @media (max-width: 500px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .archive-stamp {
+                font-size: 1rem;
+                letter-spacing: 4px;
+            }
+            .btn {
+                padding: 0.6rem 1.5rem;
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+
+    <!-- 封存标记 -->
+    <div class="archive-stamp">封 存</div>
+
+    <!-- 说明区域 -->
+    <div class="placeholder-box">
+        <p class="intro-line">因SCP-10000影响的结束与人类文明迈入了新界域，联盟认定自身不再被需要，此网站即日起封存。</p>
+
+        <p>——真是个温柔的世界。</p>
+        <p>世界上从不存在完美或不朽，再伟大的故事在三代人后也会什么也不剩下。</p>
+        <p>这里仍然很多空缺，但大概不会有人来填满它了。</p>
+        <p>有些遗憾，是啊。</p>
+        <p>关上了协奏曲的窗，对多彩的幻境说再见，转而看向黑暗窄小名为现实的方盒子。</p>
+        <p>烟花只有绽放的那一刻最美，这个世界也差不多是这样吧。</p>
+        <p>至少，多年后回望过往的我，能看到这一盏在夜里亮着的灯，能触摸到当时的我，就很好了。</p>
+    </div>
+
+    <!-- 结语 -->
+    <div class="final-line">— 一切都会过去。</div>
+
+    <!-- 按钮组 -->
+    <div class="button-group">
+        <!-- 跳转到 end.html -->
+        <a href="end.html" class="btn btn-secondary">确定</a>
+
+        <!-- 跳转到主站 -->
+        <a href="concerto-alliance.html" class="btn btn-primary">确定…？</a>
+    </div>
+
+    <div class="footer">
+        协奏曲联盟 · 暴雨纪元 · 终端 v2.1
+    </div>
+</div>
+</body>
+</html>

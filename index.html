@@ -1,9 +1,269 @@
 <!DOCTYPE html>
-<html>
+<html lang="zh">
 <head>
-    <meta http-equiv="refresh" content="0; url=concerto-alliance.html">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>协奏曲联盟 · 连接中</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c10;
+            font-family: 'Courier New', 'Segoe UI', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+        }
+
+        /* 页面标题（窗口内） */
+        .page-title {
+            text-align: center;
+            font-family: 'Segoe UI', 'Courier New', monospace;
+            font-size: 1.4rem;
+            font-weight: 400;
+            color: #e06b6b;
+            letter-spacing: 4px;
+            margin-bottom: 2rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid #2a2e35;
+            text-transform: uppercase;
+        }
+        .page-title .blink-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.2rem;
+            background: #e06b6b;
+            margin-left: 6px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* 加载圆圈 */
+        .loader-container {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 2rem;
+        }
+
+        .loader {
+            width: 48px;
+            height: 48px;
+            border: 3px solid #2a2e35;
+            border-top: 3px solid #e06b6b;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* 日志列表 */
+        .log {
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+            color: #8a929f;
+            margin-bottom: 1.5rem;
+        }
+
+        .log-line {
+            padding: 0.3rem 0;
+            border-bottom: 1px dotted #1e2228;
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .log-line .status {
+            color: #6ba6e0;
+            min-width: 60px;
+        }
+
+        .log-line .done {
+            color: #5cb85c;
+        }
+
+        .log-line .fail {
+            color: #e06b6b;
+        }
+
+        /* 错误信息 */
+        .error-box {
+            background: #1a1111;
+            border: 1px solid #b33a2a;
+            padding: 1rem;
+            margin-top: 1rem;
+            border-radius: 4px;
+        }
+
+        .error-box .error-code {
+            color: #e06b6b;
+            font-weight: bold;
+            font-family: monospace;
+        }
+
+        .error-box p {
+            color: #c0c8d5;
+            margin: 0.5rem 0 0.8rem;
+            line-height: 1.6;
+        }
+
+        .error-box a {
+            color: #e06b6b;
+            text-decoration: none;
+            border-bottom: 1px dashed #e06b6b;
+            padding-bottom: 1px;
+            cursor: pointer;
+        }
+
+        .error-box a:hover {
+            color: #ff8a8a;
+            border-bottom-color: #ff8a8a;
+        }
+
+        /* 页脚 */
+        .footer {
+            margin-top: 2rem;
+            text-align: center;
+            font-size: 0.7rem;
+            color: #5a606b;
+            border-top: 1px solid #1e2228;
+            padding-top: 1rem;
+        }
+
+        /* 响应式 */
+        @media (max-width: 500px) {
+            .container {
+                padding: 1.5rem 1rem;
+            }
+            .log {
+                font-size: 0.8rem;
+            }
+            .log-line {
+                flex-wrap: wrap;
+            }
+        }
+    </style>
 </head>
 <body>
-    <p>正在跳转到首页，如果未自动跳转，请<a href="concerto-alliance.html">点击这里</a>。</p>
+<div class="container">
+
+    <!-- 页面标题：连接中 -->
+    <div class="page-title">
+        连接中<span class="blink-cursor"></span>
+    </div>
+
+    <!-- 加载圆圈 -->
+    <div class="loader-container">
+        <div class="loader"></div>
+    </div>
+
+    <!-- 请求日志（全部失败） -->
+    <div class="log" id="logContainer">
+        <div class="log-line"><span class="status">⏳</span> 正在向服务器群01发送请求...</div>
+        <div class="log-line"><span class="status">⏳</span> 正在向服务器群02发送请求...</div>
+        <div class="log-line"><span class="status">⏳</span> 正在向服务器群03发送请求...</div>
+        <div class="log-line"><span class="status">⏳</span> 正在向服务器群04发送请求...</div>
+        <div class="log-line"><span class="status">⏳</span> 正在向服务器群00发送请求...</div>
+    </div>
+
+    <!-- 错误信息（初始隐藏，延迟显示） -->
+    <div class="error-box" id="errorBox" style="display: none;">
+        <p>
+            <span class="error-code">[ERROR:-1:hostnotfound]</span><br>
+            请求未受理，请检查您是否处于可连接至服务器的区域，或
+            <a id="helpLink">点击此处寻求帮助。</a>
+        </p>
+    </div>
+
+    <div class="footer">
+        协奏曲联盟 · 暴雨纪元 · 连接终端 v2.1
+    </div>
+</div>
+
+<script>
+    (function() {
+        const logLines = document.querySelectorAll('.log-line .status');
+        const errorBox = document.getElementById('errorBox');
+        const helpLink = document.getElementById('helpLink');
+
+        // 状态更新序列：五条请求全部失败
+        const statuses = [
+            { index: 0, type: 'fail', symbol: '✗', label: '失败' },
+            { index: 1, type: 'fail', symbol: '✗', label: '失败' },
+            { index: 2, type: 'fail', symbol: '✗', label: '失败' },
+            { index: 3, type: 'fail', symbol: '✗', label: '失败' },
+            { index: 4, type: 'fail', symbol: '✗', label: '失败' }
+        ];
+
+        let currentStep = 0;
+
+        function updateLog() {
+            if (currentStep >= statuses.length) {
+                // 全部更新完毕，显示错误框
+                errorBox.style.display = 'block';
+                // 停止加载动画（移除圆圈）
+                const loader = document.querySelector('.loader');
+                if (loader) loader.style.display = 'none';
+                return;
+            }
+
+            const step = statuses[currentStep];
+            const statusSpan = logLines[step.index];
+            if (statusSpan) {
+                statusSpan.textContent = step.symbol;
+                statusSpan.className = 'status ' + step.type;
+                // 把后面的文字也加上状态标记
+                const parentLine = statusSpan.parentElement;
+                if (parentLine) {
+                    const text = parentLine.textContent.replace(/[✓✗⏳]\s*/, '').trim();
+                    parentLine.innerHTML = `<span class="status ${step.type}">${step.symbol}</span> ${text} <span style="color:#5a606b;font-size:0.75rem;">${step.label}</span>`;
+                }
+            }
+
+            currentStep++;
+
+            // 每步间隔 400ms，最后一步完成后 600ms 显示错误
+            const delay = (currentStep < statuses.length) ? 400 : 600;
+            setTimeout(updateLog, delay);
+        }
+
+        // 延迟 500ms 开始模拟请求过程
+        setTimeout(updateLog, 500);
+
+        // 点击“点击此处寻求帮助”跳转到 nohelp.html
+        helpLink.addEventListener('click', function(e) {
+            e.preventDefault();
+            window.location.href = 'nohelp.html';
+        });
+
+        // 点击错误框也可跳转（备用）
+        errorBox.addEventListener('click', function(e) {
+            if (e.target === errorBox || e.target.tagName === 'P') {
+                window.location.href = 'nohelp.html';
+            }
+        });
+    })();
+</script>
 </body>
 </html>

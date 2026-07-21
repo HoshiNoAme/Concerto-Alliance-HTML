@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>协奏曲联盟 · 终端</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: #0a0c10;
+            font-family: 'Courier New', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 2rem 1rem;
+        }
+
+        .container {
+            max-width: 700px;
+            width: 100%;
+            background: #111316;
+            border: 1px solid #2a2e35;
+            box-shadow: 0 0 30px rgba(0, 0, 0, 0.8);
+            padding: 2.5rem 2rem;
+            border-radius: 8px;
+            text-align: center;
+        }
+
+        .error-code {
+            font-family: 'Courier New', monospace;
+            font-size: 1.6rem;
+            color: #e06b6b;
+            letter-spacing: 2px;
+            font-weight: 400;
+        }
+
+        .blink-cursor {
+            display: inline-block;
+            width: 2px;
+            height: 1.8rem;
+            background: #e06b6b;
+            margin-left: 6px;
+            animation: blink 1s step-end infinite;
+            vertical-align: text-bottom;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        .footer {
+            margin-top: 2.5rem;
+            font-size: 0.6rem;
+            color: #3a404a;
+            border-top: 1px solid #1e2228;
+            padding-top: 1rem;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <div class="error-code">
+        error:rcode=3-NXDOMAIN<span class="blink-cursor"></span>
+    </div>
+    <div class="footer">
+        协奏曲联盟 · 暴雨纪元 · 终端 v2.1
+    </div>
+</div>
+</body>
+</html>
